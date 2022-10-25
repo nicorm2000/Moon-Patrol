@@ -1,4 +1,4 @@
-# Magic Asteroids
+# Moon Patrol
 Simple Moon Patrol made whit raylib in c++.
 
 ## itch.io: https://feco-games.itch.io/
