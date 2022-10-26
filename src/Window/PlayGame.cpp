@@ -10,6 +10,7 @@
 //Window
 int screenWidth = 1024;
 int screenHeight = 768;
+bool pause = true;
 
 //Player
 Player player = CreatePlayer(screenWidth, screenHeight);
@@ -23,19 +24,30 @@ Obstacle obstacle = CreateObstacle(screenWidth, screenHeight);
 void initGame()
 {
     InitWindow(screenWidth, screenHeight, "Moon Patrol");
+    SetExitKey(NULL);
 }
 
-void Update()
+void GameLoop()
 {
     while (!WindowShouldClose())
     {
-        ObstacleMovement();
-        PlayerMovement();
-        Collisions();
+        pauseIntputs();
+
+        if (!pause)
+        {
+            Update();
+            Collisions();
+        }
+
         Draw();
     }
-    
+
     CloseWindow();
+}
+void Update()
+{
+    ObstacleMovement();
+    PlayerMovement();
 }
 
 void Draw()
@@ -48,6 +60,13 @@ void Draw()
     DrawObstacle(obstacle);
     DrawPlayer(player);
 
+    if (pause)
+    {
+        DrawText("PAUSE ON- Esc or P to set Off", screenWidth / screenWidth, screenHeight / screenHeight, 50, WHITE);
+    }
+    
+    DrawText("Version 0.1", screenWidth / screenWidth, screenHeight / 2, 50, WHITE);
+
     EndDrawing();
 }
 
@@ -55,12 +74,12 @@ void PlayGame()
 {
     initGame();
 
-    Update();
+    GameLoop();
 }
 
 void Collisions()
 {
-
+    PlayerCollision();
 }
 
 bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h)
@@ -100,9 +119,41 @@ void PlayerMovement()
     PlayerLimit(player, screenWidth);
 }
 
+void PlayerCollision()
+{
+    if (CheckCollisionRecRec(player.pos, player.width - 30, player.height -30, obstacle.pos, obstacle.width, obstacle.height))
+    {
+        player.color = RED;
+    }
+
+    else
+    {
+        player.color = GREEN;
+    }
+}
+
 void ObstacleMovement()
 {
     obstacle.pos.x -= obstacle.speed * GetFrameTime();
 
     ObstacleTeleport(obstacle, screenWidth);
+}
+
+void pauseIntputs() 
+{
+    if (pause)
+    {
+        if (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE))
+        {
+            pause = false;
+        }
+    }
+
+    else
+    {
+        if (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE))
+        {
+            pause = true;
+        }
+    }
 }
