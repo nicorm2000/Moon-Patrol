@@ -16,15 +16,21 @@
     <ClCompile Include="src\Objects\Player.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\Objects\Floor.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window\PlayGame.h">
       <Filter>Window</Filter>
     </ClInclude>
-    <ClInclude Include="GameComps.h">
+    <ClInclude Include="src\Objects\Player.h">
       <Filter>Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Objects\Player.h">
+    <ClInclude Include="src\Objects\GameComps.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Floor.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>

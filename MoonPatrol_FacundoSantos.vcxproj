@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Objects\Floor.cpp" />
     <ClCompile Include="src\Objects\Player.cpp" />
     <ClCompile Include="src\Window\PlayGame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameComps.h" />
+    <ClInclude Include="src\Objects\Floor.h" />
+    <ClInclude Include="src\Objects\GameComps.h" />
     <ClInclude Include="src\Objects\Player.h" />
     <ClInclude Include="src\Window\PlayGame.h" />
   </ItemGroup>

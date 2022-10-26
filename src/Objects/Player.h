@@ -8,7 +8,11 @@ struct Player
 	float width;
 	float height;
 
+	float speed;
+
 	Color color;
 };
 
 Player CreatePlayer(int screenWidth, int screenHeight);
+
+void DrawPlayer(Player& player);
