@@ -16,3 +16,5 @@ struct Player
 Player CreatePlayer(int screenWidth, int screenHeight);
 
 void DrawPlayer(Player& player);
+
+void PlayerLimit(Player& player, int screenWidth);

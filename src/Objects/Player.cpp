@@ -24,3 +24,16 @@ void DrawPlayer(Player& player)
 					  static_cast<int>(player.width),
 					  static_cast<int>(player.height), player.color);
 }
+
+void PlayerLimit(Player& player, int screenWidth) 
+{
+	if (player.pos.x > screenWidth - player.width)
+	{
+		player.pos.x = screenWidth - player.width;
+	}
+
+	if (player.pos.x < screenWidth / screenWidth)
+	{
+		player.pos.x = static_cast<float>(screenWidth / screenWidth);
+	}
+}

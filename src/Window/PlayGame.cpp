@@ -72,4 +72,6 @@ void PlayerMovement()
     {
         player.pos.y = static_cast<float>(screenHeight / 1.15);
     }
+
+    PlayerLimit(player, screenWidth);
 }
