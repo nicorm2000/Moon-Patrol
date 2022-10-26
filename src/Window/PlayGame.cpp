@@ -1,11 +1,15 @@
 #include <iostream>
 #include "raylib.h"
 #include "Window/PlayGame.h"
+#include "Objects/Player.h"
+#include "Objects/GameComps.h"
 
 //Window
-const int screenWidth = 1024;
-const int screenHeight = 768;
+int screenWidth = 1024;
+int screenHeight = 768;
 
+//Player
+Player player = CreatePlayer(screenWidth, screenHeight);
 
 void initGame()
 {
@@ -18,15 +22,22 @@ void Update()
     {
         Draw();
     }
+    
+    CloseWindow();
 }
 
 void Draw()
 {
     BeginDrawing();
 
-    ClearBackground(RAYWHITE);
+    ClearBackground(BLACK);
 
-    DrawText("Congrats! You created your first window!", screenWidth / 4, screenHeight / 2, 20, LIGHTGRAY);
+    DrawRectangle(static_cast<int>(player.pos.x), 
+                  static_cast<int>(player.pos.y), 
+                  static_cast<int>(player.width), 
+                  static_cast<int>(player.height), player.color);
+
+    
 
     EndDrawing();
 }
@@ -36,6 +47,9 @@ void PlayGame()
     initGame();
 
     Update();
+}
 
-    CloseWindow();
+void PlayerMovement()
+{
+
 }

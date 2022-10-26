@@ -1,24 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Src">
-      <UniqueIdentifier>{fce0198c-a18d-4155-bc42-347ab075db27}</UniqueIdentifier>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{744cb4cd-7a2d-44d3-8d11-c2f38b5ca04b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Window">
+    <Filter Include="Window">
       <UniqueIdentifier>{97cc4100-02a5-42fd-abd3-e19b2e2008da}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Window\PlayGame.cpp">
-      <Filter>Src\Window</Filter>
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Objects\Player.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window\PlayGame.h">
-      <Filter>Src\Window</Filter>
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComps.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Player.h">
+      <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
