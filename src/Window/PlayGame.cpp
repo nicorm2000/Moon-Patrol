@@ -4,6 +4,8 @@
 #include "Objects/Player.h"
 #include "Objects/GameComps.h"
 #include "Objects/Floor.h"
+#include "Objects/Obstacle.h"
+
 
 //Window
 int screenWidth = 1024;
@@ -15,6 +17,8 @@ Player player = CreatePlayer(screenWidth, screenHeight);
 //Floor
 Ground ground = CreateGround(screenWidth, screenHeight);
 
+//Obstacle
+Obstacle obstacle = CreateObstacle(screenWidth, screenHeight);
 
 void initGame()
 {
@@ -25,7 +29,9 @@ void Update()
 {
     while (!WindowShouldClose())
     {
+        ObstacleMovement();
         PlayerMovement();
+        Collisions();
         Draw();
     }
     
@@ -39,6 +45,7 @@ void Draw()
     ClearBackground(BLACK);
     
     DrawGround(ground);
+    DrawObstacle(obstacle);
     DrawPlayer(player);
 
     EndDrawing();
@@ -49,6 +56,23 @@ void PlayGame()
     initGame();
 
     Update();
+}
+
+void Collisions()
+{
+
+}
+
+bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h)
+{
+    if (r1.x + r1w >= r2.x &&
+        r1.x <= r2.x + r2w &&
+        r1.y + r1h >= r2.y &&
+        r1.y <= r2.y + r2h)
+    {
+        return true;
+    }
+    return false;
 }
 
 void PlayerMovement()
@@ -74,4 +98,11 @@ void PlayerMovement()
     }
 
     PlayerLimit(player, screenWidth);
+}
+
+void ObstacleMovement()
+{
+    obstacle.pos.x -= obstacle.speed * GetFrameTime();
+
+    ObstacleTeleport(obstacle, screenWidth);
 }

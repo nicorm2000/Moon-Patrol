@@ -19,6 +19,9 @@
     <ClCompile Include="src\Objects\Floor.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\Objects\Obstacle.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window\PlayGame.h">
@@ -31,6 +34,9 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Floor.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Obstacle.h">
       <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>

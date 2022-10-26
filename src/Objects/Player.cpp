@@ -12,7 +12,7 @@ Player CreatePlayer(int screenWidth, int screenHeight)
 
 	player.speed = 420;
 
-	player.color = RED;
+	player.color = GREEN;
 
 	return player;
 }
