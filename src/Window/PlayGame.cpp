@@ -23,7 +23,7 @@ Obstacle obstacle = CreateObstacle(screenWidth, screenHeight);
 
 void initGame()
 {
-    InitWindow(screenWidth, screenHeight, "Moon Patrol");
+    InitWindow(screenWidth, screenHeight, "Moon Patrol v0.1");
     SetExitKey(NULL);
 }
 
@@ -64,8 +64,6 @@ void Draw()
     {
         DrawText("PAUSE ON- Esc or P to set Off", screenWidth / screenWidth, screenHeight / screenHeight, 50, WHITE);
     }
-    
-    DrawText("Version 0.1", screenWidth / screenWidth, screenHeight / 2, 50, WHITE);
 
     EndDrawing();
 }
@@ -124,6 +122,7 @@ void PlayerCollision()
     if (CheckCollisionRecRec(player.pos, player.width - 30, player.height -30, obstacle.pos, obstacle.width, obstacle.height))
     {
         player.color = RED;
+        RestartGame();
     }
 
     else
@@ -156,4 +155,30 @@ void pauseIntputs()
             pause = true;
         }
     }
+}
+
+void RestartGame()
+{
+    //Player
+    player.pos.x = static_cast<float>(screenWidth / 6);
+    player.pos.y = static_cast<float>(screenHeight / 1.15);
+    player.width = 80;
+    player.height = 40;
+    player.speed = 420;
+    player.color = GREEN;
+
+    //Obstacle
+    obstacle.pos.x = static_cast<float>(screenWidth - 10);
+    obstacle.pos.y = static_cast<float>(screenHeight / 1.2);
+    obstacle.width = 30;
+    obstacle.height = 60;
+    obstacle.speed = 300;
+    obstacle.color = BLUE;
+
+    //Ground
+    ground.pos.x = static_cast<float>(screenWidth / screenWidth);
+    ground.pos.y = static_cast<float>(screenHeight / 1.1);
+    ground.width = static_cast<float>(screenWidth);
+    ground.height = 70;
+    ground.color = YELLOW;
 }
