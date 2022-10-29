@@ -24,14 +24,16 @@
     <ClCompile Include="src\Objects\Mouse.cpp" />
     <ClCompile Include="src\Objects\Obstacle.cpp" />
     <ClCompile Include="src\Objects\Player.cpp" />
+    <ClCompile Include="src\Window\Menu.cpp" />
     <ClCompile Include="src\Window\PlayGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Objects\Floor.h" />
-    <ClInclude Include="src\Objects\GameComps.h" />
     <ClInclude Include="src\Objects\Mouse.h" />
     <ClInclude Include="src\Objects\Obstacle.h" />
     <ClInclude Include="src\Objects\Player.h" />
+    <ClInclude Include="src\Window\GameComps.h" />
+    <ClInclude Include="src\Window\Menu.h" />
     <ClInclude Include="src\Window\PlayGame.h" />
   </ItemGroup>
   <ItemGroup>

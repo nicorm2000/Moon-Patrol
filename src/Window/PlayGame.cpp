@@ -1,8 +1,9 @@
 #include <iostream>
 #include "raylib.h"
 #include "Window/PlayGame.h"
+#include "Window/GameComps.h"
+#include "Window/Menu.h"
 #include "Objects/Player.h"
-#include "Objects/GameComps.h"
 #include "Objects/Floor.h"
 #include "Objects/Obstacle.h"
 #include "Objects/Mouse.h"
@@ -16,6 +17,10 @@ namespace game
     int screenHeight = 768;
     bool pause = true;
 
+    //Menu
+    int optionSelect = 0;
+    bool playGame = false;
+
     //Player
     Player player = CreatePlayer(screenWidth, screenHeight);
 
@@ -28,30 +33,93 @@ namespace game
     //Mouse
     Mouse mouse = CreateMouse();
 
+    //Font
+    Font gameFont;
+
     void initGame()
     {
         InitWindow(screenWidth, screenHeight, "Moon Patrol v0.1");
         SetExitKey(NULL);
+
+        //Menu
+        InitMenu();
+
+        //Font
+        gameFont = LoadFont("resources/Font/baby blocks.ttf");
     }
 
     void GameLoop()
     {
-        while (!WindowShouldClose())
+        HideCursor();
+        bool gameOn = true;
+        
+        if (gameOn == true)
         {
-            pauseIntputs();
-            MouseMovement();
-
-            if (!pause)
+            while (!WindowShouldClose() && gameOn)
             {
-                Update();
-                Collisions();
+                pauseIntputs();
+                MouseMovement();
+                MenuCollisions(mouse, optionSelect);
+                MenuInputs(mouse, optionSelect, playGame);
+
+                if (playGame == true)
+                {
+                    if (!pause)
+                    {
+                        Update();
+                        Collisions();
+                    }
+                }
+
+                switch (optionSelect)
+                {
+                    case static_cast<int>(Menu::MainMenu):
+                        BeginDrawing();
+                        ClearBackground(BLACK);
+                        ShowCursor();
+                        DrawMenu(gameFont);
+                        EndDrawing();
+
+                        break;
+
+                    case static_cast<int>(Menu::Play):
+                        Draw();
+                        break;
+
+                    case static_cast<int>(Menu::Controlls):
+                        BeginDrawing();
+                        ClearBackground(BLACK);
+                        DrawControlls(gameFont);
+                        EndDrawing();
+                        break;
+
+                    case static_cast<int>(Menu::Rules):
+                        BeginDrawing();
+                        ClearBackground(BLACK);
+                        DrawRules(gameFont);
+                        EndDrawing();
+                        break;
+
+                    case static_cast<int>(Menu::Credits):
+                        BeginDrawing();
+                        ClearBackground(BLACK);
+                        DrawCredits(gameFont);
+                        EndDrawing();
+                        break;
+
+                    case static_cast<int>(Menu::Quit):
+                        gameOn = false;
+                        break;
+                }
             }
-
-            Draw();
         }
-
-        CloseWindow();
+        
+        if (!gameOn)
+        {
+            CloseWindow();
+        }
     }
+
     void Update()
     {
         ObstacleMovement();
@@ -150,7 +218,6 @@ namespace game
 
     void MouseMovement()
     {
-        HideCursor();
         mouse.position = GetMousePosition();
     }
 
