@@ -1,43 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Objects">
-      <UniqueIdentifier>{744cb4cd-7a2d-44d3-8d11-c2f38b5ca04b}</UniqueIdentifier>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{d4efdf61-cba1-4dd0-a6d9-a293d7c46f39}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Window">
+    <Filter Include="Resources\Font">
+      <UniqueIdentifier>{a7d7677f-ccc5-43bc-801e-923e3db8b343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Sprites">
+      <UniqueIdentifier>{98e24e97-6f45-4b2d-98c7-141fc2c9f9f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Sounds">
+      <UniqueIdentifier>{78d70b13-770f-47d3-b117-2cb83471f6ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{9c667538-5fe9-40bc-aaa7-0b35ba36cb09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Window">
       <UniqueIdentifier>{97cc4100-02a5-42fd-abd3-e19b2e2008da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Objects">
+      <UniqueIdentifier>{744cb4cd-7a2d-44d3-8d11-c2f38b5ca04b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window\PlayGame.cpp">
-      <Filter>Window</Filter>
+      <Filter>Src\Window</Filter>
     </ClCompile>
-    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Objects\Player.cpp">
-      <Filter>Objects</Filter>
+      <Filter>Src\Objects</Filter>
     </ClCompile>
     <ClCompile Include="src\Objects\Floor.cpp">
-      <Filter>Objects</Filter>
+      <Filter>Src\Objects</Filter>
     </ClCompile>
     <ClCompile Include="src\Objects\Obstacle.cpp">
-      <Filter>Objects</Filter>
+      <Filter>Src\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window\PlayGame.h">
-      <Filter>Window</Filter>
+      <Filter>Src\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Player.h">
-      <Filter>Objects</Filter>
+      <Filter>Src\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\GameComps.h">
-      <Filter>Objects</Filter>
+      <Filter>Src\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Floor.h">
-      <Filter>Objects</Filter>
+      <Filter>Src\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Obstacle.h">
-      <Filter>Objects</Filter>
+      <Filter>Src\Objects</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\Font\Acero y Sangre.otf">
+      <Filter>Resources\Font</Filter>
+    </Font>
   </ItemGroup>
 </Project>

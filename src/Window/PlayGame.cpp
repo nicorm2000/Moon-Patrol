@@ -6,6 +6,7 @@
 #include "Objects/Floor.h"
 #include "Objects/Obstacle.h"
 
+using namespace std;
 
 //Window
 int screenWidth = 1024;
@@ -122,6 +123,7 @@ void PlayerCollision()
     if (CheckCollisionRecRec(player.pos, player.width - 30, player.height -30, obstacle.pos, obstacle.width, obstacle.height))
     {
         player.color = RED;
+        cout << "Perdiste" << endl;
         RestartGame();
     }
 

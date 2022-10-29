@@ -32,6 +32,9 @@
     <ClInclude Include="src\Objects\Player.h" />
     <ClInclude Include="src\Window\PlayGame.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\Font\Acero y Sangre.otf" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{F5976082-0A69-43D7-8D88-F3A1F7EC433A}</ProjectGuid>
