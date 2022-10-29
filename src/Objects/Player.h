@@ -1,20 +1,23 @@
 #pragma once
 #include "raylib.h"
 
-struct Player
+namespace game
 {
-	Vector2 pos;
+	struct Player
+	{
+		Vector2 pos;
 
-	float width;
-	float height;
+		float width;
+		float height;
 
-	float speed;
+		float speed;
 
-	Color color;
-};
+		Color color;
+	};
 
-Player CreatePlayer(int screenWidth, int screenHeight);
+	Player CreatePlayer(int screenWidth, int screenHeight);
 
-void DrawPlayer(Player& player);
+	void DrawPlayer(Player& player);
 
-void PlayerLimit(Player& player, int screenWidth);
+	void PlayerLimit(Player& player, int screenWidth);
+}

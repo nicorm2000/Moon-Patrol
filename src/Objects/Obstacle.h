@@ -1,20 +1,22 @@
 #pragma once
 #include "raylib.h"
-
-struct Obstacle
+namespace game
 {
-	Vector2 pos;
+	struct Obstacle
+	{
+		Vector2 pos;
 
-	float width;
-	float height;
+		float width;
+		float height;
 
-	float speed;
+		float speed;
 
-	Color color;
-};
+		Color color;
+	};
 
-Obstacle CreateObstacle(int screenWidth, int screenHeight);
+	Obstacle CreateObstacle(int screenWidth, int screenHeight);
 
-void DrawObstacle(Obstacle& obstacle);
+	void DrawObstacle(Obstacle& obstacle);
 
-void ObstacleTeleport(Obstacle& obstacle, int screenWidth);
+	void ObstacleTeleport(Obstacle& obstacle, int screenWidth);
+}

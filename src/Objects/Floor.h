@@ -1,16 +1,19 @@
 #pragma once
 #include "raylib.h"
 
-struct Ground
+namespace game
 {
-	Vector2 pos;
+	struct Ground
+	{
+		Vector2 pos;
 
-	float width;
-	float height;
+		float width;
+		float height;
 
-	Color color;
-};
+		Color color;
+	};
 
-Ground CreateGround(int screenWidth, int screenHeight);
+	Ground CreateGround(int screenWidth, int screenHeight);
 
-void DrawGround(Ground& ground);
+	void DrawGround(Ground& ground);
+}
