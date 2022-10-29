@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Objects\Floor.cpp" />
+    <ClCompile Include="src\Objects\Mouse.cpp" />
     <ClCompile Include="src\Objects\Obstacle.cpp" />
     <ClCompile Include="src\Objects\Player.cpp" />
     <ClCompile Include="src\Window\PlayGame.cpp" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ClInclude Include="src\Objects\Floor.h" />
     <ClInclude Include="src\Objects\GameComps.h" />
+    <ClInclude Include="src\Objects\Mouse.h" />
     <ClInclude Include="src\Objects\Obstacle.h" />
     <ClInclude Include="src\Objects\Player.h" />
     <ClInclude Include="src\Window\PlayGame.h" />

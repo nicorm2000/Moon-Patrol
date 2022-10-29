@@ -39,6 +39,9 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Objects\Mouse.cpp">
+      <Filter>Src\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window\PlayGame.h">
@@ -47,14 +50,17 @@
     <ClInclude Include="src\Objects\Player.h">
       <Filter>Src\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Objects\GameComps.h">
-      <Filter>Src\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\Objects\Floor.h">
       <Filter>Src\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Obstacle.h">
       <Filter>Src\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Mouse.h">
+      <Filter>Src\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\GameComps.h">
+      <Filter>Src\Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

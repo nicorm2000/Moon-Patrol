@@ -5,6 +5,7 @@
 #include "Objects/GameComps.h"
 #include "Objects/Floor.h"
 #include "Objects/Obstacle.h"
+#include "Objects/Mouse.h"
 
 using namespace std;
 
@@ -24,6 +25,9 @@ namespace game
     //Obstacle
     Obstacle obstacle = CreateObstacle(screenWidth, screenHeight);
 
+    //Mouse
+    Mouse mouse = CreateMouse();
+
     void initGame()
     {
         InitWindow(screenWidth, screenHeight, "Moon Patrol v0.1");
@@ -35,6 +39,7 @@ namespace game
         while (!WindowShouldClose())
         {
             pauseIntputs();
+            MouseMovement();
 
             if (!pause)
             {
@@ -62,6 +67,7 @@ namespace game
         DrawGround(ground);
         DrawObstacle(obstacle);
         DrawPlayer(player);
+        DrawMouse(mouse, mouse.mouseRec);
 
         if (pause)
         {
@@ -122,7 +128,7 @@ namespace game
 
     void PlayerCollision()
     {
-        if (game::CheckCollisionRecRec(player.pos, player.width - 30, player.height - 30, obstacle.pos, obstacle.width, obstacle.height))
+        if (CheckCollisionRecRec(player.pos, player.width - 30, player.height - 30, obstacle.pos, obstacle.width, obstacle.height))
         {
             player.color = RED;
             cout << "Perdiste" << endl;
@@ -140,6 +146,12 @@ namespace game
         obstacle.pos.x -= obstacle.speed * GetFrameTime();
 
         ObstacleTeleport(obstacle, screenWidth);
+    }
+
+    void MouseMovement()
+    {
+        HideCursor();
+        mouse.position = GetMousePosition();
     }
 
     void pauseIntputs()
@@ -185,5 +197,12 @@ namespace game
         ground.width = static_cast<float>(screenWidth);
         ground.height = 70;
         ground.color = YELLOW;
+
+        //Mouse
+        mouse.position.x = 0;
+        mouse.position.y = 0;
+        mouse.width = 20.0f;
+        mouse.height = 20.0f;
+        mouse.mouseRec = GetRecMouse(mouse);
     }
 }

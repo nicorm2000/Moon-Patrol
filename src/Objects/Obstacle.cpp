@@ -1,4 +1,7 @@
+#include <iostream>
 #include "Objects/Obstacle.h"
+
+using namespace std;
 
 namespace game
 {
@@ -36,6 +39,7 @@ namespace game
 
 		if (obstacle.pos.x < screenWidth / screenWidth - obstacle.width)
 		{
+			cout << "Ganaste" << endl;
 			obstacle.pos.x = screenWidth - obstacle.width;
 		}
 	}
