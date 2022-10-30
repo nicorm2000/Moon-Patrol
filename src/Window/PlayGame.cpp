@@ -6,6 +6,7 @@
 #include "Objects/Player.h"
 #include "Objects/Floor.h"
 #include "Objects/Obstacle.h"
+#include "Objects/Background.h"
 #include "Objects/Mouse.h"
 
 using namespace std;
@@ -30,6 +31,13 @@ namespace game
     //Obstacle
     Obstacle obstacle = CreateObstacle(screenWidth, screenHeight);
 
+    //Background
+    Texture skyTex;
+    Texture cityTex;
+
+    Background sky = CreateBackground(screenWidth, screenHeight, skyTex);
+    Background city = CreateBackground(screenWidth, screenHeight, cityTex);
+
     //Mouse
     Mouse mouse = CreateMouse();
 
@@ -46,6 +54,12 @@ namespace game
 
         //Font
         gameFont = LoadFont("resources/Font/baby blocks.ttf");
+        
+        //Background
+        skyTex = LoadTexture("resources/Sprites/Sky.png");
+
+        city.posY = (screenHeight / screenHeight) - 60;
+        cityTex = LoadTexture("resources/Sprites/City.png");
     }
 
     void GameLoop()
@@ -131,7 +145,8 @@ namespace game
         BeginDrawing();
 
         ClearBackground(BLACK);
-
+        DrawBackground(skyTex, sky.posX, sky.posY);
+        DrawBackground(cityTex, city.posX, city.posY);
         DrawGround(ground);
         DrawObstacle(obstacle);
         DrawPlayer(player);

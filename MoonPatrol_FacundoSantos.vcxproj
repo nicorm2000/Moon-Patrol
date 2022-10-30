@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Objects\Background.cpp" />
     <ClCompile Include="src\Objects\Floor.cpp" />
     <ClCompile Include="src\Objects\Mouse.cpp" />
     <ClCompile Include="src\Objects\Obstacle.cpp" />
@@ -28,6 +29,7 @@
     <ClCompile Include="src\Window\PlayGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Objects\Background.h" />
     <ClInclude Include="src\Objects\Floor.h" />
     <ClInclude Include="src\Objects\Mouse.h" />
     <ClInclude Include="src\Objects\Obstacle.h" />
