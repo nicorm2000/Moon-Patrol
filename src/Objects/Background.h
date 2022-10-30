@@ -5,16 +5,18 @@ namespace game
 {
 	struct Background
 	{
-		int posX;
-		int posY;
+		Vector2 pos;
 		
 		float width;
 		float height;
 		float scale;
 
+		float speed;
+
 		Texture tex;
 	};
 
-	Background CreateBackground(int screenWidth, int screenHeight, Texture tex);
-	void DrawBackground(Texture tex, int& posX, int& posY);
+	Background CreateBackground(int screenWidth, int screenHeight);
+	void DrawBackground(Background& back);
+	void BackgroundParallax(Background& back, int screenWidth);
 }

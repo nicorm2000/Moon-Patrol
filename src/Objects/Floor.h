@@ -10,6 +10,8 @@ namespace game
 		float width;
 		float height;
 
+		Texture tex;
+
 		Color color;
 	};
 

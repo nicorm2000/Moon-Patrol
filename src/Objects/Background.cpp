@@ -2,25 +2,40 @@
 
 namespace game
 {
-	Background CreateBackground(int screenWidth, int screenHeight,Texture tex)
+	Background CreateBackground(int screenWidth, int screenHeight)
 	{
 		Background backG;
 
-		backG.posX = screenWidth / screenWidth;
-		backG.posY = screenHeight / screenHeight;
+		backG.pos.x = static_cast<float>(screenWidth / screenWidth);
+		backG.pos.y = static_cast<float>(screenHeight / screenWidth);
 
-		backG.width = static_cast<float>(screenWidth);
+		backG.width = 1365;
 		backG.height = static_cast<float>(screenHeight);
 
 		backG.scale = 0.5;
 
-		backG.tex = tex;
+		backG.speed = 400;
 
 		return backG;
 	}
 	
-	void DrawBackground(Texture tex, int& posX, int& posY)
+	void DrawBackground(Background& back)
 	{
-		DrawTexture(tex, posX, posY, WHITE);
+		DrawTexture(back.tex, static_cast<int>(back.pos.x), static_cast<int>(back.pos.y), WHITE);
+	}
+
+	void BackgroundParallax(Background& back, int screenWidth)
+	{
+		float diff = back.width - screenWidth;
+
+		if (back.pos.x > screenWidth + back.width)
+		{
+			back.pos.x = static_cast<float>(screenWidth + diff);
+		}
+
+		if (back.pos.x < screenWidth / screenWidth - back.width)
+		{
+			back.pos.x = static_cast<float>(screenWidth + diff);
+		}
 	}
 }

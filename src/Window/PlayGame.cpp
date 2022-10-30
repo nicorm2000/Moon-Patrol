@@ -32,11 +32,10 @@ namespace game
     Obstacle obstacle = CreateObstacle(screenWidth, screenHeight);
 
     //Background
-    Texture skyTex;
-    Texture cityTex;
+    Background sky = CreateBackground(screenWidth, screenHeight);
+    Background sky2 = CreateBackground(screenWidth, screenHeight);
 
-    Background sky = CreateBackground(screenWidth, screenHeight, skyTex);
-    Background city = CreateBackground(screenWidth, screenHeight, cityTex);
+    Background city = CreateBackground(screenWidth, screenHeight);
 
     //Mouse
     Mouse mouse = CreateMouse();
@@ -56,10 +55,17 @@ namespace game
         gameFont = LoadFont("resources/Font/baby blocks.ttf");
         
         //Background
-        skyTex = LoadTexture("resources/Sprites/Sky.png");
+        sky.pos.x = static_cast<float>(screenWidth / screenWidth);
+        sky.tex = LoadTexture("resources/Sprites/Sky.png");
+        
+        sky2.pos.x = static_cast<float>(screenWidth / screenWidth + sky.width);
+        sky2.tex = LoadTexture("resources/Sprites/Sky.png");
 
-        city.posY = (screenHeight / screenHeight) - 60;
-        cityTex = LoadTexture("resources/Sprites/City.png");
+        city.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
+        city.tex = LoadTexture("resources/Sprites/City.png");
+
+        //Ground 
+        ground.tex = LoadTexture("resources/Sprites/Ground.png");
     }
 
     void GameLoop()
@@ -138,6 +144,7 @@ namespace game
     {
         ObstacleMovement();
         PlayerMovement();
+        BackgroundMovement();
     }
 
     void Draw()
@@ -145,8 +152,9 @@ namespace game
         BeginDrawing();
 
         ClearBackground(BLACK);
-        DrawBackground(skyTex, sky.posX, sky.posY);
-        DrawBackground(cityTex, city.posX, city.posY);
+        DrawBackground(sky);
+        DrawBackground(sky2);
+        DrawBackground(city);
         DrawGround(ground);
         DrawObstacle(obstacle);
         DrawPlayer(player);
@@ -234,6 +242,15 @@ namespace game
     void MouseMovement()
     {
         mouse.position = GetMousePosition();
+    }
+
+    void BackgroundMovement()
+    {
+        sky.pos.x -= sky.speed * GetFrameTime();
+        sky2.pos.x -= sky2.speed * GetFrameTime();
+
+        BackgroundParallax(sky, screenWidth);
+        BackgroundParallax(sky2, screenWidth);
     }
 
     void pauseIntputs()
