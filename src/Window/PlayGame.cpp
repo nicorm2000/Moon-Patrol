@@ -38,6 +38,9 @@ namespace game
     Background city = CreateBackground(screenWidth, screenHeight);
     Background city2 = CreateBackground(screenWidth, screenHeight);
 
+    Background hill = CreateBackground(screenWidth, screenHeight);
+    Background hill2 = CreateBackground(screenWidth, screenHeight);
+
     //Mouse
     Mouse mouse = CreateMouse();
 
@@ -56,21 +59,33 @@ namespace game
         gameFont = LoadFont("resources/Font/baby blocks.ttf");
         
         //Background
+            //Sky
         sky.pos.x = static_cast<float>(screenWidth / screenWidth);
         sky.tex = LoadTexture("resources/Sprites/Sky.png");
         
         sky2.pos.x = static_cast<float>(screenWidth / screenWidth + sky.width);
         sky2.tex = LoadTexture("resources/Sprites/Sky.png");
-
+            
+            //City
         city.pos.x = static_cast<float>(screenWidth / screenWidth);
         city.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
         city.tex = LoadTexture("resources/Sprites/City.png");
         city.speed = 200;
         
-        city2.pos.x = static_cast<float>(screenWidth / screenWidth + city2.width);
+        city2.pos.x = static_cast<float>(screenWidth / screenWidth + city.width);
         city2.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
         city2.tex = LoadTexture("resources/Sprites/City.png");
         city2.speed = 200;
+            //Hill
+        hill.pos.x = static_cast<float>(screenWidth / screenWidth);
+        hill.pos.y = static_cast<float>((screenHeight / 1.28));
+        hill.tex = LoadTexture("resources/Sprites/Hill.png");
+        hill.speed = 400;
+
+        hill2.pos.x = static_cast<float>(screenWidth / screenWidth + hill.width);
+        hill2.pos.y = static_cast<float>((screenHeight / 1.28));
+        hill2.tex = LoadTexture("resources/Sprites/Hill.png");
+        hill2.speed = 400;
 
         //Ground 
         ground.tex = LoadTexture("resources/Sprites/Ground.png");
@@ -164,6 +179,8 @@ namespace game
         DrawBackground(sky2);
         DrawBackground(city);
         DrawBackground(city2);
+        DrawBackground(hill);
+        DrawBackground(hill2);
         DrawGround(ground);
         DrawObstacle(obstacle);
         DrawPlayer(player);
@@ -261,10 +278,15 @@ namespace game
         city.pos.x -= city.speed * GetFrameTime();
         city2.pos.x -= city2.speed * GetFrameTime();
 
+        hill.pos.x -= hill.speed * GetFrameTime();
+        hill2.pos.x -= hill2.speed * GetFrameTime();
+
         BackgroundParallax(sky, screenWidth);
         BackgroundParallax(sky2, screenWidth);
         BackgroundParallax(city, screenWidth);
         BackgroundParallax(city2, screenWidth);
+        BackgroundParallax(hill, screenWidth);
+        BackgroundParallax(hill2, screenWidth);
     }
 
     void pauseIntputs()
