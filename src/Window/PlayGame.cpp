@@ -188,7 +188,8 @@ namespace game
 
         if (pause)
         {
-            DrawText("PAUSE ON- Esc or P to set Off", screenWidth / screenWidth, screenHeight / screenHeight, 50, WHITE);
+            DrawText("PAUSE ON - Esc or P to set Off", screenWidth / screenWidth, screenHeight / screenHeight, 50, WHITE);
+            DrawText("Press M to return menu", screenWidth / screenWidth, static_cast<int>(screenHeight / 8), 50, WHITE);
         }
 
         EndDrawing();
@@ -241,7 +242,6 @@ namespace game
             player.pos.y = player.pos.y + player.gravity * GetFrameTime();
         }
 
-        //PlayerJump();
         PlayerLimit(player, screenWidth);
     }
 
@@ -309,6 +309,14 @@ namespace game
             if (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE))
             {
                 pause = false;
+            }
+
+            if (IsKeyPressed(KEY_M))
+            {
+                pause = true;
+                playGame = false;
+                RestartGame();
+                optionSelect = 0;
             }
         }
 

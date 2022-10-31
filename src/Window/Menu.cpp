@@ -265,7 +265,6 @@ namespace game
 			{ static_cast<float>(GetScreenWidth() / 25) , static_cast<float>(GetScreenHeight() / 5) }, 30, 0, ORANGE);
 
 		//ReturnMenu Button
-
 		DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
 		DrawTextEx(gameFont, "MENU", returnMenu.pos, static_cast<float>(returnMenu.size), 0, returnMenu.color);
 	}
