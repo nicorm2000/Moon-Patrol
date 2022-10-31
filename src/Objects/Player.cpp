@@ -13,6 +13,12 @@ namespace game
 
 		player.speed = 420;
 
+		player.gravity = 0;
+
+		player.jumpForce = 300;
+
+		player.isJumping = false;
+
 		player.color = GREEN;
 
 		return player;

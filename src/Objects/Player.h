@@ -12,6 +12,11 @@ namespace game
 
 		float speed;
 
+		float gravity;
+		float jumpForce;
+
+		bool isJumping;
+
 		Color color;
 	};
 

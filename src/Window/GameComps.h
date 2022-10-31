@@ -2,6 +2,7 @@
 namespace game
 {
 	void PlayerMovement();
+	void PlayerJump();
 	void ObstacleMovement();
 	void MouseMovement();
 	void BackgroundMovement();

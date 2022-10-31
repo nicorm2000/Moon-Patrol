@@ -230,31 +230,44 @@ namespace game
             player.pos.x += player.speed * GetFrameTime();
         }
 
-        if (IsKeyDown(KEY_SPACE))
+        if (IsKeyDown(KEY_SPACE) && player.isJumping == false)
         {
-            player.pos.y = static_cast<float>(screenHeight / 1.5);
+            PlayerJump();
         }
 
-        if (!IsKeyDown(KEY_SPACE))
+        if (player.isJumping == true && player.pos.y < ground.pos.y)
         {
-            player.pos.y = static_cast<float>(screenHeight / 1.15);
+            player.gravity = player.gravity + player.jumpForce * GetFrameTime();
+            player.pos.y = player.pos.y + player.gravity * GetFrameTime();
         }
 
+        //PlayerJump();
         PlayerLimit(player, screenWidth);
+    }
+
+    void PlayerJump()
+    {
+        player.gravity = -250;
+        player.pos.y = player.pos.y + player.gravity * GetFrameTime();
+        
+        if (player.pos.y < 650)
+        {
+            player.isJumping = true;
+        }
     }
 
     void PlayerCollision()
     {
         if (CheckCollisionRecRec(player.pos, player.width - 30, player.height - 30, obstacle.pos, obstacle.width, obstacle.height))
         {
-            player.color = RED;
             cout << "Perdiste" << endl;
             RestartGame();
         }
 
-        else
+        if (CheckCollisionRecRec(player.pos, player.width, player.height, ground.pos, ground.width , ground.height))
         {
-            player.color = GREEN;
+            player.isJumping = false;
+            player.gravity = 0;
         }
     }
 
