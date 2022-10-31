@@ -36,6 +36,7 @@ namespace game
     Background sky2 = CreateBackground(screenWidth, screenHeight);
 
     Background city = CreateBackground(screenWidth, screenHeight);
+    Background city2 = CreateBackground(screenWidth, screenHeight);
 
     //Mouse
     Mouse mouse = CreateMouse();
@@ -61,8 +62,15 @@ namespace game
         sky2.pos.x = static_cast<float>(screenWidth / screenWidth + sky.width);
         sky2.tex = LoadTexture("resources/Sprites/Sky.png");
 
+        city.pos.x = static_cast<float>(screenWidth / screenWidth);
         city.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
         city.tex = LoadTexture("resources/Sprites/City.png");
+        city.speed = 200;
+        
+        city2.pos.x = static_cast<float>(screenWidth / screenWidth + city2.width);
+        city2.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
+        city2.tex = LoadTexture("resources/Sprites/City.png");
+        city2.speed = 200;
 
         //Ground 
         ground.tex = LoadTexture("resources/Sprites/Ground.png");
@@ -155,6 +163,7 @@ namespace game
         DrawBackground(sky);
         DrawBackground(sky2);
         DrawBackground(city);
+        DrawBackground(city2);
         DrawGround(ground);
         DrawObstacle(obstacle);
         DrawPlayer(player);
@@ -249,8 +258,13 @@ namespace game
         sky.pos.x -= sky.speed * GetFrameTime();
         sky2.pos.x -= sky2.speed * GetFrameTime();
 
+        city.pos.x -= city.speed * GetFrameTime();
+        city2.pos.x -= city2.speed * GetFrameTime();
+
         BackgroundParallax(sky, screenWidth);
         BackgroundParallax(sky2, screenWidth);
+        BackgroundParallax(city, screenWidth);
+        BackgroundParallax(city2, screenWidth);
     }
 
     void pauseIntputs()

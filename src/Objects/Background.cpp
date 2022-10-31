@@ -14,7 +14,7 @@ namespace game
 
 		backG.scale = 0.5;
 
-		backG.speed = 400;
+		backG.speed = 70;
 
 		return backG;
 	}
