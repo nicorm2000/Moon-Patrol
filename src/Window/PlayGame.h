@@ -2,7 +2,7 @@
 namespace game
 {
 	void PlayGame();
-	void initGame();
+	void InitGame();
 	void GameLoop();
 	void Draw();
 }

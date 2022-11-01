@@ -21,7 +21,7 @@ namespace game
     void PlayerMovement();
     void PlayerJump();
     void BackgroundMovement();
-    void pauseIntputs();
+    void PauseIntputs();
     void RestartGame();
     void UnloadData();
 
@@ -61,12 +61,12 @@ namespace game
 
     void PlayGame()
     {
-        initGame();
+        InitGame();
 
         GameLoop();
     }
 
-    void initGame()
+    void InitGame()
     {
         InitWindow(screenWidth, screenHeight, "Moon Patrol v0.2");
         SetExitKey(NULL);
@@ -120,7 +120,7 @@ namespace game
         {
             while (!WindowShouldClose() && gameOn)
             {
-                pauseIntputs();
+                PauseIntputs();
                 MouseMovement();
                 MenuCollisions(mouse, optionSelect);
                 MenuInputs(mouse, optionSelect, playGame);
@@ -316,7 +316,7 @@ namespace game
         BackgroundParallax(hill2, screenWidth);
     }
 
-    void pauseIntputs()
+    void PauseIntputs()
     {
         if (pause)
         {
