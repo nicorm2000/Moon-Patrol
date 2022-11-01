@@ -12,4 +12,5 @@ namespace game
 	void BackgroundMovement();
 	void pauseIntputs();
 	void RestartGame();
+	void UnloadData();
 }

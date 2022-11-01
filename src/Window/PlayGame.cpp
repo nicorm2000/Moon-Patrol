@@ -167,6 +167,7 @@ namespace game
         
         if (!gameOn)
         {
+            UnloadData();
             CloseWindow();
         }
     }
@@ -361,5 +362,45 @@ namespace game
         mouse.width = 20.0f;
         mouse.height = 20.0f;
         mouse.mouseRec = GetRecMouse(mouse);
+
+        //Background
+           //Sky
+        sky.pos.x = static_cast<float>(screenWidth / screenWidth);
+
+        sky2.pos.x = static_cast<float>(screenWidth / screenWidth + sky.width);
+
+            //City
+        city.pos.x = static_cast<float>(screenWidth / screenWidth);
+        city.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
+        city.speed = 200;
+
+        city2.pos.x = static_cast<float>(screenWidth / screenWidth + city.width);
+        city2.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
+        city2.speed = 200;
+
+            //Hill
+        hill.pos.x = static_cast<float>(screenWidth / screenWidth);
+        hill.pos.y = static_cast<float>((screenHeight / 1.28));
+        hill.speed = 400;
+
+        hill2.pos.x = static_cast<float>(screenWidth / screenWidth + hill.width);
+        hill2.pos.y = static_cast<float>((screenHeight / 1.28));
+        hill2.speed = 400;
+    }
+
+    void UnloadData()
+    {
+        UnloadFont(gameFont);
+        
+        UnloadTexture(sky.tex);
+        UnloadTexture(sky2.tex);
+        
+        UnloadTexture(city.tex);
+        UnloadTexture(city2.tex);
+
+        UnloadTexture(hill.tex);
+        UnloadTexture(hill2.tex);
+        
+        UnloadTexture(ground.tex);
     }
 }
