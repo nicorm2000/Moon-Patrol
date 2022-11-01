@@ -318,7 +318,7 @@ namespace game
 
     void PauseIntputs()
     {
-        if (pause)
+        if (pause && playGame)
         {
             if (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE))
             {
@@ -333,7 +333,6 @@ namespace game
                 optionSelect = 0;
             }
         }
-
         else
         {
             if (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE))
