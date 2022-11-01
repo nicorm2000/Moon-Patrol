@@ -76,6 +76,7 @@ namespace game
         city2.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
         city2.tex = LoadTexture("resources/Sprites/City.png");
         city2.speed = 200;
+            
             //Hill
         hill.pos.x = static_cast<float>(screenWidth / screenWidth);
         hill.pos.y = static_cast<float>((screenHeight / 1.28));
