@@ -279,7 +279,7 @@ namespace game
 
     void PlayerCollision()
     {
-        if (CheckCollisionRecRec(player.pos, player.width - 30, player.height - 30, obstacle.pos, obstacle.width, obstacle.height))
+        if (CheckCollisionRecRec(player.pos, player.width - 20, player.height - 10, obstacle.pos, obstacle.width, obstacle.height))
         {
             cout << "Perdiste" << endl;
             RestartGame();

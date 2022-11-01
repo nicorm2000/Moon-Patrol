@@ -6,7 +6,7 @@ namespace game
 	{
 		Ground ground;
 
-		ground.pos.x = static_cast<float>(screenWidth / screenWidth);
+		ground.pos.x = static_cast<float>(screenWidth / screenWidth) -1;
 		ground.pos.y = static_cast<float>(screenHeight / 1.1);
 
 		ground.width = static_cast<float>(screenWidth);
