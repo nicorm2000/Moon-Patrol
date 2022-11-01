@@ -196,15 +196,22 @@ namespace game
         BeginDrawing();
 
         ClearBackground(BLACK);
+        
         DrawBackground(sky);
         DrawBackground(sky2);
+        
         DrawBackground(city);
         DrawBackground(city2);
+        
         DrawBackground(hill);
         DrawBackground(hill2);
+        
         DrawGround(ground);
+        
         DrawObstacle(obstacle);
+        
         DrawPlayer(player);
+        
         DrawMouse(mouse, mouse.mouseRec);
 
         if (pause)
@@ -310,8 +317,10 @@ namespace game
 
         BackgroundParallax(sky, screenWidth);
         BackgroundParallax(sky2, screenWidth);
+        
         BackgroundParallax(city, screenWidth);
         BackgroundParallax(city2, screenWidth);
+        
         BackgroundParallax(hill, screenWidth);
         BackgroundParallax(hill2, screenWidth);
     }
