@@ -261,8 +261,8 @@ namespace game
 
 		DrawTextEx(gameFont, "RULES", { static_cast<float>(GetScreenWidth() / 2.7) , static_cast<float>(GetScreenHeight() / 15) }, 60, 0, ORANGE);
 
-		DrawTextEx(gameFont, "Play as a space pilot who must survive a\nasteroid rain, if they hit you three times\nyou lose, if you reach fifteen thousand\npoints you win.\nShoot the asteroids to prevent them from\ncolliding whit the ship but be careful,\nwhen you shoot an asteroid it breaks\ninto two or three parts.\n\nGood luck pilot.",
-			{ static_cast<float>(GetScreenWidth() / 25) , static_cast<float>(GetScreenHeight() / 5) }, 30, 0, ORANGE);
+		DrawTextEx(gameFont, "Play as a pilot who must escape from a city besieged by aliens.\nYou have 3 lives, if you hit an obstacle or an enemy\nprojectile you lose.",
+			{ static_cast<float>(GetScreenWidth() / 8) , static_cast<float>(GetScreenHeight() / 5) }, 30, 0, ORANGE);
 
 		//ReturnMenu Button
 		DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
@@ -278,9 +278,7 @@ namespace game
 		DrawTextEx(gameFont, "GAME MADE BY", { static_cast<float>(GetScreenWidth() / 3.5) , static_cast<float>(GetScreenHeight() / 3.5) }, 40, 0, GOLD);
 		DrawTextEx(gameFont, "Facundo Santos", { static_cast<float>(GetScreenWidth() / 2.8) , static_cast<float>(GetScreenHeight() / 2.8) }, 40, 0, ORANGE);
 
-
 		DrawTextEx(gameFont, "FONT", { static_cast<float>(GetScreenWidth() / 2.3) , static_cast<float>(GetScreenHeight() / 2) }, 30, 0, GOLD);
-
 
 		//ReturnMenu Button
 		DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
