@@ -6,7 +6,7 @@ namespace game
 		Player player;
 
 		player.pos.x = static_cast<float>(screenWidth / 6);
-		player.pos.y = static_cast<float>(screenHeight / 1.15);
+		player.pos.y = static_cast<float>(screenHeight / 1.165);
 
 		player.width = 80;
 		player.height = 40;
