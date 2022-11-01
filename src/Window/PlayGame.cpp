@@ -133,46 +133,48 @@ namespace game
                         Collisions();
                     }
                 }
-
-                switch (optionSelect)
+                
+                if (screenWidth == 1024 && screenHeight == 768)
                 {
-                    case static_cast<int>(Menu::MainMenu):
-                        BeginDrawing();
-                        ClearBackground(BLACK);
-                        ShowCursor();
-                        DrawMenu(gameFont);
-                        EndDrawing();
+                    switch (optionSelect)
+                    {
+                        case static_cast<int>(Menu::MainMenu) :
+                            BeginDrawing();
+                            ClearBackground(BLACK);
+                            ShowCursor();
+                            DrawMenu(gameFont);
+                            EndDrawing();
+                            break;
 
-                        break;
+                        case static_cast<int>(Menu::Play) :
+                            Draw();
+                            break;
 
-                    case static_cast<int>(Menu::Play):
-                        Draw();
-                        break;
+                        case static_cast<int>(Menu::Controlls) :
+                            BeginDrawing();
+                            ClearBackground(BLACK);
+                            DrawControlls(gameFont);
+                            EndDrawing();
+                            break;
 
-                    case static_cast<int>(Menu::Controlls):
-                        BeginDrawing();
-                        ClearBackground(BLACK);
-                        DrawControlls(gameFont);
-                        EndDrawing();
-                        break;
+                        case static_cast<int>(Menu::Rules) :
+                            BeginDrawing();
+                            ClearBackground(BLACK);
+                            DrawRules(gameFont);
+                            EndDrawing();
+                            break;
 
-                    case static_cast<int>(Menu::Rules):
-                        BeginDrawing();
-                        ClearBackground(BLACK);
-                        DrawRules(gameFont);
-                        EndDrawing();
-                        break;
+                        case static_cast<int>(Menu::Credits) :
+                            BeginDrawing();
+                            ClearBackground(BLACK);
+                            DrawCredits(gameFont);
+                            EndDrawing();
+                            break;
 
-                    case static_cast<int>(Menu::Credits):
-                        BeginDrawing();
-                        ClearBackground(BLACK);
-                        DrawCredits(gameFont);
-                        EndDrawing();
-                        break;
-
-                    case static_cast<int>(Menu::Quit):
-                        gameOn = false;
-                        break;
+                        case static_cast<int>(Menu::Quit) :
+                            gameOn = false;
+                            break;
+                    }
                 }
             }
         }
@@ -279,7 +281,7 @@ namespace game
 
     void PlayerCollision()
     {
-        if (CheckCollisionRecRec(player.pos, player.width - 20, player.height - 10, obstacle.pos, obstacle.width, obstacle.height))
+        if (CheckCollisionRecRec(player.pos, player.width - 20, player.height - 5, obstacle.pos, obstacle.width, obstacle.height))
         {
             cout << "Perdiste" << endl;
             RestartGame();
@@ -366,7 +368,7 @@ namespace game
         obstacle.pos.y = static_cast<float>(screenHeight / 1.2);
         obstacle.width = 30;
         obstacle.height = 60;
-        obstacle.speed = 300;
+        obstacle.speed = 400;
         obstacle.color = BLUE;
 
         //Ground
