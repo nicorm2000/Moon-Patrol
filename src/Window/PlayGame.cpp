@@ -1,7 +1,6 @@
 #include <iostream>
 #include "raylib.h"
 #include "Window/PlayGame.h"
-#include "Window/GameComps.h"
 #include "Window/Menu.h"
 #include "Objects/Player.h"
 #include "Objects/Floor.h"
@@ -13,6 +12,19 @@ using namespace std;
 
 namespace game 
 {
+    void MouseMovement();
+    void Update();
+    void ObstacleMovement();
+    void Collisions();
+    bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h);
+    void PlayerCollision();
+    void PlayerMovement();
+    void PlayerJump();
+    void BackgroundMovement();
+    void pauseIntputs();
+    void RestartGame();
+    void UnloadData();
+
     //Window
     int screenWidth = 1024;
     int screenHeight = 768;

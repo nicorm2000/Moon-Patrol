@@ -68,9 +68,6 @@
     <ClInclude Include="src\Window\Menu.h">
       <Filter>Src\Window</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window\GameComps.h">
-      <Filter>Src\Window</Filter>
-    </ClInclude>
     <ClInclude Include="src\Objects\Background.h">
       <Filter>Src\Objects</Filter>
     </ClInclude>
