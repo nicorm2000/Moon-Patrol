@@ -47,6 +47,13 @@ namespace game
     //Font
     Font gameFont;
 
+    void PlayGame()
+    {
+        initGame();
+
+        GameLoop();
+    }
+
     void initGame()
     {
         InitWindow(screenWidth, screenHeight, "Moon Patrol v0.2");
@@ -194,13 +201,6 @@ namespace game
         }
 
         EndDrawing();
-    }
-
-    void PlayGame()
-    {
-        initGame();
-
-        GameLoop();
     }
 
     void Collisions()
