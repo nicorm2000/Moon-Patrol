@@ -441,6 +441,17 @@ namespace game
         player.speed = 420;
         player.color = GREEN;
 
+        //Bullet
+            //PlayerBullets
+
+        for (int i = 0; i < maxBullets; i++)
+        {
+            playerBullet[i].isActive = false;
+            playerBullet[i].isMoving = false;
+            playerBullet[i].pos.y = player.pos.y;
+            playerBullet[i].pos.x = player.pos.x;
+        }
+
         //Obstacle
         obstacle.pos.x = static_cast<float>(screenWidth - 30);
         obstacle.pos.y = static_cast<float>(screenHeight / 1.2);
