@@ -3,6 +3,7 @@
 #include "Window/PlayGame.h"
 #include "Window/Menu.h"
 #include "Objects/Player.h"
+#include "Objects/Bullet.h"
 #include "Objects/Floor.h"
 #include "Objects/Obstacle.h"
 #include "Objects/Background.h"
@@ -20,6 +21,8 @@ namespace game
     void PlayerCollision();
     void PlayerMovement();
     void PlayerJump();
+    void PlayerBulletMovement();
+    void BulletCollisonLimit();
     void BackgroundMovement();
     void PauseIntputs();
     void RestartGame();
@@ -36,6 +39,10 @@ namespace game
 
     //Player
     Player player = CreatePlayer(screenWidth, screenHeight);
+
+    //Bullet
+    int const maxBullets = 30;
+    Bullet playerBullet[maxBullets];
 
     //Floor
     Ground ground = CreateGround(screenWidth, screenHeight);
@@ -76,6 +83,13 @@ namespace game
 
         //Font
         gameFont = LoadFont("resources/Font/baby blocks.ttf");
+
+        //Bullet
+
+        for (int i = 0; i < maxBullets; i++)
+        {
+            playerBullet[i] = CreateBullet();
+        }
         
         //Background
             //Sky
@@ -190,6 +204,7 @@ namespace game
     {
         ObstacleMovement();
         PlayerMovement();
+        PlayerBulletMovement();
         BackgroundMovement();
     }
 
@@ -212,8 +227,13 @@ namespace game
         
         DrawObstacle(obstacle);
         
+        for (int i = 0; i < maxBullets; i++)
+        {
+            DrawBullet(playerBullet[i]);
+        }
+
         DrawPlayer(player);
-        
+       
         DrawMouse(mouse, mouse.mouseRec);
 
         if (pause)
@@ -228,6 +248,7 @@ namespace game
     void Collisions()
     {
         PlayerCollision();
+        BulletCollisonLimit();
     }
 
     bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h)
@@ -254,11 +275,30 @@ namespace game
             player.pos.x += player.speed * GetFrameTime();
         }
 
-        if (IsKeyDown(KEY_SPACE) && player.isJumping == false)
+        if (IsKeyDown(KEY_W) && player.isJumping == false || 
+            IsKeyDown(KEY_SPACE) && player.isJumping == false)
         {
             PlayerJump();
         }
 
+        if (IsKeyPressed(KEY_ENTER))
+        {
+            for (int i = 0; i < maxBullets; i++)
+            {
+                if (playerBullet[i].isActive == false)
+                {
+                    if (!playerBullet[i].isMoving)
+                    {
+                        cout << "Pum" << endl;
+
+                        playerBullet[i].isActive = true;
+                        playerBullet[i].isMoving = true;
+
+                        break;
+                    }
+                }
+            }
+        }
         if (player.isJumping == true && player.pos.y < ground.pos.y)
         {
             player.gravity = player.gravity + player.jumpForce * GetFrameTime();
@@ -276,6 +316,44 @@ namespace game
         if (player.pos.y < 650)
         {
             player.isJumping = true;
+        }
+    }
+
+    void PlayerBulletMovement()
+    {
+        for (int i = 0; i < maxBullets; i++)
+        {
+            if (playerBullet[i].isMoving == false)
+            {
+                playerBullet[i].pos.y = player.pos.y;
+                playerBullet[i].pos.x = player.pos.x;
+            }
+
+            if (playerBullet[i].isMoving)
+            {
+                playerBullet[i].pos.y -= playerBullet[i].speed * GetFrameTime();
+            }
+        }
+    }
+
+    void BulletCollisonLimit()
+    {
+        for (int i = 0; i < maxBullets; i++)
+        {
+            if (playerBullet[i].isMoving)
+            {
+                if (playerBullet[i].pos.y < 0)
+                {
+                    playerBullet[i].isMoving = false;
+                    playerBullet[i].isActive = false;
+                }
+
+                if (playerBullet[i].pos.y >= screenHeight)
+                {
+                    playerBullet[i].isMoving = false;
+                    playerBullet[i].isActive = false;
+                }
+            }
         }
     }
 

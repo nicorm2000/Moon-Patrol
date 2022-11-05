@@ -48,6 +48,9 @@
     <ClCompile Include="src\Objects\Background.cpp">
       <Filter>Src\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\Objects\Bullet.cpp">
+      <Filter>Src\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window\PlayGame.h">
@@ -69,6 +72,9 @@
       <Filter>Src\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Background.h">
+      <Filter>Src\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Bullet.h">
       <Filter>Src\Objects</Filter>
     </ClInclude>
   </ItemGroup>
