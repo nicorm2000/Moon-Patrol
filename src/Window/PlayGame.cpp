@@ -6,6 +6,7 @@
 #include "Objects/Bullet.h"
 #include "Objects/Floor.h"
 #include "Objects/Obstacle.h"
+#include "Objects/FlyEnemy.h"
 #include "Objects/Background.h"
 #include "Objects/Mouse.h"
 
@@ -23,6 +24,7 @@ namespace game
     void PlayerJump();
     void PlayerBulletMovement();
     void BulletCollisonLimit();
+    void FlyEnemyMovement();
     void BackgroundMovement();
     void PauseIntputs();
     void RestartGame();
@@ -49,6 +51,9 @@ namespace game
 
     //Obstacle
     Obstacle obstacle = CreateObstacle(screenWidth, screenHeight);
+
+    //FlyEnemy
+    FlyEnemy flyEnemy = CreateFlyEnemy();
 
     //Background
     Background sky = CreateBackground(screenWidth, screenHeight);
@@ -120,6 +125,10 @@ namespace game
         hill2.pos.y = static_cast<float>((screenHeight / 1.28));
         hill2.tex = LoadTexture("resources/Sprites/Hill.png");
         hill2.speed = 400;
+
+        //Enemy
+        flyEnemy.pos.x = static_cast<float>(screenWidth / -2.5);
+        flyEnemy.pos.y = static_cast<float>(screenHeight / - 2.5);
 
         //Ground 
         ground.tex = LoadTexture("resources/Sprites/Ground.png");
@@ -206,6 +215,7 @@ namespace game
         PlayerMovement();
         PlayerBulletMovement();
         BackgroundMovement();
+        FlyEnemyMovement();
     }
 
     void Draw()
@@ -231,6 +241,8 @@ namespace game
         {
             DrawBullet(playerBullet[i]);
         }
+
+        DrawFlyEnemy(flyEnemy);
 
         DrawPlayer(player);
        
@@ -261,6 +273,30 @@ namespace game
             return true;
         }
         return false;
+    }
+
+    void FlyEnemyMovement()
+    {
+        if (flyEnemy.moveDown == false)
+        {
+            flyEnemy.pos.x += flyEnemy.speed * GetFrameTime();
+            flyEnemy.pos.y += sin(flyEnemy.speed * GetFrameTime()) * 5;
+
+            if (flyEnemy.pos.y > 300)
+            {
+                flyEnemy.moveDown = true;
+            }
+        }
+        if (flyEnemy.moveDown == true)
+        {
+            flyEnemy.pos.x += flyEnemy.speed * GetFrameTime();
+            flyEnemy.pos.y -= sin(flyEnemy.speed * GetFrameTime()) * 5;
+
+            if (flyEnemy.pos.y < 15)
+            {
+                flyEnemy.moveDown = false;
+            }
+        }
     }
 
     void PlayerMovement()
@@ -497,6 +533,10 @@ namespace game
         hill2.pos.x = static_cast<float>(screenWidth / screenWidth + hill.width);
         hill2.pos.y = static_cast<float>((screenHeight / 1.28));
         hill2.speed = 400;
+
+        //FlyEnemy 
+        flyEnemy.pos.x = static_cast<float>(screenWidth / -2.5);
+        flyEnemy.pos.y = static_cast<float>(screenHeight / -2.5);
     }
 
     void UnloadData()
