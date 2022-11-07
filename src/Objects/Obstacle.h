@@ -17,6 +17,4 @@ namespace game
 	Obstacle CreateObstacle(int screenWidth, int screenHeight);
 
 	void DrawObstacle(Obstacle& obstacle);
-
-	void ObstacleTeleport(Obstacle& obstacle, int screenWidth);
 }

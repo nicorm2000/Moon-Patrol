@@ -17,6 +17,8 @@ namespace game
 
 		player.jumpForce = 300;
 
+		player.points = 0;
+
 		player.isJumping = false;
 
 		player.color = GREEN;

@@ -19,6 +19,7 @@ namespace game
     void Update();
 
     void ObstacleMovement();
+    void ObstacleTeleport();
 
     void Collisions();
     bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h);
@@ -281,6 +282,7 @@ namespace game
         }
 
         DrawPlayer(player);
+        DrawTextEx(gameFont, TextFormat("score %0i", player.points), { static_cast<float>(GetScreenWidth() / 2.5) , static_cast<float>(GetScreenHeight() / 1.1) }, 50, 0, WHITE);
        
         DrawMouse(mouse, mouse.mouseRec);
 
@@ -399,6 +401,7 @@ namespace game
                 if (flyEnemy[j].life <= 0)
                 {
                     flyEnemy[j].isActive = false;
+                    player.points = player.points + 50;
                     FlyEnemyRespawn();
                 }
             }
@@ -504,7 +507,22 @@ namespace game
     {
         obstacle.pos.x -= obstacle.speed * GetFrameTime();
 
-        ObstacleTeleport(obstacle, screenWidth);
+        ObstacleTeleport();
+    }
+
+    void ObstacleTeleport()
+    {
+        if (obstacle.pos.x > screenWidth - obstacle.width)
+        {
+            obstacle.pos.x = static_cast<float>(screenWidth / screenWidth);
+        }
+
+        if (obstacle.pos.x < screenWidth / screenWidth - obstacle.width)
+        {
+            cout << "Ganaste" << endl;
+            player.points = player.points + 25;
+            obstacle.pos.x = screenWidth - obstacle.width;
+        }
     }
 
     void MouseMovement()
@@ -567,6 +585,7 @@ namespace game
         player.width = 80;
         player.height = 40;
         player.speed = 420;
+        player.points = 0;
         player.color = GREEN;
 
         //Bullet

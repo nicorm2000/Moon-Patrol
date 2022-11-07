@@ -15,6 +15,8 @@ namespace game
 		float gravity;
 		float jumpForce;
 
+		int points;
+
 		bool isJumping;
 
 		Color color;

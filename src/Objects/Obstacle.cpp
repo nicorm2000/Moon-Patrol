@@ -29,18 +29,4 @@ namespace game
 			static_cast<int>(obstacle.width),
 			static_cast<int>(obstacle.height), obstacle.color);
 	}
-
-	void ObstacleTeleport(Obstacle& obstacle, int screenWidth)
-	{
-		if (obstacle.pos.x > screenWidth - obstacle.width)
-		{
-			obstacle.pos.x = static_cast<float>(screenWidth / screenWidth);
-		}
-
-		if (obstacle.pos.x < screenWidth / screenWidth - obstacle.width)
-		{
-			cout << "Ganaste" << endl;
-			obstacle.pos.x = screenWidth - obstacle.width;
-		}
-	}
 }
