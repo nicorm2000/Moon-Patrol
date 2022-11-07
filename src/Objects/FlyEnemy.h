@@ -10,7 +10,11 @@ struct FlyEnemy
 
 	float speed;
 
+	int life;
+
 	bool moveDown;
+	bool isMoving;
+	bool isActive;
 
 	Color color;
 };

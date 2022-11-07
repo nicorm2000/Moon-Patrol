@@ -15,19 +15,32 @@ using namespace std;
 namespace game 
 {
     void MouseMovement();
+
     void Update();
+
     void ObstacleMovement();
+
     void Collisions();
     bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h);
+
     void PlayerCollision();
     void PlayerMovement();
     void PlayerJump();
     void PlayerBulletMovement();
+
+    void BulletCollision();
     void BulletCollisonLimit();
+
     void FlyEnemyMovement();
+    void FlyEnemyCollisionLimit();
+    void FlyEnemyRespawn();
+
     void BackgroundMovement();
+
     void PauseIntputs();
+
     void RestartGame();
+
     void UnloadData();
 
     //Window
@@ -242,7 +255,10 @@ namespace game
             DrawBullet(playerBullet[i]);
         }
 
-        DrawFlyEnemy(flyEnemy);
+        if (flyEnemy.isActive == true)
+        {
+            DrawFlyEnemy(flyEnemy);
+        }
 
         DrawPlayer(player);
        
@@ -260,7 +276,9 @@ namespace game
     void Collisions()
     {
         PlayerCollision();
+        BulletCollision();
         BulletCollisonLimit();
+        FlyEnemyCollisionLimit();
     }
 
     bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h)
@@ -273,30 +291,6 @@ namespace game
             return true;
         }
         return false;
-    }
-
-    void FlyEnemyMovement()
-    {
-        if (flyEnemy.moveDown == false)
-        {
-            flyEnemy.pos.x += flyEnemy.speed * GetFrameTime();
-            flyEnemy.pos.y += sin(flyEnemy.speed * GetFrameTime()) * 5;
-
-            if (flyEnemy.pos.y > 300)
-            {
-                flyEnemy.moveDown = true;
-            }
-        }
-        if (flyEnemy.moveDown == true)
-        {
-            flyEnemy.pos.x += flyEnemy.speed * GetFrameTime();
-            flyEnemy.pos.y -= sin(flyEnemy.speed * GetFrameTime()) * 5;
-
-            if (flyEnemy.pos.y < 15)
-            {
-                flyEnemy.moveDown = false;
-            }
-        }
     }
 
     void PlayerMovement()
@@ -372,6 +366,26 @@ namespace game
         }
     }
 
+    void BulletCollision()
+    {
+        for (int i = 0; i < maxBullets; i++)
+        {
+            if(CheckCollisionRecRec(playerBullet[i].pos, playerBullet[i].width, playerBullet[i].height, flyEnemy.pos, flyEnemy.width, flyEnemy.height))
+            {
+                cout << "Colision" << endl;
+                playerBullet[i].isMoving = false;
+                playerBullet[i].isActive = false;
+
+                flyEnemy.life--;
+            }
+            if (flyEnemy.life <= 0)
+            {
+                flyEnemy.isActive = false;
+                FlyEnemyRespawn();
+            }
+        }
+    }
+
     void BulletCollisonLimit()
     {
         for (int i = 0; i < maxBullets; i++)
@@ -383,13 +397,59 @@ namespace game
                     playerBullet[i].isMoving = false;
                     playerBullet[i].isActive = false;
                 }
-
                 if (playerBullet[i].pos.y >= screenHeight)
                 {
                     playerBullet[i].isMoving = false;
                     playerBullet[i].isActive = false;
                 }
             }
+        }
+    }
+
+    void FlyEnemyMovement()
+    {
+        if (flyEnemy.moveDown == false)
+        {
+            flyEnemy.pos.x += flyEnemy.speed * GetFrameTime();
+            flyEnemy.pos.y += sin(flyEnemy.speed * GetFrameTime()) * 5;
+
+            if (flyEnemy.pos.y > 300)
+            {
+                flyEnemy.moveDown = true;
+            }
+        }
+        if (flyEnemy.moveDown == true)
+        {
+            flyEnemy.pos.x += flyEnemy.speed * GetFrameTime();
+            flyEnemy.pos.y -= sin(flyEnemy.speed * GetFrameTime()) * 5;
+
+            if (flyEnemy.pos.y < 15)
+            {
+                flyEnemy.moveDown = false;
+            }
+        }
+    }
+
+    void FlyEnemyCollisionLimit()
+    {
+        if (flyEnemy.isMoving)
+        {
+            if (flyEnemy.pos.x >= screenWidth + flyEnemy.width)
+            {
+                flyEnemy.pos.x = static_cast<float>(screenWidth / -2.5);
+                flyEnemy.pos.y = static_cast<float>(screenHeight / -2.5);
+            }
+        }
+    }
+
+    void FlyEnemyRespawn()
+    {
+        if (flyEnemy.isActive == false)
+        {
+            flyEnemy.pos.x = static_cast<float>(screenWidth / -2.5);
+            flyEnemy.pos.y = static_cast<float>(screenHeight / -2.5);
+            flyEnemy.life = 2;
+            flyEnemy.isActive = true;
         }
     }
 

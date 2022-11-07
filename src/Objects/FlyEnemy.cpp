@@ -12,7 +12,11 @@ FlyEnemy CreateFlyEnemy()
 
 	flyEnemy.speed = 40;
 
+	flyEnemy.life = 2;
+
 	flyEnemy.moveDown = false;
+	flyEnemy.isActive = true;
+	flyEnemy.isMoving = true;
 
 	flyEnemy.color = ORANGE;
 
