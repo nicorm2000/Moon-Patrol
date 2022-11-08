@@ -430,6 +430,10 @@ namespace game
 
     void FlyEnemyMovement()
     {
+        int maxLim = 300;
+        int minLim = 15;
+        int mov = 5;
+
         for (int i = 0;  i < maxflyEnemy; i++)
         {
             if (flyEnemy[i].isMoving == true)
@@ -437,19 +441,20 @@ namespace game
                 if (flyEnemy[i].moveDown == false)
                 {
                     flyEnemy[i].pos.x += flyEnemy[i].speed * GetFrameTime();
-                    flyEnemy[i].pos.y += sin(flyEnemy[i].speed * GetFrameTime()) * 5;
+                    flyEnemy[i].pos.y += sin(flyEnemy[i].speed * GetFrameTime()) * mov;
 
-                    if (flyEnemy[i].pos.y > 300)
+                    if (flyEnemy[i].pos.y > maxLim)
                     {
                         flyEnemy[i].moveDown = true;
                     }
                 }
+
                 if (flyEnemy[i].moveDown == true)
                 {
                     flyEnemy[i].pos.x += flyEnemy[i].speed * GetFrameTime();
-                    flyEnemy[i].pos.y -= sin(flyEnemy[i].speed * GetFrameTime()) * 5;
+                    flyEnemy[i].pos.y -= sin(flyEnemy[i].speed * GetFrameTime()) * mov;
 
-                    if (flyEnemy[i].pos.y < 15)
+                    if (flyEnemy[i].pos.y < minLim)
                     {
                         flyEnemy[i].moveDown = false;
                     }
