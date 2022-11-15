@@ -573,13 +573,12 @@ namespace game
             player.pos.x += player.speed * GetFrameTime();
         }
 
-        if (IsKeyDown(KEY_W) && player.isJumping == false || 
-            IsKeyDown(KEY_SPACE) && player.isJumping == false)
+        if (IsKeyDown(KEY_SPACE) && player.isJumping == false)
         {
             PlayerJump();
         }
 
-        if (IsKeyPressed(KEY_ENTER))
+        if (IsKeyPressed(KEY_W))
         {
             for (int i = 0; i < maxBullets; i++)
             {
@@ -617,12 +616,14 @@ namespace game
 
     void PlayerBulletMovement()
     {
+        int bulletPosition = 30;
+
         for (int i = 0; i < maxBullets; i++)
         {
             if (playerBullet[i].isMoving == false)
             {
                 playerBullet[i].pos.y = player.pos.y;
-                playerBullet[i].pos.x = player.pos.x;
+                playerBullet[i].pos.x = player.pos.x + bulletPosition;
             }
             if (playerBullet[i].isMoving)
             {

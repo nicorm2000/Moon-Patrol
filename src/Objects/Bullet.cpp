@@ -7,8 +7,8 @@ Bullet CreateBullet()
 	bullet.pos.x = 0;
 	bullet.pos.y = 0;
 
-	bullet.width = 10;
-	bullet.height = 10;
+	bullet.width = 20;
+	bullet.height = 20;
 
 	bullet.speed = 200;
 
