@@ -22,9 +22,5 @@ Bullet CreateBullet()
 
 void DrawBullet(Bullet& bullet)
 {
-	DrawRectangle(static_cast<int>(bullet.pos.x), 
-				  static_cast<int>(bullet.pos.y),	
-				  static_cast<int>(bullet.width),	
-				  static_cast<int>(bullet.height), 
-				  bullet.color);
+	DrawRectangle(static_cast<int>(bullet.pos.x), static_cast<int>(bullet.pos.y),	static_cast<int>(bullet.width),	static_cast<int>(bullet.height), bullet.color);
 }

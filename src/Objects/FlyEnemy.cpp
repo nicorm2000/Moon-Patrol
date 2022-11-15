@@ -25,8 +25,5 @@ FlyEnemy CreateFlyEnemy()
 
 void DrawFlyEnemy(FlyEnemy& flyEnemy)
 {
-	DrawRectangle(static_cast<int>(flyEnemy.pos.x), 
-				  static_cast<int>(flyEnemy.pos.y),	
-				  static_cast<int>(flyEnemy.width),		
-				  static_cast<int>(flyEnemy.height), flyEnemy.color);
+	DrawRectangle(static_cast<int>(flyEnemy.pos.x), static_cast<int>(flyEnemy.pos.y), static_cast<int>(flyEnemy.width), static_cast<int>(flyEnemy.height), flyEnemy.color);
 }

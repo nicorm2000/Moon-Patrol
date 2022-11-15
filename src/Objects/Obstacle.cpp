@@ -10,7 +10,7 @@ namespace game
 		Obstacle obstacle;
 
 		obstacle.pos.x = static_cast<float>(screenWidth - 30);
-		obstacle.pos.y = static_cast<float>(screenHeight / 1.2);
+		obstacle.pos.y = static_cast<float>(screenHeight / 1.2f);
 
 		obstacle.width = 30;
 		obstacle.height = 60;
@@ -24,9 +24,6 @@ namespace game
 
 	void DrawObstacle(Obstacle& obstacle)
 	{
-		DrawRectangle(static_cast<int>(obstacle.pos.x),
-			static_cast<int>(obstacle.pos.y),
-			static_cast<int>(obstacle.width),
-			static_cast<int>(obstacle.height), obstacle.color);
+		DrawRectangle(static_cast<int>(obstacle.pos.x), static_cast<int>(obstacle.pos.y), static_cast<int>(obstacle.width), static_cast<int>(obstacle.height), obstacle.color);
 	}
 }

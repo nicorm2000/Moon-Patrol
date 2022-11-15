@@ -953,7 +953,7 @@ namespace game
         player.color = GREEN;
 
         //Bullet
-            //PlayerBullets
+        //PlayerBullets
 
         for (int i = 0; i < maxBullets; i++)
         {

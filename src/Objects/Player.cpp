@@ -33,10 +33,7 @@ namespace game
 
 	void DrawPlayer(Player& player)
 	{
-		DrawRectangle(static_cast<int>(player.pos.x),
-			static_cast<int>(player.pos.y),
-			static_cast<int>(player.width),
-			static_cast<int>(player.height), player.color);
+		DrawRectangle(static_cast<int>(player.pos.x), static_cast<int>(player.pos.y), static_cast<int>(player.width), static_cast<int>(player.height), player.color);
 	}
 
 	void PlayerLimit(Player& player, int screenWidth)
