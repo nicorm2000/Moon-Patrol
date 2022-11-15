@@ -44,6 +44,14 @@
   <ItemGroup>
     <Font Include="resources\Font\Acero y Sangre.otf" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\Sprites\City.png" />
+    <Image Include="resources\Sprites\Ground.png" />
+    <Image Include="resources\Sprites\Hill.png" />
+    <Image Include="resources\Sprites\PauseButtonOff.png" />
+    <Image Include="resources\Sprites\PauseButtonOn.png" />
+    <Image Include="resources\Sprites\Sky.png" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{F5976082-0A69-43D7-8D88-F3A1F7EC433A}</ProjectGuid>

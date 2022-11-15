@@ -15,9 +15,14 @@ namespace game
 		float gravity;
 		float jumpForce;
 
+		int lifes;
+
 		int points;
 
 		bool isJumping;
+		bool isCollision;
+		bool isAlive;
+		bool win;
 
 		Color color;
 	};
@@ -27,4 +32,10 @@ namespace game
 	void DrawPlayer(Player& player);
 
 	void PlayerLimit(Player& player, int screenWidth);
+
+	void LoseLife(Player& player);
+
+	bool IsAlive(Player& player);
+
+	bool PlayerWin(Player& player);
 }

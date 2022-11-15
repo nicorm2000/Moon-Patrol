@@ -14,6 +14,36 @@ using namespace std;
 
 namespace game 
 {
+    struct SubMenu
+    {
+        Vector2 pos;
+
+        float width;
+        float height;
+
+        Texture texture;
+
+        bool isActive;
+    };
+
+    struct Button
+    {
+        Vector2 pos;
+
+        float width;
+        float height;
+
+        int size;
+
+        Texture texture;
+
+        Color color;
+    };
+
+    void InitRestartMenu();
+    void InitPauseMenu();
+    void SubMenusInputs(bool& gameOn);
+
     void MouseMovement();
 
     void Update();
@@ -38,7 +68,12 @@ namespace game
 
     void BackgroundMovement();
 
-    void PauseIntputs();
+    void DrawPauseMenu();
+    void PauseMenuCollisions();
+
+    void DrawRestarGameMenu();
+    void RestartGame();
+    void RestarGameMenuCollisions();
 
     void RestartGame();
 
@@ -47,7 +82,6 @@ namespace game
     //Window
     int screenWidth = 1024;
     int screenHeight = 768;
-    bool pause = true;
 
     //Menu
     int optionSelect = 0;
@@ -83,6 +117,19 @@ namespace game
     //Mouse
     Mouse mouse = CreateMouse();
 
+    //Restart Menu
+    SubMenu restartMenu;
+    Button restartButton;
+    Button returnMenuButton;
+    Button quitGameButton;
+
+    //Pause Menu
+    bool pause = false;
+    SubMenu pauseMenu;
+    Button pauseButtonOff;
+    Button pauseButtonOn;
+    Button resumeButton;
+
     //Font
     Font gameFont;
 
@@ -100,6 +147,12 @@ namespace game
 
         //Menu
         InitMenu();
+
+        //RestartMenu
+        InitRestartMenu();
+
+        //PauseMenu
+        InitPauseMenu();
 
         //Font
         gameFont = LoadFont("resources/Font/baby blocks.ttf");
@@ -165,6 +218,179 @@ namespace game
         ground.tex = LoadTexture("resources/Sprites/Ground.png");
     }
 
+    void InitRestartMenu()
+    {
+        //Restart menu
+        restartMenu.width = 600;
+        restartMenu.height = 500;
+        restartMenu.pos.x = static_cast<float>(screenWidth / 4.5);
+        restartMenu.pos.y = static_cast<float>(screenHeight / 4.5);
+        restartMenu.isActive = false;
+        restartMenu.texture = LoadTexture("resources/Sprites/RestartGameMenu.png");
+
+        //Restart Button
+        restartButton.width = static_cast<float>(screenWidth / 2.7);
+        restartButton.height = static_cast<float>(screenHeight / 2.1);
+        restartButton.size = 40;
+        restartButton.color = BLACK;
+
+        //Menu Button
+        returnMenuButton.width = static_cast<float>(screenWidth / 2.3);
+        returnMenuButton.height = static_cast<float>(screenHeight / 1.65);
+        returnMenuButton.size = 40;
+        returnMenuButton.color = BLACK;
+
+        //Quit Button
+        quitGameButton.width = static_cast<float>(screenWidth / 2.3);
+        quitGameButton.height = static_cast<float>(screenHeight / 1.37);
+        quitGameButton.size = 40;
+        quitGameButton.color = BLACK;
+    }
+
+    void InitPauseMenu()
+    {
+        //Pause Menu
+        pauseMenu.width = 600;
+        pauseMenu.height = 500;
+        pauseMenu.pos.x = static_cast<float>(screenWidth / 4.5);
+        pauseMenu.pos.y = static_cast<float>(screenHeight / 4.5);
+        pauseMenu.isActive = false;
+        pauseMenu.texture = LoadTexture("resources/Sprites/RestartGameMenu.png");
+
+        //Pause Button Off
+        pauseButtonOff.pos.x = static_cast<float>(screenWidth / 1.2);
+        pauseButtonOff.pos.y = static_cast<float>(screenHeight / 20);
+        pauseButtonOff.width = 64;
+        pauseButtonOff.height = 64;
+        pauseButtonOff.color = WHITE;
+        pauseButtonOff.texture = LoadTexture("resources/Sprites/PauseButtonOff.png");
+
+        //Pause Button On
+        pauseButtonOn.pos.x = static_cast<float>(screenWidth / 1.2);
+        pauseButtonOn.pos.y = static_cast<float>(screenHeight / 20);
+        pauseButtonOn.width = 64;
+        pauseButtonOn.height = 64;
+        pauseButtonOn.color = WHITE;
+        pauseButtonOn.texture = LoadTexture("resources/Sprites/PauseButtonOn.png");
+
+        //Resume Button
+        resumeButton.width = static_cast<float>(screenWidth / 2.5);
+        resumeButton.height = static_cast<float>(screenHeight / 2.1);
+        resumeButton.size = 40;
+        resumeButton.color = BLACK;
+    }
+
+    void SubMenusInputs(bool& gameOn)
+    {
+        if (restartMenu.isActive)
+        {
+            pause = true;
+
+            //Restart Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 2.2), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 10) }))
+            {
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    RestartGame();
+                }
+            }
+
+            //Return Menu Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.7), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+            {
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    RestartGame();
+                    restartMenu.isActive = false;
+                    playGame = false;
+                    optionSelect = 0;
+                }
+            }
+
+            //Quit Game Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.4), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+            {
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    gameOn = false;
+                }
+            }
+        }
+
+        if (pauseMenu.isActive)
+        {
+            //Resume Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 2.2), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 10) }))
+            {
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    pause = false;
+                    pauseMenu.isActive = false;
+                }
+            }
+
+            //Return Menu Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.7), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+            {
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    RestartGame();
+                    pause = false;
+                    playGame = false;
+                    pauseMenu.isActive = false;
+                    optionSelect = 0;
+                }
+            }
+
+            //Quit Game Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.4), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+            {
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+                {
+                    gameOn = false;
+                }
+            }
+        }
+
+        if (!restartMenu.isActive && !pauseMenu.isActive)
+        {
+            if (IsKeyPressed(KEY_ESCAPE) || IsKeyPressed(KEY_P))
+            {
+                pauseMenu.isActive = true;
+                pause = true;
+            }
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ pauseButtonOff.pos.x, pauseButtonOff.pos.y, pauseButtonOff.width, pauseButtonOff.height }))
+            {
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+                {
+                    pauseMenu.isActive = true;
+                    pause = true;
+                }
+            }
+        }
+
+        else
+        {
+            if (IsKeyPressed(KEY_ESCAPE) || IsKeyPressed(KEY_P))
+            {
+                pauseMenu.isActive = false;
+                pause = false;
+                HideCursor();
+            }
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ pauseButtonOn.pos.x, pauseButtonOn.pos.y, pauseButtonOn.width, pauseButtonOn.height }))
+            {
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+                {
+                    pauseMenu.isActive = false;
+                    pause = false;
+                    HideCursor();
+                }
+            }
+        }
+    }
+
     void GameLoop()
     {
         HideCursor();
@@ -174,18 +400,23 @@ namespace game
         {
             while (!WindowShouldClose() && gameOn)
             {
-                PauseIntputs();
+                //PauseIntputs();
                 MouseMovement();
                 MenuCollisions(mouse, optionSelect);
                 MenuInputs(mouse, optionSelect, playGame);
 
                 if (playGame == true)
                 {
+                    SubMenusInputs(gameOn);
+
                     if (!pause)
                     {
                         Update();
                         Collisions();
                     }
+
+                    PauseMenuCollisions();
+                    RestarGameMenuCollisions();
                 }
                 
                 if (screenWidth == 1024 && screenHeight == 768)
@@ -286,11 +517,26 @@ namespace game
        
         DrawMouse(mouse, mouse.mouseRec);
 
-        if (pause)
+        if (!pauseMenu.isActive)
         {
-            DrawText("PAUSE ON - Esc or P to set Off", screenWidth / screenWidth, screenHeight / screenHeight, 50, WHITE);
-            DrawText("Press M to return menu", screenWidth / screenWidth, static_cast<int>(screenHeight / 8), 50, WHITE);
+            DrawRectangle(static_cast<int>(pauseButtonOff.pos.x), static_cast<int>(pauseButtonOff.pos.y), static_cast<int>(pauseButtonOff.width), static_cast<int>(pauseButtonOff.height), BLANK);
+            DrawTexture(pauseButtonOff.texture, static_cast<int>(pauseButtonOff.pos.x), static_cast<int>(pauseButtonOff.pos.y), pauseButtonOff.color);
         }
+
+        if (pauseMenu.isActive)
+        {
+            DrawRectangle(static_cast<int>(pauseButtonOff.pos.x), static_cast<int>(pauseButtonOff.pos.y), static_cast<int>(pauseButtonOff.width), static_cast<int>(pauseButtonOff.height), BLANK);
+            DrawTexture(pauseButtonOn.texture, static_cast<int>(pauseButtonOn.pos.x), static_cast<int>(pauseButtonOn.pos.y), pauseButtonOn.color);
+
+            DrawPauseMenu();
+        }
+
+        if (!IsAlive(player) || PlayerWin(player))
+        {
+            DrawRestarGameMenu();
+        }
+
+        DrawMouse(mouse, mouse.mouseRec);
 
         EndDrawing();
     }
@@ -497,8 +743,14 @@ namespace game
     {
         if (CheckCollisionRecRec(player.pos, player.width - 20, player.height - 5, obstacle.pos, obstacle.width, obstacle.height))
         {
-            cout << "Perdiste" << endl;
-            RestartGame();
+            player.isCollision = true;
+            LoseLife(player);
+            cout << player.lifes << endl;
+        }
+
+        if (!CheckCollisionRecRec(player.pos, player.width - 20, player.height - 5, obstacle.pos, obstacle.width, obstacle.height))
+        {
+            player.isCollision = false;
         }
 
         if (CheckCollisionRecRec(player.pos, player.width, player.height, ground.pos, ground.width , ground.height))
@@ -524,7 +776,6 @@ namespace game
 
         if (obstacle.pos.x < screenWidth / screenWidth - obstacle.width)
         {
-            cout << "Ganaste" << endl;
             player.points = player.points + 25;
             obstacle.pos.x = screenWidth - obstacle.width;
         }
@@ -556,28 +807,131 @@ namespace game
         BackgroundParallax(hill2, screenWidth);
     }
 
-    void PauseIntputs()
+    void DrawPauseMenu()
     {
-        if (pause && playGame)
+        DrawRectangle(static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), static_cast<int>(restartMenu.width), static_cast<int>(restartMenu.height), BLANK);
+        DrawTexture(restartMenu.texture, static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), WHITE);
+
+        DrawTextEx(gameFont, "PAUSE", { static_cast<float>(screenWidth / 3), static_cast<float>(screenHeight / 3.1) }, 70, 0, WHITE);
+
+        //Restart Button
+        DrawRectangle(static_cast<int>(screenWidth / 2.5), static_cast<int>(screenHeight / 2.2), static_cast<int>(screenWidth / 3.8), static_cast<int>(screenHeight / 10), BLANK);
+        DrawTextEx(gameFont, "RESUME", { static_cast<float>(resumeButton.width), static_cast<float>(resumeButton.height) }, static_cast<float>(resumeButton.size), 0, resumeButton.color);
+
+        //Return Menu Button
+        DrawRectangle(static_cast<int>(screenWidth / 2.5), static_cast<int>(screenHeight / 1.7), static_cast<int>(screenWidth / 4), static_cast<int>(screenHeight / 12), BLANK);
+        DrawTextEx(gameFont, "MENU", { static_cast<float>(returnMenuButton.width), static_cast<float>(returnMenuButton.height) }, static_cast<float>(returnMenuButton.size), 0, returnMenuButton.color);
+
+        //Quit Game Button
+        DrawRectangle(static_cast<int>(screenWidth / 2.5), static_cast<int>(screenHeight / 1.4), static_cast<int>(screenWidth / 4), static_cast<int>(screenHeight / 12), BLANK);
+        DrawTextEx(gameFont, "QUIT", { static_cast<float>(quitGameButton.width), static_cast<float>(quitGameButton.height) }, static_cast<float>(quitGameButton.size), 0, quitGameButton.color);
+    }
+
+    void PauseMenuCollisions()
+    {
+        if (pauseMenu.isActive)
         {
-            if (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE))
+            //Restart Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 2.2), static_cast<float>(screenWidth / 3.8), static_cast<float>(screenHeight / 10) }))
             {
-                pause = false;
+                resumeButton.color = BLUE;
             }
 
-            if (IsKeyPressed(KEY_M))
+            else
             {
-                pause = true;
-                playGame = false;
-                RestartGame();
-                optionSelect = 0;
+                resumeButton.color = WHITE;
+            }
+
+            //Return Menu Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.7), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+            {
+                returnMenuButton.color = BLUE;
+            }
+
+            else
+            {
+                returnMenuButton.color = WHITE;
+            }
+
+            //Quit Game Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.4), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+            {
+                quitGameButton.color = BLUE;
+            }
+
+            else
+            {
+                quitGameButton.color = WHITE;
             }
         }
-        else
+    }
+
+    void DrawRestarGameMenu()
+    {
+        DrawRectangle(static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), static_cast<int>(restartMenu.width), static_cast<int>(restartMenu.height), BLANK);
+        restartMenu.isActive = true;
+
+        DrawTexture(restartMenu.texture, static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), WHITE);
+
+        if (!IsAlive(player))
         {
-            if (IsKeyPressed(KEY_P) || IsKeyPressed(KEY_ESCAPE))
+            DrawTextEx(gameFont, "YOU LOSE", { static_cast<float>(screenWidth / 4.2), static_cast<float>(screenHeight / 3.1) }, 70, 0, WHITE);
+        }
+
+        if (PlayerWin(player))
+        {
+            DrawTextEx(gameFont, "YOU WIN", { static_cast<float>(screenWidth / 3.5), static_cast<float>(screenHeight / 3.1) }, 70, 0, WHITE);
+        }
+
+        //Restart Button
+        DrawRectangle(static_cast<int>(screenWidth / 2.7), static_cast<int>(screenHeight / 2.2), static_cast<int>(screenWidth / 3.2), static_cast<int>(screenHeight / 10), BLANK);
+        DrawTextEx(gameFont, "RESTART", { static_cast<float>(restartButton.width), static_cast<float>(restartButton.height) }, static_cast<float>(restartButton.size), 0, restartButton.color);
+
+
+        //Return Menu Button
+        DrawRectangle(static_cast<int>(screenWidth / 2.5), static_cast<int>(screenHeight / 1.7), static_cast<int>(screenWidth / 4), static_cast<int>(screenHeight / 12), BLANK);
+        DrawTextEx(gameFont, "MENU", { static_cast<float>(returnMenuButton.width), static_cast<float>(returnMenuButton.height) }, static_cast<float>(returnMenuButton.size), 0, returnMenuButton.color);
+
+        //Quit Game Button
+        DrawRectangle(static_cast<int>(screenWidth / 2.5), static_cast<int>(screenHeight / 1.4), static_cast<int>(screenWidth / 4), static_cast<int>(screenHeight / 12), BLANK);
+        DrawTextEx(gameFont, "QUIT", { static_cast<float>(quitGameButton.width), static_cast<float>(quitGameButton.height) }, static_cast<float>(quitGameButton.size), 0, quitGameButton.color);
+    }
+
+    void RestarGameMenuCollisions()
+    {
+        if (restartMenu.isActive)
+        {
+            //Restart Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.7), static_cast<float>(screenHeight / 2.2), static_cast<float  >(screenWidth / 3.2), static_cast<float>(screenHeight / 10) }))
             {
-                pause = true;
+                restartButton.color = BLUE;
+            }
+
+            else
+            {
+                restartButton.color = WHITE;
+            }
+
+            //Return Menu Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.7), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+            {
+                returnMenuButton.color = BLUE;
+            }
+
+            else
+            {
+                returnMenuButton.color = WHITE;
+            }
+
+            //Quit Game Button
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.4), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+            {
+                quitGameButton.color = BLUE;
+            }
+
+            else
+            {
+                quitGameButton.color = WHITE;
             }
         }
     }
@@ -590,7 +944,11 @@ namespace game
         player.width = 80;
         player.height = 40;
         player.speed = 420;
+        player.lifes = 3;
         player.points = 0;
+        player.isCollision = false;
+        player.isAlive = true;
+        player.win = false;
         player.color = GREEN;
 
         //Bullet
@@ -670,6 +1028,9 @@ namespace game
             flyEnemy[4].pos.y = static_cast<float>(screenHeight / -1.05);
         }
 
+        //RestartMenu
+        restartMenu.isActive = false;
+        pause = false;
     }
 
     void UnloadData()
@@ -686,5 +1047,10 @@ namespace game
         UnloadTexture(hill2.tex);
         
         UnloadTexture(ground.tex);
+
+        UnloadTexture(restartMenu.texture);
+        UnloadTexture(pauseMenu.texture);
+        UnloadTexture(pauseButtonOff.texture);
+        UnloadTexture(pauseButtonOn.texture);
     }
 }

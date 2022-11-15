@@ -89,4 +89,24 @@
       <Filter>Resources\Font</Filter>
     </Font>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\Sprites\City.png">
+      <Filter>Resources\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Ground.png">
+      <Filter>Resources\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Hill.png">
+      <Filter>Resources\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\Sky.png">
+      <Filter>Resources\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\PauseButtonOff.png">
+      <Filter>Resources\Sprites</Filter>
+    </Image>
+    <Image Include="resources\Sprites\PauseButtonOn.png">
+      <Filter>Resources\Sprites</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

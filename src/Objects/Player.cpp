@@ -17,9 +17,14 @@ namespace game
 
 		player.jumpForce = 300;
 
+		player.lifes = 3;
+
 		player.points = 0;
 
 		player.isJumping = false;
+		player.isCollision = false;
+		player.isAlive = true;
+		player.win = false;
 
 		player.color = GREEN;
 
@@ -44,6 +49,40 @@ namespace game
 		if (player.pos.x < screenWidth / screenWidth)
 		{
 			player.pos.x = static_cast<float>(screenWidth / screenWidth);
+		}
+	}
+
+	void LoseLife(Player& player)
+	{
+		if (player.isCollision == true)
+		{
+			player.lifes -= 1;
+		}
+	}
+
+	bool IsAlive(Player& player)
+	{
+		if (player.lifes <= 0)
+		{
+			return player.isAlive == false;
+		}
+
+		else
+		{
+			return player.isAlive == true;
+		}
+	}
+
+	bool PlayerWin(Player& player)
+	{
+		if (player.points < 1500000)
+		{
+			return player.win == true;
+		}
+
+		else
+		{
+			return player.win == false;
 		}
 	}
 }
