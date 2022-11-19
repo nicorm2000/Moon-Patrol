@@ -577,6 +577,11 @@ namespace game
         {
             PlayerJump();
         }
+        if (player.isJumping == true && player.pos.y < ground.pos.y)
+        {
+            player.gravity = player.gravity + player.jumpForce * GetFrameTime();
+            player.pos.y = player.pos.y + player.gravity * GetFrameTime();
+        }
 
         if (IsKeyPressed(KEY_W))
         {
@@ -594,12 +599,7 @@ namespace game
                 }
             }
         }
-        if (player.isJumping == true && player.pos.y < ground.pos.y)
-        {
-            player.gravity = player.gravity + player.jumpForce * GetFrameTime();
-            player.pos.y = player.pos.y + player.gravity * GetFrameTime();
-        }
-
+        
         PlayerLimit(player, screenWidth);
     }
 

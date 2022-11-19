@@ -277,7 +277,7 @@ namespace game
 		DrawTextEx(gameFont, "CREDITS", { static_cast<float>(GetScreenWidth() / 3.8) , static_cast<float>(GetScreenHeight() / 15) }, 60, 0, ORANGE);
 
 		DrawTextEx(gameFont, "GAME MADE BY", { static_cast<float>(GetScreenWidth() / 3.5) , static_cast<float>(GetScreenHeight() / 3.5) }, 40, 0, GOLD);
-		DrawTextEx(gameFont, "Facundo Santos", { static_cast<float>(GetScreenWidth() / 2.8) , static_cast<float>(GetScreenHeight() / 2.8) }, 40, 0, ORANGE);
+		DrawTextEx(gameFont, "Nicolas Ramos Marin", { static_cast<float>(GetScreenWidth() / 3.1) , static_cast<float>(GetScreenHeight() / 2.8) }, 40, 0, ORANGE);
 
 		DrawTextEx(gameFont, "FONT", { static_cast<float>(GetScreenWidth() / 2.3) , static_cast<float>(GetScreenHeight() / 2) }, 30, 0, GOLD);
 
