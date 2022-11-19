@@ -71,11 +71,9 @@ namespace game
     void DrawPauseMenu();
     void PauseMenuCollisions();
 
-    void DrawRestarGameMenu();
+    void DrawRestartGameMenu();
     void RestartGame();
     void RestarGameMenuCollisions();
-
-    void RestartGame();
 
     void UnloadData();
 
@@ -538,7 +536,7 @@ namespace game
 
         if (!IsAlive(player) || PlayerWin(player))
         {
-            DrawRestarGameMenu();
+            DrawRestartGameMenu();
         }
 
         DrawMouse(mouse, mouse.mouseRec);
@@ -619,7 +617,7 @@ namespace game
         if (player.pos.y < 650)
         {
             player.isJumping = true;
-            player.speed = 300;
+            player.speed = 250;
         }
 
         player.pos.y += player.gravity * GetFrameTime();
@@ -878,7 +876,7 @@ namespace game
         }
     }
 
-    void DrawRestarGameMenu()
+    void DrawRestartGameMenu()
     {
         DrawRectangle(static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), static_cast<int>(restartMenu.width), static_cast<int>(restartMenu.height), BLANK);
         restartMenu.isActive = true;
