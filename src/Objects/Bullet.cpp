@@ -1,4 +1,5 @@
 #include "Objects/Bullet.h"
+#include "raylib.h"
 
 Bullet CreateBullet()
 {
@@ -15,12 +16,15 @@ Bullet CreateBullet()
 	bullet.isActive = false;
 	bullet.isMoving = false;
 
-	bullet.color = YELLOW;
+	bullet.color = WHITE;
+
+	bullet.bulletTexture = LoadTexture("resources/Sprites/bullet.png");
 
 	return bullet;
 }
 
 void DrawBullet(Bullet& bullet)
 {
-	DrawRectangle(static_cast<int>(bullet.pos.x), static_cast<int>(bullet.pos.y),	static_cast<int>(bullet.width),	static_cast<int>(bullet.height), bullet.color);
+	//DrawRectangle(static_cast<int>(bullet.pos.x), static_cast<int>(bullet.pos.y),	static_cast<int>(bullet.width),	static_cast<int>(bullet.height), bullet.color);
+	DrawTexture(bullet.bulletTexture, static_cast<int>(bullet.pos.x), static_cast<int>(bullet.pos.y), bullet.color);
 }

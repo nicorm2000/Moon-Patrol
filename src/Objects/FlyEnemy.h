@@ -17,6 +17,8 @@ struct FlyEnemy
 	bool isActive;
 
 	Color color;
+
+	Texture flyingEnemyTexture;
 };
 
 FlyEnemy CreateFlyEnemy();

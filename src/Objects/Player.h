@@ -25,6 +25,8 @@ namespace game
 		bool win;
 
 		Color color;
+
+		Texture playerTexture;
 	};
 
 	Player CreatePlayer(int screenWidth, int screenHeight);

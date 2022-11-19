@@ -13,7 +13,7 @@ namespace game
 
 		float height;
 
-		Texture2D texture;
+		Texture2D mouseTexture;
 	};
 
 	Mouse CreateMouse();

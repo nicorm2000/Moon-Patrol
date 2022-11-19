@@ -216,6 +216,8 @@ namespace game
 
         //Ground 
         ground.tex = LoadTexture("resources/Sprites/Ground.png");
+
+        player.playerTexture = LoadTexture("resources/Sprites/Player1.png");
     }
 
     void InitRestartMenu()
@@ -616,7 +618,7 @@ namespace game
 
     void PlayerBulletMovement()
     {
-        int bulletPosition = 30;
+        int bulletPosition = 13;
 
         for (int i = 0; i < maxBullets; i++)
         {
@@ -1053,5 +1055,7 @@ namespace game
         UnloadTexture(pauseMenu.texture);
         UnloadTexture(pauseButtonOff.texture);
         UnloadTexture(pauseButtonOn.texture);
+
+        UnloadTexture(player.playerTexture);
     }
 }

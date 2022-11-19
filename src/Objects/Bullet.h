@@ -14,6 +14,8 @@ struct Bullet
 	bool isActive;
 
 	Color color;
+
+	Texture bulletTexture;
 };
 
 Bullet CreateBullet();

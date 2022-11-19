@@ -12,6 +12,8 @@ namespace game
 		float speed;
 
 		Color color;
+		
+		Texture obstacleTexture;
 	};
 
 	Obstacle CreateObstacle(int screenWidth, int screenHeight);
