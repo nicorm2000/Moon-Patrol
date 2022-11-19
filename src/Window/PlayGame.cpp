@@ -216,8 +216,11 @@ namespace game
 
         //Ground 
         ground.tex = LoadTexture("resources/Sprites/Ground.png");
-
+        
+        //Player
         player.playerTexture = LoadTexture("resources/Sprites/Player1.png");
+
+        LoadTextureBullet(playerBullet[0]);
     }
 
     void InitRestartMenu()
@@ -475,7 +478,7 @@ namespace game
 
     void Update()
     {
-        ObstacleMovement();
+        //ObstacleMovement();
         PlayerMovement();
         PlayerBulletMovement();
         BackgroundMovement();
@@ -584,6 +587,10 @@ namespace game
             player.gravity = player.gravity + player.jumpForce * GetFrameTime();
             player.pos.y = player.pos.y + player.gravity * GetFrameTime();
         }
+        if (player.isJumping == false)
+        {
+            player.speed = 420;
+        }
 
         if (IsKeyPressed(KEY_W))
         {
@@ -608,12 +615,14 @@ namespace game
     void PlayerJump()
     {
         player.gravity = -250;
-        player.pos.y = player.pos.y + player.gravity * GetFrameTime();
         
         if (player.pos.y < 650)
         {
             player.isJumping = true;
+            player.speed = 300;
         }
+
+        player.pos.y += player.gravity * GetFrameTime();
     }
 
     void PlayerBulletMovement()
@@ -952,7 +961,6 @@ namespace game
         player.isCollision = false;
         player.isAlive = true;
         player.win = false;
-        player.color = GREEN;
 
         //Bullet
         //PlayerBullets
@@ -1057,5 +1065,7 @@ namespace game
         UnloadTexture(pauseButtonOn.texture);
 
         UnloadTexture(player.playerTexture);
+        
+        UnloadTextureBullet(playerBullet[0]);
     }
 }

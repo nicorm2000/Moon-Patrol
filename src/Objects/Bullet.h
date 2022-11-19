@@ -15,9 +15,13 @@ struct Bullet
 
 	Color color;
 
-	Texture bulletTexture;
+	static Texture bulletTexture;
 };
 
 Bullet CreateBullet();
 
 void DrawBullet(Bullet& bullet);
+
+void LoadTextureBullet(Bullet& bullet);
+
+void UnloadTextureBullet(Bullet& bullet);
