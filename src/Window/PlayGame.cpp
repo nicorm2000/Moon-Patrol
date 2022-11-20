@@ -223,7 +223,7 @@ namespace game
         //Restart menu
         restartMenu.width = 600;
         restartMenu.height = 500;
-        restartMenu.pos.x = static_cast<float>(screenWidth / 4.5);
+        restartMenu.pos.x = static_cast<float>(screenWidth / 4.3);
         restartMenu.pos.y = static_cast<float>(screenHeight / 4.5);
         restartMenu.isActive = false;
         restartMenu.texture = LoadTexture("resources/Sprites/RestartGameMenu.png");
