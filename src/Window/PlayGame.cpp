@@ -498,8 +498,6 @@ namespace game
         DrawBackground(hill);
         DrawBackground(hill2);
         
-        DrawGround(ground);
-        
         DrawObstacle(obstacle);
         
         for (int i = 0; i < maxBullets; i++)
@@ -612,9 +610,11 @@ namespace game
 
     void PlayerJump()
     {
+        int minimumHeightForPlayer = 650;
+
         player.gravity = -250;
         
-        if (player.pos.y < 650)
+        if (player.pos.y < minimumHeightForPlayer)
         {
             player.isJumping = true;
             player.speed = 250;

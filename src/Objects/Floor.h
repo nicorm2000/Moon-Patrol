@@ -16,6 +16,4 @@ namespace game
 	};
 
 	Ground CreateGround(int screenWidth, int screenHeight);
-
-	void DrawGround(Ground& ground);
 }

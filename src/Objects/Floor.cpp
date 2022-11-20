@@ -16,11 +16,4 @@ namespace game
 
 		return ground;
 	}
-
-	void DrawGround(Ground& ground)
-	{
-		DrawRectangle(static_cast<int>(ground.pos.x), static_cast<int>(ground.pos.y), static_cast<int>(ground.width), static_cast<int>(ground.height), ground.color);
-
-		DrawTexture(ground.tex, static_cast<int>(ground.pos.x), static_cast<int>(ground.pos.y), WHITE);
-	}
 }
