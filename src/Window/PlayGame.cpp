@@ -183,12 +183,12 @@ namespace game
             
             //Hill
         hill.pos.x = static_cast<float>(screenWidth / screenWidth);
-        hill.pos.y = static_cast<float>((screenHeight / 1.28));
+        hill.pos.y = static_cast<float>((screenHeight / 1.26));
         hill.tex = LoadTexture("resources/Sprites/Hill.png");
         hill.speed = 400;
 
         hill2.pos.x = static_cast<float>(screenWidth / screenWidth + hill.width);
-        hill2.pos.y = static_cast<float>((screenHeight / 1.28));
+        hill2.pos.y = static_cast<float>((screenHeight / 1.26));
         hill2.tex = LoadTexture("resources/Sprites/Hill.png");
         hill2.speed = 400;
 
@@ -211,9 +211,6 @@ namespace game
             flyEnemy[4].pos.x = static_cast<float>(screenWidth / -1.05);
             flyEnemy[4].pos.y = static_cast<float>(screenHeight / -1.05);
         }
-
-        //Ground 
-        ground.tex = LoadTexture("resources/Sprites/Ground.png");
         
         //Player
         player.playerTexture = LoadTexture("resources/Sprites/Player1.png");
@@ -492,8 +489,8 @@ namespace game
         DrawBackground(sky);
         DrawBackground(sky2);
         
-        DrawBackground(city);
-        DrawBackground(city2);
+        //DrawBackground(city);
+        //DrawBackground(city2);
         
         DrawBackground(hill);
         DrawBackground(hill2);
@@ -1054,8 +1051,6 @@ namespace game
 
         UnloadTexture(hill.tex);
         UnloadTexture(hill2.tex);
-        
-        UnloadTexture(ground.tex);
 
         UnloadTexture(restartMenu.texture);
         UnloadTexture(pauseMenu.texture);
