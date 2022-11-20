@@ -18,9 +18,13 @@ struct FlyEnemy
 
 	Color color;
 
-	Texture flyingEnemyTexture;
+	static Texture flyingEnemyTexture;
 };
 
 FlyEnemy CreateFlyEnemy();
 
 void DrawFlyEnemy(FlyEnemy& flyEnemy);
+
+//void LoadTextureFlyEnemy(FlyEnemy& flyEnemy);
+//
+//void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy);

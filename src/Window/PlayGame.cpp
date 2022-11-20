@@ -164,6 +164,8 @@ namespace game
             playerBullet[i] = CreateBullet();
         }
         
+        LoadTextureBullet(playerBullet[0]);
+        
         //Background
             //Sky
         sky.pos.x = static_cast<float>(screenWidth / screenWidth);
@@ -194,7 +196,10 @@ namespace game
         hill2.tex = LoadTexture("resources/Sprites/Hill.png");
         hill2.speed = 400;
 
-        //Enemy
+        //Ground Enemy
+        obstacle.obstacleTexture = LoadTexture("resources/Sprites/GroundEnemy.png");
+
+        //Fly Enemy
         for (int i = 0; i < maxflyEnemy; i++)
         {
             flyEnemy[i] = CreateFlyEnemy();
@@ -214,10 +219,10 @@ namespace game
             flyEnemy[4].pos.y = static_cast<float>(screenHeight / -1.05);
         }
         
+        //LoadTextureFlyEnemy(flyEnemy[0]);
+
         //Player
         player.playerTexture = LoadTexture("resources/Sprites/Player1.png");
-
-        LoadTextureBullet(playerBullet[0]);
     }
 
     void InitRestartMenu()
@@ -402,7 +407,6 @@ namespace game
         {
             while (!WindowShouldClose() && gameOn)
             {
-                //PauseIntputs();
                 MouseMovement();
                 MenuCollisions(mouse, optionSelect);
                 MenuInputs(mouse, optionSelect, playGame);
@@ -475,7 +479,7 @@ namespace game
 
     void Update()
     {
-        //ObstacleMovement();
+        ObstacleMovement();
         PlayerMovement();
         PlayerBulletMovement();
         BackgroundMovement();
@@ -752,7 +756,6 @@ namespace game
         {
             player.isCollision = true;
             LoseLife(player);
-            cout << player.lifes << endl;
         }
 
         if (!CheckCollisionRecRec(player.pos, player.width - 20, player.height - 5, obstacle.pos, obstacle.width, obstacle.height))
@@ -974,14 +977,12 @@ namespace game
         obstacle.width = 30;
         obstacle.height = 60;
         obstacle.speed = 400;
-        obstacle.color = BLUE;
 
         //Ground
         ground.pos.x = static_cast<float>(screenWidth / screenWidth);
         ground.pos.y = static_cast<float>(screenHeight / 1.1);
         ground.width = static_cast<float>(screenWidth);
         ground.height = 70;
-        ground.color = YELLOW;
 
         //Mouse
         mouse.position.x = 0;
@@ -1062,5 +1063,6 @@ namespace game
         UnloadTexture(player.playerTexture);
         
         UnloadTextureBullet(playerBullet[0]);
+        //UnloadTextureFlyEnemy(flyEnemy[0]);
     }
 }
