@@ -153,10 +153,12 @@ namespace game
         InitPauseMenu();
 
         //Font
-        gameFont = LoadFont("resources/Font/baby blocks.ttf");
+        gameFont = LoadFont("resources/Font/unlearn2.ttf");
+        
+        //Mouse
+        mouse.mouseTexture = LoadTexture("resources/Sprites/mouse.png");
 
         //Bullet
-
         for (int i = 0; i < maxBullets; i++)
         {
             playerBullet[i] = CreateBullet();
@@ -438,7 +440,7 @@ namespace game
                         case static_cast<int>(Menu::Controlls) :
                             BeginDrawing();
                             ClearBackground(BLACK);
-                            DrawControlls(gameFont);
+                            DrawControls(gameFont);
                             EndDrawing();
                             break;
 
@@ -512,8 +514,6 @@ namespace game
 
         DrawPlayer(player);
         DrawTextEx(gameFont, TextFormat("score %0i", player.points), { static_cast<float>(GetScreenWidth() / 2.5) , static_cast<float>(GetScreenHeight() / 1.1) }, 50, 0, WHITE);
-       
-        DrawMouse(mouse, mouse.mouseRec);
 
         if (!pauseMenu.isActive)
         {
@@ -534,7 +534,7 @@ namespace game
             DrawRestartGameMenu();
         }
 
-        DrawMouse(mouse, mouse.mouseRec);
+        DrawMouse(mouse);
 
         EndDrawing();
     }
@@ -1043,6 +1043,8 @@ namespace game
     {
         UnloadFont(gameFont);
         
+        UnloadTexture(mouse.mouseTexture);
+
         UnloadTexture(sky.tex);
         UnloadTexture(sky2.tex);
         

@@ -31,8 +31,8 @@ namespace game
 		return originRec;
 	}
 
-	void DrawMouse(Mouse& mouse, Rectangle& mouseRec)
+	void DrawMouse(Mouse& mouse)
 	{
-		DrawRectanglePro(GetRecMouse(mouse), CreateRecOriginMouse(mouseRec), 0.0f, WHITE);
+		DrawTexture(mouse.mouseTexture, static_cast<int>(mouse.position.x), static_cast<int>(mouse.position.y), WHITE);
 	}
 }

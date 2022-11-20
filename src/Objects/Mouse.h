@@ -22,5 +22,5 @@ namespace game
 
 	Vector2 CreateRecOriginMouse(Rectangle& mouseRec);
 
-	void DrawMouse(Mouse& mouse, Rectangle& mouseRec);
+	void DrawMouse(Mouse& mouse);
 }

@@ -34,7 +34,7 @@ namespace game
 	void MenuCollisions(Mouse& mouse, int& optionSelect);
 	void MenuInputs(Mouse& mouse, int& optionSelect, bool& playGame);
 	void DrawMenu(Font gameFont);
-	void DrawControlls(Font gameFont);
+	void DrawControls(Font gameFont);
 	void DrawRules(Font gameFont);
 	void DrawCredits(Font gameFont);
 }

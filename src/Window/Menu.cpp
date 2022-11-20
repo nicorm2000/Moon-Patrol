@@ -3,7 +3,7 @@
 namespace game
 {
 	MenuButton play;
-	MenuButton controlls;
+	MenuButton controls;
 	MenuButton rules;
 	MenuButton credits;
 	MenuButton quit;
@@ -14,9 +14,9 @@ namespace game
 		//Play Button
 
 		play.pos.x = static_cast<float>(GetScreenWidth() / 20);
-		play.pos.y = static_cast<float>(GetScreenHeight() / 3.2);
-		play.width = static_cast<float>(GetScreenWidth() / 5.7);
-		play.height = static_cast<float>(GetScreenHeight() / 10);
+		play.pos.y = static_cast<float>(GetScreenHeight() / 3.5);
+		play.width = static_cast<float>(GetScreenWidth() / 13);
+		play.height = static_cast<float>(GetScreenHeight() / 16);
 		play.size = 40;
 		play.isActive = false;
 
@@ -24,21 +24,21 @@ namespace game
 
 		//Controlls Button
 
-		controlls.pos.x = static_cast<float>(GetScreenWidth() / 20);
-		controlls.pos.y = static_cast<float>(GetScreenHeight() / 2.35);
-		controlls.width = static_cast<float>(GetScreenWidth() / 2.53);
-		controlls.height = static_cast<float>(GetScreenHeight() / 10);
-		controlls.size = 40;
-		controlls.isActive = false;
+		controls.pos.x = static_cast<float>(GetScreenWidth() / 20);
+		controls.pos.y = static_cast<float>(GetScreenHeight() / 2.5);
+		controls.width = static_cast<float>(GetScreenWidth() / 6.4);
+		controls.height = static_cast<float>(GetScreenHeight() / 16);
+		controls.size = 40;
+		controls.isActive = false;
 
-		controlls.color = ORANGE;
+		controls.color = ORANGE;
 
 		//Rules Button
 
 		rules.pos.x = static_cast<float>(GetScreenWidth() / 20);
-		rules.pos.y = static_cast<float>(GetScreenHeight() / 1.84);
-		rules.width = static_cast<float>(GetScreenWidth() / 4.55);
-		rules.height = static_cast<float>(GetScreenHeight() / 10);
+		rules.pos.y = static_cast<float>(GetScreenHeight() / 1.93);
+		rules.width = static_cast<float>(GetScreenWidth() / 10.3);
+		rules.height = static_cast<float>(GetScreenHeight() / 16);
 		rules.size = 40;
 		rules.isActive = false;
 
@@ -47,9 +47,9 @@ namespace game
 		//Credits Button
 
 		credits.pos.x = static_cast<float>(GetScreenWidth() / 1.5);
-		credits.pos.y = static_cast<float>(GetScreenHeight() / 1.1);
-		credits.width = static_cast<float>(GetScreenWidth() / 3.25);
-		credits.height = static_cast<float>(GetScreenHeight() / 10);
+		credits.pos.y = static_cast<float>(GetScreenHeight() / 1.13);
+		credits.width = static_cast<float>(GetScreenWidth() / 7.3);
+		credits.height = static_cast<float>(GetScreenHeight() / 16);
 		credits.size = 40;
 		credits.isActive = false;
 
@@ -58,9 +58,9 @@ namespace game
 		//Quit Button
 
 		quit.pos.x = static_cast<float>(GetScreenWidth() / 20);
-		quit.pos.y = static_cast<float>(GetScreenHeight() / 1.53);
-		quit.width = static_cast<float>(GetScreenWidth() / 5.7);
-		quit.height = static_cast<float>(GetScreenHeight() / 10);
+		quit.pos.y = static_cast<float>(GetScreenHeight() / 1.59);
+		quit.width = static_cast<float>(GetScreenWidth() / 13);
+		quit.height = static_cast<float>(GetScreenHeight() / 16);
 		quit.size = 40;
 		quit.isActive = false;
 
@@ -70,8 +70,8 @@ namespace game
 
 		returnMenu.pos.x = static_cast<float>(GetScreenWidth() / 2.5);
 		returnMenu.pos.y = static_cast<float>(GetScreenHeight() / 1.1);
-		returnMenu.width = static_cast<float>(GetScreenWidth() / 5.6);
-		returnMenu.height = static_cast<float>(GetScreenHeight() / 10);
+		returnMenu.width = static_cast<float>(GetScreenWidth() / 10);
+		returnMenu.height = static_cast<float>(GetScreenHeight() / 16);
 		returnMenu.size = 40;
 		returnMenu.isActive = false;
 
@@ -92,14 +92,14 @@ namespace game
 		}
 
 		//Controlls Button
-		if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 20), static_cast<float>(GetScreenHeight() / 2.5), static_cast<float>(controlls.width), static_cast<float>(controlls.height) }) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)
+		if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 20), static_cast<float>(GetScreenHeight() / 2.5), static_cast<float>(controls.width), static_cast<float>(controls.height) }) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)
 		{
-			controlls.color = BLUE;
+			controls.color = BLUE;
 		}
 
 		else
 		{
-			controlls.color = ORANGE;
+			controls.color = ORANGE;
 		}
 
 		//Rules Button
@@ -164,7 +164,7 @@ namespace game
 			}
 
 			//Controlls Button
-			if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 20), static_cast<float>(GetScreenHeight() / 2.5), static_cast<float>(controlls.width), static_cast<float>(controlls.height) }))
+			if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 20), static_cast<float>(GetScreenHeight() / 2.5), static_cast<float>(controls.width), static_cast<float>(controls.height) }))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)
 				{
@@ -214,7 +214,8 @@ namespace game
 	void DrawMenu(Font gameFont)
 	{
 		ClearBackground(BLACK);
-		DrawTextEx(gameFont, "  Moon\nPatrol", { static_cast<float>(GetScreenWidth() / 20) , static_cast<float>(GetScreenHeight() / 20) }, 60, 0, GOLD);
+
+		DrawTextEx(gameFont, " Moon\nPatrol", { static_cast<float>(GetScreenWidth() - 350) , static_cast<float>(GetScreenHeight() / 20) }, 100, 10, GOLD);
 
 		//Play Button
 
@@ -223,8 +224,8 @@ namespace game
 
 		//Controlls Button
 
-		DrawRectangle(static_cast<int>(GetScreenWidth() / 20), static_cast<int>(GetScreenHeight() / 2.5), static_cast<int>(controlls.width), static_cast<int>(controlls.height), BLANK);
-		DrawTextEx(gameFont, "CONTROLLS", controlls.pos, static_cast<float>(controlls.size), 0, controlls.color);
+		DrawRectangle(static_cast<int>(GetScreenWidth() / 20), static_cast<int>(GetScreenHeight() / 2.5), static_cast<int>(controls.width), static_cast<int>(controls.height), BLANK);
+		DrawTextEx(gameFont, "CONTROLS", controls.pos, static_cast<float>(controls.size), 0, controls.color);
 
 		//Rules Button
 
@@ -240,15 +241,13 @@ namespace game
 
 		DrawRectangle(static_cast<int>(GetScreenWidth() / 20), static_cast<int>(GetScreenHeight() / 1.59), static_cast<int>(quit.width), static_cast<int>(quit.height), BLANK);
 		DrawTextEx(gameFont, "QUIT", quit.pos, static_cast<float>(quit.size), 0, quit.color);
-
-
 	}
 
-	void DrawControlls(Font gameFont)
+	void DrawControls(Font gameFont)
 	{
 		ClearBackground(BLACK);
 
-		DrawTextEx(gameFont, "Controlls", { static_cast<float>(GetScreenWidth() / 2.8) , static_cast<float>(GetScreenHeight() / 15) }, 60, 0, ORANGE);
+		DrawTextEx(gameFont, "Controls", { static_cast<float>(GetScreenWidth() / 2.8) , static_cast<float>(GetScreenHeight() / 15) }, 60, 0, ORANGE);
 
 		//ReturnMenu Button
 
