@@ -489,8 +489,8 @@ namespace game
         DrawBackground(sky);
         DrawBackground(sky2);
         
-        //DrawBackground(city);
-        //DrawBackground(city2);
+        DrawBackground(city);
+        DrawBackground(city2);
         
         DrawBackground(hill);
         DrawBackground(hill2);
