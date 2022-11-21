@@ -619,6 +619,7 @@ namespace game
         {
             player.isJumping = true;
             player.speed = 250;
+            //aca va el sonido sino se ejecuta mil veces
         }
 
         player.pos.y += player.gravity * GetFrameTime();

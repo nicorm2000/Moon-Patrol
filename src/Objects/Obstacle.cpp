@@ -15,7 +15,7 @@ namespace game
 		obstacle.width = 60;
 		obstacle.height = 120;
 
-		obstacle.speed = 300;
+		obstacle.speed = 250;
 
 		obstacle.color = WHITE;
 
