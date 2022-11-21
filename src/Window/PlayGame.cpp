@@ -432,8 +432,8 @@ namespace game
                         case static_cast<int>(Menu::MainMenu) :
                             BeginDrawing();
                             ClearBackground(BLACK);
-                            ShowCursor();
                             DrawMenu(gameFont);
+                            DrawMouse(mouse);
                             EndDrawing();
                             break;
 
@@ -441,10 +441,11 @@ namespace game
                             Draw();
                             break;
 
-                        case static_cast<int>(Menu::Controlls) :
+                        case static_cast<int>(Menu::Controls) :
                             BeginDrawing();
                             ClearBackground(BLACK);
                             DrawControls(gameFont);
+                            DrawMouse(mouse);
                             EndDrawing();
                             break;
 
@@ -452,6 +453,7 @@ namespace game
                             BeginDrawing();
                             ClearBackground(BLACK);
                             DrawRules(gameFont);
+                            DrawMouse(mouse);
                             EndDrawing();
                             break;
 
@@ -459,6 +461,7 @@ namespace game
                             BeginDrawing();
                             ClearBackground(BLACK);
                             DrawCredits(gameFont);
+                            DrawMouse(mouse);
                             EndDrawing();
                             break;
 

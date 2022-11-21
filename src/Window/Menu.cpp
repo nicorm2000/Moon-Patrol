@@ -1,4 +1,6 @@
 #include "Window/Menu.h"
+#include "Objects/Mouse.h"
+#include "raylib.h"
 
 namespace game
 {

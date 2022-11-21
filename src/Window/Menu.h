@@ -24,7 +24,7 @@ namespace game
 	{
 		MainMenu,
 		Play,
-		Controlls,
+		Controls,
 		Rules,
 		Credits,
 		Quit
