@@ -1,6 +1,8 @@
 #include "Objects/FlyEnemy.h"
 #include "raylib.h"
 
+Texture FlyEnemy::flyingEnemyTexture;
+
 FlyEnemy CreateFlyEnemy()
 {
 	FlyEnemy flyEnemy;
@@ -19,22 +21,23 @@ FlyEnemy CreateFlyEnemy()
 	flyEnemy.isActive = true;
 	flyEnemy.isMoving = true;
 
-	flyEnemy.color = ORANGE;
+	flyEnemy.color = WHITE;
 
 	return flyEnemy;
 }
 
 void DrawFlyEnemy(FlyEnemy& flyEnemy)
 {
-	DrawRectangle(static_cast<int>(flyEnemy.pos.x), static_cast<int>(flyEnemy.pos.y), static_cast<int>(flyEnemy.width), static_cast<int>(flyEnemy.height), flyEnemy.color);
+	//DrawRectangle(static_cast<int>(flyEnemy.pos.x), static_cast<int>(flyEnemy.pos.y), static_cast<int>(flyEnemy.width), static_cast<int>(flyEnemy.height), flyEnemy.color);
+	DrawTexture(flyEnemy.flyingEnemyTexture, static_cast<int>(flyEnemy.pos.x), static_cast<int>(flyEnemy.pos.y), flyEnemy.color);
 }
 
-//void LoadTextureFlyEnemy(FlyEnemy& flyEnemy)
-//{
-//	flyEnemy.flyingEnemyTexture = LoadTexture("resources/Sprites/FlyingEnemy.png");
-//}
-//
-//void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy)
-//{
-//	UnloadTexture(flyEnemy.flyingEnemyTexture);
-//}
+void LoadTextureFlyEnemy(FlyEnemy& flyEnemy)
+{
+	flyEnemy.flyingEnemyTexture = LoadTexture("resources/Sprites/FlyingEnemy.png");
+}
+
+void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy)
+{
+	UnloadTexture(flyEnemy.flyingEnemyTexture);
+}

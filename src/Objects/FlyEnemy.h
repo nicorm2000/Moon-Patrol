@@ -25,6 +25,6 @@ FlyEnemy CreateFlyEnemy();
 
 void DrawFlyEnemy(FlyEnemy& flyEnemy);
 
-//void LoadTextureFlyEnemy(FlyEnemy& flyEnemy);
-//
-//void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy);
+void LoadTextureFlyEnemy(FlyEnemy& flyEnemy);
+
+void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy);

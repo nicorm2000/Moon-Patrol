@@ -219,7 +219,7 @@ namespace game
             flyEnemy[4].pos.y = static_cast<float>(screenHeight / -1.05);
         }
         
-        //LoadTextureFlyEnemy(flyEnemy[0]);
+        LoadTextureFlyEnemy(flyEnemy[0]);
 
         //Player
         player.playerTexture = LoadTexture("resources/Sprites/Player1.png");
@@ -1063,6 +1063,6 @@ namespace game
         UnloadTexture(player.playerTexture);
         
         UnloadTextureBullet(playerBullet[0]);
-        //UnloadTextureFlyEnemy(flyEnemy[0]);
+        UnloadTextureFlyEnemy(flyEnemy[0]);
     }
 }

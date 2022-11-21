@@ -9,7 +9,7 @@ namespace game
 	{
 		Obstacle obstacle;
 
-		obstacle.pos.x = static_cast<float>(screenWidth - 30);
+		obstacle.pos.x = static_cast<float>(screenWidth - 100);
 		obstacle.pos.y = static_cast<float>(screenHeight / 1.2f);
 
 		obstacle.width = 60;
