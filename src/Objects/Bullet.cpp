@@ -13,7 +13,7 @@ Bullet CreateBullet()
 	bullet.width = 10;
 	bullet.height = 20;
 
-	bullet.speed = 200;
+	bullet.speed = 10;
 
 	bullet.isActive = false;
 	bullet.isMoving = false;
