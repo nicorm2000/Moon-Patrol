@@ -92,6 +92,8 @@ namespace game
     //Bullet
     int const maxBullets = 30;
     Bullet playerBullet[maxBullets];
+    int const maxBullets2 = 30;
+    Bullet player2Bullet[maxBullets2];
 
     //Floor
     Ground ground = CreateGround(screenWidth, screenHeight);
@@ -974,15 +976,36 @@ namespace game
         player.isAlive = true;
         player.win = false;
 
+        //Second Player
+        SecondPlayer.pos.x = static_cast<float>(screenWidth / 6);
+        SecondPlayer.pos.y = static_cast<float>(screenHeight / 1.165);
+        SecondPlayer.width = 80;
+        SecondPlayer.height = 40;
+        SecondPlayer.speed = 420;
+        SecondPlayer.lifes = 3;
+        SecondPlayer.points = 0;
+        SecondPlayer.isCollision = false;
+        SecondPlayer.isAlive = true;
+        SecondPlayer.win = false;
+
         //Bullet
         //PlayerBullets
-
         for (int i = 0; i < maxBullets; i++)
         {
             playerBullet[i].isActive = false;
             playerBullet[i].isMoving = false;
             playerBullet[i].pos.y = player.pos.y;
             playerBullet[i].pos.x = player.pos.x;
+        }
+
+        //Bullet
+        //Second Player Bullets
+        for (int i = 0; i < maxBullets2; i++)
+        {
+            player2Bullet[i].isActive = false;
+            player2Bullet[i].isMoving = false;
+            player2Bullet[i].pos.y = SecondPlayer.pos.y;
+            player2Bullet[i].pos.x = SecondPlayer.pos.x;
         }
 
         //Obstacle
