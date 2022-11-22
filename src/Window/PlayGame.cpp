@@ -1,5 +1,3 @@
-#include <iostream>
-#include "raylib.h"
 #include "Window/PlayGame.h"
 #include "Window/Menu.h"
 #include "Objects/Player.h"
@@ -10,9 +8,13 @@
 #include "Objects/Background.h"
 #include "Objects/Mouse.h"
 
+#include "raylib.h"
+
+#include <iostream>
+
 using namespace std;
 
-namespace game 
+namespace game
 {
     struct SubMenu
     {
@@ -91,10 +93,9 @@ namespace game
     Player secondPlayer = CreatePlayer(screenWidth, screenHeight);
 
     //Bullet
-    int const maxBullets = 30;
-    Bullet playerBullet[maxBullets];
-    int const maxBullets2 = 30;
-    Bullet player2Bullet[maxBullets2];
+    int const MAX_BULLETS = 30;
+    Bullet playerBullet[MAX_BULLETS];
+    Bullet player2Bullet[MAX_BULLETS];
 
     //Floor
     Ground ground = CreateGround(screenWidth, screenHeight);
@@ -144,7 +145,7 @@ namespace game
 
     void InitGame()
     {
-        InitWindow(screenWidth, screenHeight, "Moon Patrol v0.3");
+        InitWindow(screenWidth, screenHeight, "Moon Patrol v0.4");
         SetExitKey(NULL);
 
         //Menu
@@ -163,9 +164,18 @@ namespace game
         mouse.mouseTexture = LoadTexture("resources/Sprites/mouse.png");
 
         //Bullet
-        for (int i = 0; i < maxBullets; i++)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
             playerBullet[i] = CreateBullet();
+        }
+
+        //Bullet Player2
+        if (coop)
+        {
+            for (int i = 0; i < MAX_BULLETS; i++)
+            {
+                player2Bullet[i] = CreateBullet();
+            }
         }
         
         LoadTextureBullet(playerBullet[0]);
@@ -499,14 +509,14 @@ namespace game
 
         PlayerMovement();
 
-        for (int i = 0; i < maxBullets; i++)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
             PlayerBulletMovement(playerBullet[i], player, 13);
         }
 
         if (coop)
         {
-            for (int i = 0; i < maxBullets2; i++)
+            for (int i = 0; i < MAX_BULLETS; i++)
             {
                 PlayerBulletMovement(player2Bullet[i], secondPlayer, 13);
             }
@@ -533,14 +543,14 @@ namespace game
         
         DrawObstacle(obstacle);
         
-        for (int i = 0; i < maxBullets; i++)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
             DrawBullet(playerBullet[i]);
         }
 
         if (coop)
         {
-            for (int i = 0; i < maxBullets2; i++)
+            for (int i = 0; i < MAX_BULLETS; i++)
             {
                 DrawBullet(player2Bullet[i]);
             }
@@ -596,27 +606,27 @@ namespace game
             PlayerCollision(secondPlayer);
         }
 
-        for (int i = 0; i < maxBullets; i++)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
             BulletCollision(playerBullet[i]);
         }
 
         if (coop)
         {
-            for (int i = 0; i < maxBullets2; i++)
+            for (int i = 0; i < MAX_BULLETS; i++)
             {
                 BulletCollision(player2Bullet[i]);
             }
         }
         
-        for (int i = 0; i < maxBullets; i++)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
             BulletCollisonLimit(playerBullet[i]);
         }
 
         if (coop)
         {
-            for (int i = 0; i < maxBullets2; i++)
+            for (int i = 0; i < MAX_BULLETS; i++)
             {
                 BulletCollisonLimit(player2Bullet[i]);
             }
@@ -665,7 +675,7 @@ namespace game
 
         if (IsKeyPressed(KEY_W))
         {
-            for (int i = 0; i < maxBullets; i++)
+            for (int i = 0; i < MAX_BULLETS; i++)
             {
                 if (playerBullet[i].isActive == false)
                 {
@@ -710,7 +720,7 @@ namespace game
 
             if (IsKeyPressed(KEY_UP))
             {
-                for (int i = 0; i < maxBullets2; i++)
+                for (int i = 0; i < MAX_BULLETS; i++)
                 {
                     if (player2Bullet[i].isActive == false)
                     {
@@ -747,7 +757,7 @@ namespace game
 
     void PlayerBulletMovement(Bullet& playerbullet, Player& play, int bulletPos)
     {
-        for (int i = 0; i < maxBullets; i++)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
             if (playerbullet.isMoving == false)
             {
@@ -1081,7 +1091,7 @@ namespace game
 
         //Bullet
         //PlayerBullets
-        for (int i = 0; i < maxBullets; i++)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
             playerBullet[i].isActive = false;
             playerBullet[i].isMoving = false;
@@ -1091,7 +1101,7 @@ namespace game
 
         //Bullet
         //Second Player Bullets
-        for (int i = 0; i < maxBullets2; i++)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
             player2Bullet[i].isActive = false;
             player2Bullet[i].isMoving = false;
