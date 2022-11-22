@@ -55,7 +55,7 @@ namespace game
     bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h);
 
     void PlayerCollision(Player& play);
-    void PlayerMovement(Player& play);
+    void PlayerMovement();
     void PlayerJump(Player& play);
     void PlayerBulletMovement(Bullet& playerbullet, Player& play, int bulletPos);
 
@@ -497,12 +497,7 @@ namespace game
     {
         ObstacleMovement();
 
-        PlayerMovement(player);
-
-        if (coop)
-        {
-            PlayerMovement(secondPlayer);
-        }
+        PlayerMovement();
 
         for (int i = 0; i < maxBullets; i++)
         {
@@ -628,30 +623,30 @@ namespace game
         return false;
     }
 
-    void PlayerMovement(Player& play)
+    void PlayerMovement()
     {
         if (IsKeyDown(KEY_A))
         {
-            play.pos.x -= play.speed * GetFrameTime();
+            player.pos.x -= player.speed * GetFrameTime();
         }
 
         if (IsKeyDown(KEY_D))
         {
-            play.pos.x += play.speed * GetFrameTime();
+            player.pos.x += player.speed * GetFrameTime();
         }
 
-        if (IsKeyDown(KEY_SPACE) && play.isJumping == false)
+        if (IsKeyDown(KEY_SPACE) && player.isJumping == false)
         {
-            PlayerJump(play);
+            PlayerJump(player);
         }
-        if (play.isJumping == true && play.pos.y < ground.pos.y)
+        if (player.isJumping == true && player.pos.y < ground.pos.y)
         {
-            play.gravity = play.gravity + play.jumpForce * GetFrameTime();
-            play.pos.y = play.pos.y + play.gravity * GetFrameTime();
+            player.gravity = player.gravity + player.jumpForce * GetFrameTime();
+            player.pos.y = player.pos.y + player.gravity * GetFrameTime();
         }
-        if (play.isJumping == false)
+        if (player.isJumping == false)
         {
-            play.speed = 420;
+            player.speed = 420;
         }
 
         if (IsKeyPressed(KEY_W))
@@ -672,6 +667,52 @@ namespace game
         }
         
         PlayerLimit(player, screenWidth);
+
+        if (coop)
+        {
+            if (IsKeyDown(KEY_LEFT))
+            {
+                secondPlayer.pos.x -= secondPlayer.speed * GetFrameTime();
+            }
+
+            if (IsKeyDown(KEY_RIGHT))
+            {
+                secondPlayer.pos.x += secondPlayer.speed * GetFrameTime();
+            }
+
+            if (IsKeyDown(KEY_DOWN) && secondPlayer.isJumping == false)
+            {
+                PlayerJump(secondPlayer);
+            }
+            if (secondPlayer.isJumping == true && secondPlayer.pos.y < ground.pos.y)
+            {
+                secondPlayer.gravity = secondPlayer.gravity + secondPlayer.jumpForce * GetFrameTime();
+                secondPlayer.pos.y = secondPlayer.pos.y + secondPlayer.gravity * GetFrameTime();
+            }
+            if (secondPlayer.isJumping == false)
+            {
+                secondPlayer.speed = 420;
+            }
+
+            if (IsKeyPressed(KEY_UP))
+            {
+                for (int i = 0; i < maxBullets; i++)
+                {
+                    if (playerBullet[i].isActive == false)
+                    {
+                        if (!playerBullet[i].isMoving)
+                        {
+                            playerBullet[i].isActive = true;
+                            playerBullet[i].isMoving = true;
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            PlayerLimit(secondPlayer, screenWidth);
+        }
     }
 
     void PlayerJump(Player& play)
