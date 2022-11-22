@@ -93,7 +93,7 @@ namespace game
 			play.color = ORANGE;
 		}
 
-		//Controlls Button
+		//Controls Button
 		if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 20), static_cast<float>(GetScreenHeight() / 2.5), static_cast<float>(controls.width), static_cast<float>(controls.height) }) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)
 		{
 			controls.color = BLUE;
@@ -165,7 +165,7 @@ namespace game
 				}
 			}
 
-			//Controlls Button
+			//Controls Button
 			if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 20), static_cast<float>(GetScreenHeight() / 2.5), static_cast<float>(controls.width), static_cast<float>(controls.height) }))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)

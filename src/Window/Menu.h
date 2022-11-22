@@ -23,6 +23,7 @@ namespace game
 	enum class Menu
 	{
 		MainMenu,
+		PlayMenu,
 		Play,
 		Controls,
 		Rules,
