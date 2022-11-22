@@ -112,7 +112,6 @@ namespace game
 		{
 			play.color = BLUE;
 		}
-
 		else
 		{
 			play.color = ORANGE;
@@ -123,7 +122,6 @@ namespace game
 		{
 			controls.color = BLUE;
 		}
-
 		else
 		{
 			controls.color = ORANGE;
@@ -134,7 +132,6 @@ namespace game
 		{
 			rules.color = BLUE;
 		}
-
 		else
 		{
 			rules.color = ORANGE;
@@ -145,7 +142,6 @@ namespace game
 		{
 			credits.color = BLUE;
 		}
-
 		else
 		{
 			credits.color = ORANGE;
@@ -156,7 +152,6 @@ namespace game
 		{
 			quit.color = BLUE;
 		}
-
 		else
 		{
 			quit.color = ORANGE;
@@ -167,10 +162,27 @@ namespace game
 		{
 			returnMenu.color = BLUE;
 		}
-
 		else
 		{
 			returnMenu.color = ORANGE;
+		}
+
+		if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 6), static_cast<float>(GetScreenHeight() / 1.5), static_cast<float>(singlePlayer.width), static_cast<float>(singlePlayer.height) }))
+		{
+			singlePlayer.color = BLUE;
+		}
+		else
+		{
+			singlePlayer.color = ORANGE;
+		}
+
+		if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 1.55), static_cast<float>(GetScreenHeight() / 1.5), static_cast<float>(multiPlayer.width), static_cast<float>(multiPlayer.height) }))
+		{
+			multiPlayer.color = BLUE;
+		}
+		else
+		{
+			multiPlayer.color = ORANGE;
 		}
 	}
 
@@ -184,9 +196,6 @@ namespace game
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)
 				{
 					optionSelect = 6;
-					play.isActive = true;
-					playGame = true;
-					HideCursor();
 				}
 			}
 
@@ -233,6 +242,26 @@ namespace game
 				{
 					optionSelect = 0;
 					playGame = false;
+				}
+			}
+
+			if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 6), static_cast<float>(GetScreenHeight() / 1.5), static_cast<float>(singlePlayer.width), static_cast<float>(singlePlayer.height) }))
+			{
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)
+				{
+					optionSelect = 1;
+					play.isActive = true;
+					playGame = true;
+				}
+			}
+			
+			if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 1.55), static_cast<float>(GetScreenHeight() / 1.5), static_cast<float>(multiPlayer.width), static_cast<float>(multiPlayer.height) }))
+			{
+				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)
+				{
+					optionSelect = 1;
+					play.isActive = true;
+					playGame = true;
 				}
 			}
 		}
@@ -282,10 +311,10 @@ namespace game
 		DrawTextureEx(player.playerTexture, { static_cast<float>(GetScreenWidth() / 1.55), static_cast<float>(GetScreenHeight() / 3.4) }, 0.0f, 2.0f, player.color);
 		DrawTextureEx(player2.playerTexture, { static_cast<float>(GetScreenWidth() / 1.55), static_cast<float>(GetScreenHeight() / 2) }, 0.0f, 2.0f, player.color);
 
-		//DrawRectangle(static_cast<int>(GetScreenWidth() / 6), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(singlePlayer.width), static_cast<int>(singlePlayer.height), RED);
+		DrawRectangle(static_cast<int>(GetScreenWidth() / 6), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(singlePlayer.width), static_cast<int>(singlePlayer.height), RED);
 		DrawTextEx(gameFont, "1 Player", singlePlayer.pos, static_cast<float>(singlePlayer.size), 0, singlePlayer.color);
 
-		//DrawRectangle(static_cast<int>(GetScreenWidth() / 1.55), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(multiPlayer.width), static_cast<int>(multiPlayer.height), RED);
+		DrawRectangle(static_cast<int>(GetScreenWidth() / 1.55), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(multiPlayer.width), static_cast<int>(multiPlayer.height), RED);
 		DrawTextEx(gameFont, "2 Players", multiPlayer.pos, static_cast<float>(multiPlayer.size), 0, multiPlayer.color);
 
 		//ReturnMenu Button
@@ -316,6 +345,7 @@ namespace game
 			{ static_cast<float>(GetScreenWidth() / 8) , static_cast<float>(GetScreenHeight() / 5) }, 30, 0, ORANGE);
 
 		//ReturnMenu Button
+		
 		//DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
 		DrawTextEx(gameFont, "MENU", returnMenu.pos, static_cast<float>(returnMenu.size), 0, returnMenu.color);
 	}
