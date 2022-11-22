@@ -1,6 +1,7 @@
 #pragma once
-#include "raylib.h"
 #include "Objects/Mouse.h"
+#include "Objects/Player.h"
+#include "raylib.h"
 
 namespace game 
 {
@@ -23,18 +24,19 @@ namespace game
 	enum class Menu
 	{
 		MainMenu,
-		PlayMenu,
 		Play,
 		Controls,
 		Rules,
 		Credits,
-		Quit
+		Quit,
+		PlayMenu
 	};
 
 	void InitMenu();
 	void MenuCollisions(Mouse& mouse, int& optionSelect);
 	void MenuInputs(Mouse& mouse, int& optionSelect, bool& playGame);
 	void DrawMenu(Font gameFont);
+	void DrawPlayMenu(Font gameFont, Player player, Player player2);
 	void DrawControls(Font gameFont);
 	void DrawRules(Font gameFont);
 	void DrawCredits(Font gameFont);

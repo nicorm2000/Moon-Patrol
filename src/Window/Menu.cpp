@@ -1,10 +1,13 @@
 #include "Window/Menu.h"
 #include "Objects/Mouse.h"
+#include "Objects/Player.h"
 #include "raylib.h"
 
 namespace game
 {
 	MenuButton play;
+	MenuButton singlePlayer;
+	MenuButton multiPlayer;
 	MenuButton controls;
 	MenuButton rules;
 	MenuButton credits;
@@ -24,7 +27,29 @@ namespace game
 
 		play.color = ORANGE;
 
-		//Controlls Button
+		//SinglePlayer Button
+
+		singlePlayer.pos.x = static_cast<float>(GetScreenWidth() / 5.9);
+		singlePlayer.pos.y = static_cast<float>(GetScreenHeight() / 1.5);
+		singlePlayer.width = static_cast<float>(GetScreenWidth() / 7);
+		singlePlayer.height = static_cast<float>(GetScreenHeight() / 16);
+		singlePlayer.size = 40;
+		singlePlayer.isActive = false;
+
+		singlePlayer.color = ORANGE;
+
+		//MultiPlayer Button
+
+		multiPlayer.pos.x = static_cast<float>(GetScreenWidth() / 1.55);
+		multiPlayer.pos.y = static_cast<float>(GetScreenHeight() / 1.5);
+		multiPlayer.width = static_cast<float>(GetScreenWidth() / 6);
+		multiPlayer.height = static_cast<float>(GetScreenHeight() / 16);
+		multiPlayer.size = 40;
+		multiPlayer.isActive = false;
+
+		multiPlayer.color = ORANGE;
+
+		//Controls Button
 
 		controls.pos.x = static_cast<float>(GetScreenWidth() / 20);
 		controls.pos.y = static_cast<float>(GetScreenHeight() / 2.5);
@@ -70,7 +95,7 @@ namespace game
 
 		//ReturnMenu Button
 
-		returnMenu.pos.x = static_cast<float>(GetScreenWidth() / 2.5);
+		returnMenu.pos.x = static_cast<float>(GetScreenWidth() / 2.17);
 		returnMenu.pos.y = static_cast<float>(GetScreenHeight() / 1.1);
 		returnMenu.width = static_cast<float>(GetScreenWidth() / 10);
 		returnMenu.height = static_cast<float>(GetScreenHeight() / 16);
@@ -138,7 +163,7 @@ namespace game
 		}
 
 		//ReturnMenu Button
-		if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 2.5), static_cast<float>(GetScreenHeight() / 1.1), static_cast<float>(quit.width), static_cast<float>(quit.height) }) && optionSelect != 1)
+		if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 2.17), static_cast<float>(GetScreenHeight() / 1.1), static_cast<float>(quit.width), static_cast<float>(quit.height) }) && optionSelect != 1)
 		{
 			returnMenu.color = BLUE;
 		}
@@ -158,7 +183,7 @@ namespace game
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && optionSelect != 1 && optionSelect != 2 && optionSelect != 3 && optionSelect != 4 && optionSelect != 5)
 				{
-					optionSelect = 1;
+					optionSelect = 6;
 					play.isActive = true;
 					playGame = true;
 					HideCursor();
@@ -202,7 +227,7 @@ namespace game
 			}
 
 			//ReturnMenu Button
-			if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 2.5), static_cast<float>(GetScreenHeight() / 1.1), static_cast<float>(quit.width), static_cast<float>(quit.height) }))
+			if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(GetScreenWidth() / 2.17), static_cast<float>(GetScreenHeight() / 1.1), static_cast<float>(quit.width), static_cast<float>(quit.height) }))
 			{
 				if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && optionSelect != 1)
 				{
@@ -245,6 +270,30 @@ namespace game
 		DrawTextEx(gameFont, "QUIT", quit.pos, static_cast<float>(quit.size), 0, quit.color);
 	}
 
+	void DrawPlayMenu(Font gameFont, Player player, Player player2)
+	{
+		ClearBackground(BLACK);
+
+		DrawTextEx(gameFont, "SinglePlayer", { static_cast<float>(GetScreenWidth() / 12) , static_cast<float>(GetScreenHeight() / 6) }, 60, 0, ORANGE);
+		DrawTextEx(gameFont, "MultiPlayer", { static_cast<float>(GetScreenWidth() / 1.7) , static_cast<float>(GetScreenHeight() / 6) }, 60, 0, ORANGE);
+
+		DrawTextureEx(player.playerTexture, { static_cast<float>(GetScreenWidth() / 6), static_cast<float>(GetScreenHeight() / 2.5) }, 0.0f, 2.0f, player.color);
+		
+		DrawTextureEx(player.playerTexture, { static_cast<float>(GetScreenWidth() / 1.55), static_cast<float>(GetScreenHeight() / 3.4) }, 0.0f, 2.0f, player.color);
+		DrawTextureEx(player2.playerTexture, { static_cast<float>(GetScreenWidth() / 1.55), static_cast<float>(GetScreenHeight() / 2) }, 0.0f, 2.0f, player.color);
+
+		//DrawRectangle(static_cast<int>(GetScreenWidth() / 6), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(singlePlayer.width), static_cast<int>(singlePlayer.height), RED);
+		DrawTextEx(gameFont, "1 Player", singlePlayer.pos, static_cast<float>(singlePlayer.size), 0, singlePlayer.color);
+
+		//DrawRectangle(static_cast<int>(GetScreenWidth() / 1.55), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(multiPlayer.width), static_cast<int>(multiPlayer.height), RED);
+		DrawTextEx(gameFont, "2 Players", multiPlayer.pos, static_cast<float>(multiPlayer.size), 0, multiPlayer.color);
+
+		//ReturnMenu Button
+
+		//DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
+		DrawTextEx(gameFont, "MENU", returnMenu.pos, static_cast<float>(returnMenu.size), 0, returnMenu.color);
+	}
+
 	void DrawControls(Font gameFont)
 	{
 		ClearBackground(BLACK);
@@ -253,7 +302,7 @@ namespace game
 
 		//ReturnMenu Button
 
-		DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
+		//DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
 		DrawTextEx(gameFont, "MENU", returnMenu.pos, static_cast<float>(returnMenu.size), 0, returnMenu.color);
 	}
 
@@ -267,7 +316,7 @@ namespace game
 			{ static_cast<float>(GetScreenWidth() / 8) , static_cast<float>(GetScreenHeight() / 5) }, 30, 0, ORANGE);
 
 		//ReturnMenu Button
-		DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
+		//DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
 		DrawTextEx(gameFont, "MENU", returnMenu.pos, static_cast<float>(returnMenu.size), 0, returnMenu.color);
 	}
 
@@ -283,7 +332,7 @@ namespace game
 		DrawTextEx(gameFont, "FONT", { static_cast<float>(GetScreenWidth() / 2.3) , static_cast<float>(GetScreenHeight() / 2) }, 30, 0, GOLD);
 
 		//ReturnMenu Button
-		DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
+		//DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
 		DrawTextEx(gameFont, "MENU", returnMenu.pos, static_cast<float>(returnMenu.size), 0, returnMenu.color);
 	}
 }

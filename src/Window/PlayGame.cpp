@@ -439,13 +439,6 @@ namespace game
                             EndDrawing();
                             break;
 
-                        case static_cast<int>(Menu::PlayMenu):
-                            BeginDrawing();
-                            ClearBackground(BLACK);
-                            DrawMouse(mouse);
-                            EndDrawing();
-                            break;
-
                         case static_cast<int>(Menu::Play) :
                             Draw();
                             break;
@@ -476,6 +469,14 @@ namespace game
 
                         case static_cast<int>(Menu::Quit) :
                             gameOn = false;
+                            break;
+
+                        case static_cast<int>(Menu::PlayMenu):
+                            BeginDrawing();
+                            ClearBackground(BLACK);
+                            DrawPlayMenu(gameFont, player, SecondPlayer);
+                            DrawMouse(mouse);
+                            EndDrawing();
                             break;
                     }
                 }
