@@ -1,5 +1,5 @@
-#include "raylib.h"
 #include "Objects/Mouse.h"
+#include "raylib.h"
 
 namespace game
 {

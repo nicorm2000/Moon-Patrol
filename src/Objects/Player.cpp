@@ -1,4 +1,6 @@
 #include "Objects/Player.h"
+#include "raylib.h"
+
 namespace game
 {
 	Player CreatePlayer(int screenWidth, int screenHeight)
