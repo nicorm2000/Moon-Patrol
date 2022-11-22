@@ -252,6 +252,7 @@ namespace game
 					optionSelect = 1;
 					play.isActive = true;
 					playGame = true;
+					coop = false;
 				}
 			}
 			
@@ -262,7 +263,7 @@ namespace game
 					optionSelect = 1;
 					play.isActive = true;
 					playGame = true;
-					coop = false;
+					coop = true;
 				}
 			}
 		}

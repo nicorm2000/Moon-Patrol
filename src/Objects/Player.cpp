@@ -33,56 +33,56 @@ namespace game
 		return player;
 	}
 
-	void DrawPlayer(Player& player)
+	void DrawPlayer(Player& play)
 	{
 		//DrawRectangle(static_cast<int>(player.pos.x), static_cast<int>(player.pos.y), static_cast<int>(player.width), static_cast<int>(player.height), player.color);
-		DrawTexture(player.playerTexture, static_cast<int>(player.pos.x), static_cast<int>(player.pos.y), player.color);
+		DrawTexture(play.playerTexture, static_cast<int>(play.pos.x), static_cast<int>(play.pos.y), play.color);
 	}
 
-	void PlayerLimit(Player& player, int screenWidth)
+	void PlayerLimit(Player& play, int screenWidth)
 	{
-		if (player.pos.x > screenWidth - player.width)
+		if (play.pos.x > screenWidth - play.width)
 		{
-			player.pos.x = screenWidth - player.width;
+			play.pos.x = screenWidth - play.width;
 		}
 
-		if (player.pos.x < screenWidth / screenWidth)
+		if (play.pos.x < screenWidth / screenWidth)
 		{
-			player.pos.x = static_cast<float>(screenWidth / screenWidth);
-		}
-	}
-
-	void LoseLife(Player& player)
-	{
-		if (player.isCollision == true)
-		{
-			player.lifes -= 1;
+			play.pos.x = static_cast<float>(screenWidth / screenWidth);
 		}
 	}
 
-	bool IsAlive(Player& player)
+	void LoseLife(Player& play)
 	{
-		if (player.lifes <= 0)
+		if (play.isCollision == true)
 		{
-			return player.isAlive == false;
+			play.lifes -= 1;
+		}
+	}
+
+	bool IsAlive(Player& play)
+	{
+		if (play.lifes <= 0)
+		{
+			return play.isAlive == false;
 		}
 
 		else
 		{
-			return player.isAlive == true;
+			return play.isAlive == true;
 		}
 	}
 
-	bool PlayerWin(Player& player)
+	bool PlayerWin(Player& play)
 	{
-		if (player.points < 1500000)
+		if (play.points < 1500000)
 		{
-			return player.win == true;
+			return play.win == true;
 		}
 
 		else
 		{
-			return player.win == false;
+			return play.win == false;
 		}
 	}
 }

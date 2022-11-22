@@ -508,7 +508,7 @@ namespace game
         {
             for (int i = 0; i < maxBullets2; i++)
             {
-                PlayerBulletMovement(player2Bullet[i], secondPlayer, 9);
+                PlayerBulletMovement(player2Bullet[i], secondPlayer, 13);
             }
         }
 
@@ -538,6 +538,14 @@ namespace game
             DrawBullet(playerBullet[i]);
         }
 
+        if (coop)
+        {
+            for (int i = 0; i < maxBullets2; i++)
+            {
+                DrawBullet(player2Bullet[i]);
+            }
+        }
+
         for (int i = 0; i < maxflyEnemy; i++)
         {
             if (flyEnemy[i].isActive == true)
@@ -547,6 +555,12 @@ namespace game
         }
 
         DrawPlayer(player);
+        
+        if (coop)
+        {
+            DrawPlayer(secondPlayer);
+        }
+
         DrawTextEx(gameFont, TextFormat("score %0i", player.points), { static_cast<float>(GetScreenWidth() / 2.5) , static_cast<float>(GetScreenHeight() / 1.1) }, 50, 0, WHITE);
 
         if (!pauseMenu.isActive)
@@ -563,7 +577,7 @@ namespace game
             DrawPauseMenu();
         }
 
-        if (!IsAlive(player) || PlayerWin(player))
+        if (!IsAlive(player) || !IsAlive(secondPlayer))
         {
             DrawRestartGameMenu();
         }
@@ -680,7 +694,7 @@ namespace game
                 secondPlayer.pos.x += secondPlayer.speed * GetFrameTime();
             }
 
-            if (IsKeyDown(KEY_DOWN) && secondPlayer.isJumping == false)
+            if (IsKeyDown(KEY_ENTER) && secondPlayer.isJumping == false)
             {
                 PlayerJump(secondPlayer);
             }
@@ -696,14 +710,14 @@ namespace game
 
             if (IsKeyPressed(KEY_UP))
             {
-                for (int i = 0; i < maxBullets; i++)
+                for (int i = 0; i < maxBullets2; i++)
                 {
-                    if (playerBullet[i].isActive == false)
+                    if (player2Bullet[i].isActive == false)
                     {
-                        if (!playerBullet[i].isMoving)
+                        if (!player2Bullet[i].isMoving)
                         {
-                            playerBullet[i].isActive = true;
-                            playerBullet[i].isMoving = true;
+                            player2Bullet[i].isActive = true;
+                            player2Bullet[i].isMoving = true;
 
                             break;
                         }
@@ -977,12 +991,12 @@ namespace game
 
         DrawTexture(restartMenu.texture, static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), WHITE);
 
-        if (!IsAlive(player))
+        if (!IsAlive(player) || !IsAlive(secondPlayer))
         {
             DrawTextEx(gameFont, "YOU LOSE", { static_cast<float>(screenWidth / 3), static_cast<float>(screenHeight / 3.1) }, 100, 0, WHITE);
         }
 
-        if (PlayerWin(player))
+        if (PlayerWin(player) || PlayerWin(secondPlayer))
         {
             DrawTextEx(gameFont, "YOU WIN", { static_cast<float>(screenWidth / 3), static_cast<float>(screenHeight / 3.1) }, 100, 0, WHITE);
         }
@@ -1048,7 +1062,7 @@ namespace game
         player.width = 80;
         player.height = 40;
         player.speed = 420;
-        player.lifes = 3;
+        player.lifes = 1;
         player.points = 0;
         player.isCollision = false;
         player.isAlive = true;
@@ -1060,7 +1074,7 @@ namespace game
         secondPlayer.width = 80;
         secondPlayer.height = 40;
         secondPlayer.speed = 420;
-        secondPlayer.lifes = 3;
+        secondPlayer.lifes = 1;
         secondPlayer.isCollision = false;
         secondPlayer.isAlive = true;
         secondPlayer.win = false;

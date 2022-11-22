@@ -31,13 +31,13 @@ namespace game
 
 	Player CreatePlayer(int screenWidth, int screenHeight);
 
-	void DrawPlayer(Player& player);
+	void DrawPlayer(Player& play);
 
-	void PlayerLimit(Player& player, int screenWidth);
+	void PlayerLimit(Player& play, int screenWidth);
 
-	void LoseLife(Player& player);
+	void LoseLife(Player& play);
 
-	bool IsAlive(Player& player);
+	bool IsAlive(Player& play);
 
-	bool PlayerWin(Player& player);
+	bool PlayerWin(Player& play);
 }
