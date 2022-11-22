@@ -55,9 +55,9 @@ namespace game
     bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h);
 
     void PlayerCollision();
-    void PlayerMovement();
-    void PlayerJump();
-    void PlayerBulletMovement();
+    void PlayerMovement(Player& play);
+    void PlayerJump(Player& play);
+    void PlayerBulletMovement(Bullet& playerbullet, Player& play);
 
     void BulletCollision();
     void BulletCollisonLimit();
@@ -84,10 +84,11 @@ namespace game
     //Menu
     int optionSelect = 0;
     bool playGame = false;
+    bool coop = false;
 
     //Player
     Player player = CreatePlayer(screenWidth, screenHeight);
-    Player SecondPlayer = CreatePlayer(screenWidth, screenHeight);
+    Player secondPlayer = CreatePlayer(screenWidth, screenHeight);
 
     //Bullet
     int const maxBullets = 30;
@@ -226,7 +227,7 @@ namespace game
 
         //Player
         player.playerTexture = LoadTexture("resources/Sprites/Player1.png");
-        SecondPlayer.playerTexture = LoadTexture("resources/Sprites/Player2.png");
+        secondPlayer.playerTexture = LoadTexture("resources/Sprites/Player2.png");
     }
 
     void InitRestartMenu()
@@ -413,7 +414,7 @@ namespace game
             {
                 MouseMovement();
                 MenuCollisions(mouse, optionSelect);
-                MenuInputs(mouse, optionSelect, playGame);
+                MenuInputs(mouse, optionSelect, playGame, coop);
 
                 if (playGame == true)
                 {
@@ -476,7 +477,7 @@ namespace game
                         case static_cast<int>(Menu::PlayMenu):
                             BeginDrawing();
                             ClearBackground(BLACK);
-                            DrawPlayMenu(gameFont, player, SecondPlayer);
+                            DrawPlayMenu(gameFont, player, secondPlayer);
                             DrawMouse(mouse);
                             EndDrawing();
                             break;
@@ -495,8 +496,27 @@ namespace game
     void Update()
     {
         ObstacleMovement();
-        PlayerMovement();
-        PlayerBulletMovement();
+
+        PlayerMovement(player);
+
+        if (coop)
+        {
+            PlayerMovement(secondPlayer);
+        }
+
+        for (int i = 0; i < maxBullets; i++)
+        {
+            PlayerBulletMovement(playerBullet[i], player);
+        }
+
+        if (coop)
+        {
+            for (int i = 0; i < maxBullets2; i++)
+            {
+                PlayerBulletMovement(player2Bullet[i], secondPlayer);
+            }
+        }
+
         BackgroundMovement();
         FlyEnemyMovement();
     }
@@ -578,30 +598,30 @@ namespace game
         return false;
     }
 
-    void PlayerMovement()
+    void PlayerMovement(Player& play)
     {
         if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT))
         {
-            player.pos.x -= player.speed * GetFrameTime();
+            play.pos.x -= play.speed * GetFrameTime();
         }
 
         if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT))
         {
-            player.pos.x += player.speed * GetFrameTime();
+            play.pos.x += play.speed * GetFrameTime();
         }
 
-        if (IsKeyDown(KEY_SPACE) && player.isJumping == false)
+        if (IsKeyDown(KEY_SPACE) && play.isJumping == false)
         {
-            PlayerJump();
+            PlayerJump(play);
         }
-        if (player.isJumping == true && player.pos.y < ground.pos.y)
+        if (play.isJumping == true && play.pos.y < ground.pos.y)
         {
-            player.gravity = player.gravity + player.jumpForce * GetFrameTime();
-            player.pos.y = player.pos.y + player.gravity * GetFrameTime();
+            play.gravity = play.gravity + play.jumpForce * GetFrameTime();
+            play.pos.y = play.pos.y + play.gravity * GetFrameTime();
         }
-        if (player.isJumping == false)
+        if (play.isJumping == false)
         {
-            player.speed = 420;
+            play.speed = 420;
         }
 
         if (IsKeyPressed(KEY_W))
@@ -624,36 +644,36 @@ namespace game
         PlayerLimit(player, screenWidth);
     }
 
-    void PlayerJump()
+    void PlayerJump(Player& play)
     {
         int minimumHeightForPlayer = 650;
 
-        player.gravity = -250;
+        play.gravity = -250;
         
-        if (player.pos.y < minimumHeightForPlayer)
+        if (play.pos.y < minimumHeightForPlayer)
         {
-            player.isJumping = true;
-            player.speed = 250;
+            play.isJumping = true;
+            play.speed = 250;
             //aca va el sonido sino se ejecuta mil veces
         }
 
-        player.pos.y += player.gravity * GetFrameTime();
+        play.pos.y += play.gravity * GetFrameTime();
     }
 
-    void PlayerBulletMovement()
+    void PlayerBulletMovement(Bullet& playerbullet, Player& play)
     {
         int bulletPosition = 13;
 
         for (int i = 0; i < maxBullets; i++)
         {
-            if (playerBullet[i].isMoving == false)
+            if (playerbullet.isMoving == false)
             {
-                playerBullet[i].pos.y = player.pos.y;
-                playerBullet[i].pos.x = player.pos.x + bulletPosition;
+                playerbullet.pos.y = play.pos.y;
+                playerbullet.pos.x = play.pos.x + bulletPosition;
             }
-            if (playerBullet[i].isMoving)
+            if (playerbullet.isMoving)
             {
-                playerBullet[i].pos.y -= playerBullet[i].speed * GetFrameTime();
+                playerbullet.pos.y -= playerbullet.speed * GetFrameTime();
             }
         }
     }
@@ -679,6 +699,29 @@ namespace game
                 }
             }
         }
+
+        if (coop)
+        {
+            for (int i = 0; i < maxBullets2; i++)
+            {
+                for (int j = 0; j < maxflyEnemy; j++)
+                {
+                    if (CheckCollisionRecRec(player2Bullet[i].pos, player2Bullet[i].width, player2Bullet[i].height, flyEnemy[j].pos, flyEnemy[j].width, flyEnemy[j].height))
+                    {
+                        player2Bullet[i].isMoving = false;
+                        player2Bullet[i].isActive = false;
+
+                        flyEnemy[j].life--;
+                    }
+                    if (flyEnemy[j].life <= 0)
+                    {
+                        flyEnemy[j].isActive = false;
+                        player.points = player.points + 50;
+                        FlyEnemyRespawn();
+                    }
+                }
+            }
+        }
     }
 
     void BulletCollisonLimit()
@@ -696,6 +739,26 @@ namespace game
                 {
                     playerBullet[i].isMoving = false;
                     playerBullet[i].isActive = false;
+                }
+            }
+        }
+
+        if (coop)
+        {
+            for (int i = 0; i < maxBullets2; i++)
+            {
+                if (player2Bullet[i].isMoving)
+                {
+                    if (player2Bullet[i].pos.y < 0)
+                    {
+                        player2Bullet[i].isMoving = false;
+                        player2Bullet[i].isActive = false;
+                    }
+                    if (player2Bullet[i].pos.y >= screenHeight)
+                    {
+                        player2Bullet[i].isMoving = false;
+                        player2Bullet[i].isActive = false;
+                    }
                 }
             }
         }
@@ -774,15 +837,25 @@ namespace game
             LoseLife(player);
         }
 
-        if (!CheckCollisionRecRec(player.pos, player.width - 20, player.height - 5, obstacle.pos, obstacle.width, obstacle.height))
-        {
-            player.isCollision = false;
-        }
-
         if (CheckCollisionRecRec(player.pos, player.width, player.height, ground.pos, ground.width , ground.height))
         {
             player.isJumping = false;
             player.gravity = 0;
+        }
+
+        if (coop)
+        {
+            if (CheckCollisionRecRec(secondPlayer.pos, secondPlayer.width - 20, secondPlayer.height - 5, obstacle.pos, obstacle.width, obstacle.height))
+            {
+                secondPlayer.isCollision = true;
+                LoseLife(secondPlayer);
+            }
+
+            if (CheckCollisionRecRec(secondPlayer.pos, secondPlayer.width, secondPlayer.height, ground.pos, ground.width, ground.height))
+            {
+                secondPlayer.isJumping = false;
+                secondPlayer.gravity = 0;
+            }
         }
     }
 
@@ -977,16 +1050,15 @@ namespace game
         player.win = false;
 
         //Second Player
-        SecondPlayer.pos.x = static_cast<float>(screenWidth / 6);
-        SecondPlayer.pos.y = static_cast<float>(screenHeight / 1.165);
-        SecondPlayer.width = 80;
-        SecondPlayer.height = 40;
-        SecondPlayer.speed = 420;
-        SecondPlayer.lifes = 3;
-        SecondPlayer.points = 0;
-        SecondPlayer.isCollision = false;
-        SecondPlayer.isAlive = true;
-        SecondPlayer.win = false;
+        secondPlayer.pos.x = static_cast<float>(screenWidth / 6);
+        secondPlayer.pos.y = static_cast<float>(screenHeight / 1.165);
+        secondPlayer.width = 80;
+        secondPlayer.height = 40;
+        secondPlayer.speed = 420;
+        secondPlayer.lifes = 3;
+        secondPlayer.isCollision = false;
+        secondPlayer.isAlive = true;
+        secondPlayer.win = false;
 
         //Bullet
         //PlayerBullets
@@ -1004,8 +1076,8 @@ namespace game
         {
             player2Bullet[i].isActive = false;
             player2Bullet[i].isMoving = false;
-            player2Bullet[i].pos.y = SecondPlayer.pos.y;
-            player2Bullet[i].pos.x = SecondPlayer.pos.x;
+            player2Bullet[i].pos.y = secondPlayer.pos.y;
+            player2Bullet[i].pos.x = secondPlayer.pos.x;
         }
 
         //Obstacle

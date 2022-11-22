@@ -19,7 +19,7 @@ namespace game
 
 		player.jumpForce = 300;
 
-		player.lifes = 3;
+		player.lifes = 1;
 
 		player.points = 0;
 

@@ -186,7 +186,7 @@ namespace game
 		}
 	}
 
-	void MenuInputs(Mouse& mouse, int& optionSelect, bool& playGame)
+	void MenuInputs(Mouse& mouse, int& optionSelect, bool& playGame, bool& coop)
 	{
 		if (!playGame)
 		{
@@ -262,6 +262,7 @@ namespace game
 					optionSelect = 1;
 					play.isActive = true;
 					playGame = true;
+					coop = false;
 				}
 			}
 		}
