@@ -109,4 +109,27 @@
       <Filter>Resources\Sprites</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\Sounds\aMimir.mp3">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="resources\Sounds\chikis.mp3">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="resources\Sounds\cocazoAlLobby.mp3">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="resources\Sounds\estoEsBoca.mp3">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="resources\Sounds\puntosCeppic.mp3">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="resources\Sounds\uwu.mp3">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+    <Media Include="resources\Sounds\whileTrue.mp3">
+      <Filter>Resources\Sounds</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

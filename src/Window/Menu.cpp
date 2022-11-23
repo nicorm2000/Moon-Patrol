@@ -314,10 +314,10 @@ namespace game
 		DrawTextureEx(player.playerTexture, { static_cast<float>(GetScreenWidth() / 1.55), static_cast<float>(GetScreenHeight() / 3.4) }, 0.0f, 2.0f, player.color);
 		DrawTextureEx(player2.playerTexture, { static_cast<float>(GetScreenWidth() / 1.55), static_cast<float>(GetScreenHeight() / 2) }, 0.0f, 2.0f, player.color);
 
-		DrawRectangle(static_cast<int>(GetScreenWidth() / 6), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(singlePlayer.width), static_cast<int>(singlePlayer.height), RED);
+		DrawRectangle(static_cast<int>(GetScreenWidth() / 6), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(singlePlayer.width), static_cast<int>(singlePlayer.height), BLANK);
 		DrawTextEx(gameFont, "1 Player", singlePlayer.pos, static_cast<float>(singlePlayer.size), 0, singlePlayer.color);
 
-		DrawRectangle(static_cast<int>(GetScreenWidth() / 1.55), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(multiPlayer.width), static_cast<int>(multiPlayer.height), RED);
+		DrawRectangle(static_cast<int>(GetScreenWidth() / 1.55), static_cast<int>(GetScreenHeight() / 1.5), static_cast<int>(multiPlayer.width), static_cast<int>(multiPlayer.height), BLANK);
 		DrawTextEx(gameFont, "2 Players", multiPlayer.pos, static_cast<float>(multiPlayer.size), 0, multiPlayer.color);
 
 		//ReturnMenu Button
