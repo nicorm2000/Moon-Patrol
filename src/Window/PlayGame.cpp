@@ -170,12 +170,9 @@ namespace game
         }
 
         //Bullet Player2
-        if (coop)
+        for (int i = 0; i < MAX_BULLETS; i++)
         {
-            for (int i = 0; i < MAX_BULLETS; i++)
-            {
-                player2Bullet[i] = CreateBullet();
-            }
+            player2Bullet[i] = CreateBullet();
         }
         
         LoadTextureBullet(playerBullet[0]);
