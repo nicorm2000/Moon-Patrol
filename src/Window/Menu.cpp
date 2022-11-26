@@ -374,4 +374,16 @@ namespace game
 		//DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
 		DrawTextEx(gameFont, "MENU", returnMenu.pos, static_cast<float>(returnMenu.size), 10, returnMenu.color);
 	}
+
+	void UnloadMenu()
+	{
+		UnloadTexture(play.texture);
+		UnloadTexture(singlePlayer.texture);
+		UnloadTexture(multiPlayer.texture);
+		UnloadTexture(controls.texture);
+		UnloadTexture(rules.texture);
+		UnloadTexture(credits.texture);
+		UnloadTexture(quit.texture);
+		UnloadTexture(returnMenu.texture);
+	}
 }

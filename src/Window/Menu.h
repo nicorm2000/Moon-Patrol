@@ -40,4 +40,5 @@ namespace game
 	void DrawControls(Font gameFont);
 	void DrawRules(Font gameFont);
 	void DrawCredits(Font gameFont);
+	void UnloadMenu();
 }

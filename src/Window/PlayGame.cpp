@@ -178,14 +178,14 @@ namespace game
         LoadTextureBullet(playerBullet[0]);
         
         //Background
-            //Sky
+        //Sky
         sky.pos.x = static_cast<float>(screenWidth / screenWidth);
         sky.tex = LoadTexture("resources/Sprites/Sky.png");
         
         sky2.pos.x = static_cast<float>(screenWidth / screenWidth + sky.width);
         sky2.tex = LoadTexture("resources/Sprites/Sky.png");
             
-            //City
+        //City
         city.pos.x = static_cast<float>(screenWidth / screenWidth);
         city.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
         city.tex = LoadTexture("resources/Sprites/City.png");
@@ -196,7 +196,7 @@ namespace game
         city2.tex = LoadTexture("resources/Sprites/City.png");
         city2.speed = 200;
             
-            //Hill
+        //Hill
         hill.pos.x = static_cast<float>(screenWidth / screenWidth);
         hill.pos.y = static_cast<float>((screenHeight / 1.26));
         hill.tex = LoadTexture("resources/Sprites/Hill.png");
@@ -1199,5 +1199,7 @@ namespace game
         
         UnloadTextureBullet(playerBullet[0]);
         UnloadTextureFlyEnemy(flyEnemy[0]);
+
+        UnloadMenu();
     }
 }
