@@ -52,15 +52,6 @@
     <Image Include="resources\Sprites\PauseButtonOn.png" />
     <Image Include="resources\Sprites\Sky.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Media Include="resources\Sounds\aMimir.mp3" />
-    <Media Include="resources\Sounds\chikis.mp3" />
-    <Media Include="resources\Sounds\cocazoAlLobby.mp3" />
-    <Media Include="resources\Sounds\estoEsBoca.mp3" />
-    <Media Include="resources\Sounds\puntosCeppic.mp3" />
-    <Media Include="resources\Sounds\uwu.mp3" />
-    <Media Include="resources\Sounds\whileTrue.mp3" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{F5976082-0A69-43D7-8D88-F3A1F7EC433A}</ProjectGuid>

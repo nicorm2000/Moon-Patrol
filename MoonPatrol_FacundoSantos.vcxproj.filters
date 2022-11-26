@@ -19,9 +19,6 @@
     <Filter Include="Src\Objects">
       <UniqueIdentifier>{744cb4cd-7a2d-44d3-8d11-c2f38b5ca04b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources\Sounds">
-      <UniqueIdentifier>{42b0e63f-df33-4f81-a55c-6cb0c74c97a8}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Window\PlayGame.cpp">
@@ -108,28 +105,5 @@
     <Image Include="resources\Sprites\PauseButtonOn.png">
       <Filter>Resources\Sprites</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="resources\Sounds\aMimir.mp3">
-      <Filter>Resources\Sounds</Filter>
-    </Media>
-    <Media Include="resources\Sounds\chikis.mp3">
-      <Filter>Resources\Sounds</Filter>
-    </Media>
-    <Media Include="resources\Sounds\cocazoAlLobby.mp3">
-      <Filter>Resources\Sounds</Filter>
-    </Media>
-    <Media Include="resources\Sounds\estoEsBoca.mp3">
-      <Filter>Resources\Sounds</Filter>
-    </Media>
-    <Media Include="resources\Sounds\puntosCeppic.mp3">
-      <Filter>Resources\Sounds</Filter>
-    </Media>
-    <Media Include="resources\Sounds\uwu.mp3">
-      <Filter>Resources\Sounds</Filter>
-    </Media>
-    <Media Include="resources\Sounds\whileTrue.mp3">
-      <Filter>Resources\Sounds</Filter>
-    </Media>
   </ItemGroup>
 </Project>

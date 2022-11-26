@@ -145,7 +145,7 @@ namespace game
 
     void InitGame()
     {
-        InitWindow(screenWidth, screenHeight, "Moon Patrol v0.4");
+        InitWindow(screenWidth, screenHeight, "Moon Patrol v1.0");
         SetExitKey(NULL);
 
         //Menu
