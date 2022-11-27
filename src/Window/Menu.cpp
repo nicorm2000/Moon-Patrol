@@ -424,7 +424,7 @@ namespace game
 	{
 		ClearBackground(BLACK);
 
-		float menuPos = 0.0f;
+		int menuPos = 0;
 
 		DrawTexture(singlePlayer.texture, menuPos, menuPos, WHITE);
 
@@ -469,7 +469,7 @@ namespace game
 	{
 		ClearBackground(BLACK);
 
-		float menuPos = 0.0f;
+		int menuPos = 0;
 
 		DrawTexture(controls.texture, menuPos, menuPos, WHITE);
 
@@ -485,7 +485,7 @@ namespace game
 	{
 		ClearBackground(BLACK);
 
-		float menuPos = 0.0f;
+		int menuPos = 0;
 
 		DrawTexture(rules.texture, menuPos, menuPos, WHITE);
 
@@ -501,7 +501,7 @@ namespace game
 	{
 		ClearBackground(BLACK);
 
-		float menuPos = 0.0f;
+		int menuPos = 0;
 
 		DrawTexture(credits.texture, menuPos, menuPos, WHITE);
 
