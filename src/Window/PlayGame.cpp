@@ -218,11 +218,11 @@ namespace game
 
         //Fly Enemy
 
-        float posFlyEnemyDivider0 = 2.5;
-        float posFlyEnemyDivider1 = 1.9;
-        float posFlyEnemyDivider2 = 1.5;
-        float posFlyEnemyDivider3 = 1.22;
-        float posFlyEnemyDivider4 = 1.05;
+        float posFlyEnemyDivider0 = 2.5f;
+        float posFlyEnemyDivider1 = 1.9f;
+        float posFlyEnemyDivider2 = 1.5f;
+        float posFlyEnemyDivider3 = 1.22f;
+        float posFlyEnemyDivider4 = 1.05f;
 
         for (int i = 0; i < maxflyEnemy; i++)
         {
@@ -254,7 +254,7 @@ namespace game
     {
         //Restart menu
 
-        float restartMenuPosXDivider = 4.3;
+        float restartMenuPosXDivider = 4.3f;
         float restartMenuPosYDivider = 4.5f;
 
         restartMenu.width = 600;
@@ -649,8 +649,8 @@ namespace game
 
         float scoreXPos = 2.5f;
         float scoreYPos = 1.1f;
-        int scoreFontSize = 50;
-        int scoreSpacing = 0;
+        float scoreFontSize = 50;
+        float scoreSpacing = 0;
 
         DrawTextEx(gameFont, TextFormat("score %0i", player.points), { static_cast<float>(GetScreenWidth() / scoreXPos) , static_cast<float>(GetScreenHeight() / scoreYPos) }, scoreFontSize, scoreSpacing, WHITE);
 
@@ -1037,21 +1037,21 @@ namespace game
 
         //Restart Button
 
-        int restartSpacing = 0;
+        float restartSpacing = 0;
 
         //DrawRectangle(static_cast<int>(screenWidth / 2.2), static_cast<int>(screenHeight / 2.2), static_cast<int>(screenWidth / 6.5), static_cast<int>(screenHeight / 10), BLANK);
         DrawTextEx(gameFont, "RESUME", { static_cast<float>(resumeButton.width), static_cast<float>(resumeButton.height) }, static_cast<float>(resumeButton.size), restartSpacing, resumeButton.color);
 
         //Return Menu Button
         
-        int returnSpacing = 0;
+        float returnSpacing = 0;
 
         //DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.7), static_cast<int>(screenWidth / 9.5), static_cast<int>(screenHeight / 12), BLANK);
         DrawTextEx(gameFont, "MENU", { static_cast<float>(returnMenuButton.width), static_cast<float>(returnMenuButton.height) }, static_cast<float>(returnMenuButton.size), returnSpacing, returnMenuButton.color);
 
         //Quit Game Button
         
-        int quitSpacing = 0;
+        float quitSpacing = 0;
 
         //DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.4), static_cast<int>(screenWidth / 10), static_cast<int>(screenHeight / 12), BLANK);
         DrawTextEx(gameFont, "QUIT", { static_cast<float>(quitGameButton.width), static_cast<float>(quitGameButton.height) }, static_cast<float>(quitGameButton.size), quitSpacing, quitGameButton.color);
@@ -1123,8 +1123,8 @@ namespace game
 
         float loseXDivider = 3.0f;
         float loseYDivider = 3.1f;
-        int loseFontSize = 100;
-        int loseSpacing = 0;
+        float loseFontSize = 100;
+        float loseSpacing = 0;
 
         if (!IsAlive(player) || !IsAlive(secondPlayer))
         {
@@ -1133,8 +1133,8 @@ namespace game
 
         float winXDivider = 3.0f;
         float winYDivider = 3.1f;
-        int winFontSize = 100;
-        int winSpacing = 0;
+        float winFontSize = 100;
+        float winSpacing = 0;
 
         if (PlayerWin(player) || PlayerWin(secondPlayer))
         {
@@ -1143,7 +1143,7 @@ namespace game
 
         //Restart Button
         
-        int restartSpacing = 0;
+        float restartSpacing = 0;
 
         //DrawRectangle(static_cast<int>(screenWidth / 2.2), static_cast<int>(screenHeight / 2.2), static_cast<int>(screenWidth / 6.2), static_cast<int>(screenHeight / 10), BLANK);
         DrawTextEx(gameFont, "RESTART", { static_cast<float>(restartButton.width), static_cast<float>(restartButton.height) }, static_cast<float>(restartButton.size), restartSpacing, restartButton.color);
@@ -1151,14 +1151,14 @@ namespace game
 
         //Return Menu Button
 
-        int returnSpacing = 0;
+        float returnSpacing = 0;
         
         //DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.7), static_cast<int>(screenWidth / 9.5), static_cast<int>(screenHeight / 12), BLANK);
         DrawTextEx(gameFont, "MENU", { static_cast<float>(returnMenuButton.width), static_cast<float>(returnMenuButton.height) }, static_cast<float>(returnMenuButton.size), returnSpacing, returnMenuButton.color);
 
         //Quit Game Button
         
-        int quitSpacing = 0;
+        float quitSpacing = 0;
 
         //DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.4), static_cast<int>(screenWidth / 10), static_cast<int>(screenHeight / 12), BLANK);
         DrawTextEx(gameFont, "QUIT", { static_cast<float>(quitGameButton.width), static_cast<float>(quitGameButton.height) }, static_cast<float>(quitGameButton.size), quitSpacing, quitGameButton.color);
@@ -1223,8 +1223,8 @@ namespace game
     void RestartGame()
     {
         //Player
-        int posXPlayerDivider = 6;
-        int posYPlayerDivider = 1.165;
+        float posXPlayerDivider = 6.0f;
+        float posYPlayerDivider = 1.165f;
 
         player.pos.x = static_cast<float>(screenWidth / posXPlayerDivider);
         player.pos.y = static_cast<float>(screenHeight / posYPlayerDivider);
@@ -1322,11 +1322,11 @@ namespace game
         hill2.speed = 400;
 
         //FlyEnemy 
-        float posFlyEnemyDivider0 = 2.5;
-        float posFlyEnemyDivider1 = 1.9;
-        float posFlyEnemyDivider2 = 1.5;
-        float posFlyEnemyDivider3 = 1.22;
-        float posFlyEnemyDivider4 = 1.05;
+        float posFlyEnemyDivider0 = 2.5f;
+        float posFlyEnemyDivider1 = 1.9f;
+        float posFlyEnemyDivider2 = 1.5f;
+        float posFlyEnemyDivider3 = 1.22f;
+        float posFlyEnemyDivider4 = 1.05f;
 
         for (int i = 0; i < maxflyEnemy; i++)
         {
