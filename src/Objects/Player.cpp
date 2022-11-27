@@ -76,7 +76,7 @@ namespace game
 
 	bool PlayerWin(Player& play)
 	{
-		if (play.points < 1500000)
+		if (play.points < 15000000)
 		{
 			return play.win == true;
 		}
