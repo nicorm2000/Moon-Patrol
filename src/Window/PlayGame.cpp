@@ -186,24 +186,30 @@ namespace game
         sky2.tex = LoadTexture("resources/Sprites/Sky.png");
             
         //City
+
+        int cityPosSubstraction = 60;
+
         city.pos.x = static_cast<float>(screenWidth / screenWidth);
-        city.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
+        city.pos.y = static_cast<float>((screenHeight / screenHeight) - cityPosSubstraction);
         city.tex = LoadTexture("resources/Sprites/City.png");
         city.speed = 200;
         
         city2.pos.x = static_cast<float>(screenWidth / screenWidth + city.width);
-        city2.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
+        city2.pos.y = static_cast<float>((screenHeight / screenHeight) - cityPosSubstraction);
         city2.tex = LoadTexture("resources/Sprites/City.png");
         city2.speed = 200;
             
         //Hill
+
+        float hillPosDivider = 1.26f;
+
         hill.pos.x = static_cast<float>(screenWidth / screenWidth);
-        hill.pos.y = static_cast<float>((screenHeight / 1.26));
+        hill.pos.y = static_cast<float>((screenHeight / hillPosDivider));
         hill.tex = LoadTexture("resources/Sprites/Hill.png");
         hill.speed = 400;
 
         hill2.pos.x = static_cast<float>(screenWidth / screenWidth + hill.width);
-        hill2.pos.y = static_cast<float>((screenHeight / 1.26));
+        hill2.pos.y = static_cast<float>((screenHeight / hillPosDivider));
         hill2.tex = LoadTexture("resources/Sprites/Hill.png");
         hill2.speed = 400;
 
@@ -211,23 +217,30 @@ namespace game
         obstacle.obstacleTexture = LoadTexture("resources/Sprites/GroundEnemy.png");
 
         //Fly Enemy
+
+        float posFlyEnemyDivider0 = 2.5;
+        float posFlyEnemyDivider1 = 1.9;
+        float posFlyEnemyDivider2 = 1.5;
+        float posFlyEnemyDivider3 = 1.22;
+        float posFlyEnemyDivider4 = 1.05;
+
         for (int i = 0; i < maxflyEnemy; i++)
         {
             flyEnemy[i] = CreateFlyEnemy();
-            flyEnemy[0].pos.x = static_cast<float>(screenWidth / -2.5);
-            flyEnemy[0].pos.y = static_cast<float>(screenHeight / -2.5);
+            flyEnemy[0].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider0);
+            flyEnemy[0].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider0);
 
-            flyEnemy[1].pos.x = static_cast<float>(screenWidth / -1.9);
-            flyEnemy[1].pos.y = static_cast<float>(screenHeight / -1.9);
+            flyEnemy[1].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider1);
+            flyEnemy[1].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider1);
 
-            flyEnemy[2].pos.x = static_cast<float>(screenWidth / -1.5);
-            flyEnemy[2].pos.y = static_cast<float>(screenHeight / -1.5);
+            flyEnemy[2].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider2);
+            flyEnemy[2].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider2);
 
-            flyEnemy[3].pos.x = static_cast<float>(screenWidth / -1.22);
-            flyEnemy[3].pos.y = static_cast<float>(screenHeight / -1.22);
+            flyEnemy[3].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider3);
+            flyEnemy[3].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider3);
 
-            flyEnemy[4].pos.x = static_cast<float>(screenWidth / -1.05);
-            flyEnemy[4].pos.y = static_cast<float>(screenHeight / -1.05);
+            flyEnemy[4].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider4);
+            flyEnemy[4].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider4);
         }
         
         LoadTextureFlyEnemy(flyEnemy[0]);
@@ -240,28 +253,44 @@ namespace game
     void InitRestartMenu()
     {
         //Restart menu
+
+        float restartMenuPosXDivider = 4.3;
+        float restartMenuPosYDivider = 4.5f;
+
         restartMenu.width = 600;
         restartMenu.height = 500;
-        restartMenu.pos.x = static_cast<float>(screenWidth / 4.3);
-        restartMenu.pos.y = static_cast<float>(screenHeight / 4.5);
+        restartMenu.pos.x = static_cast<float>(screenWidth / restartMenuPosXDivider);
+        restartMenu.pos.y = static_cast<float>(screenHeight / restartMenuPosYDivider);
         restartMenu.isActive = false;
         restartMenu.texture = LoadTexture("resources/Sprites/RestartGameMenu.png");
 
         //Restart Button
-        restartButton.width = static_cast<float>(screenWidth / 2.15);
-        restartButton.height = static_cast<float>(screenHeight / 2.1);
+
+        float restartButtonPosXDivider = 2.15f;
+        float restartButtonPosYDivider = 2.1f;
+
+        restartButton.width = static_cast<float>(screenWidth / restartButtonPosXDivider);
+        restartButton.height = static_cast<float>(screenHeight / restartButtonPosYDivider);
         restartButton.size = 40;
         restartButton.color = BLACK;
 
         //Menu Button
-        returnMenuButton.width = static_cast<float>(screenWidth / 2.05);
-        returnMenuButton.height = static_cast<float>(screenHeight / 1.65);
+
+        float menuButtonPosXDivider = 2.05f;
+        float menuButtonPosYDivider = 1.65f;
+
+        returnMenuButton.width = static_cast<float>(screenWidth / menuButtonPosXDivider);
+        returnMenuButton.height = static_cast<float>(screenHeight / menuButtonPosYDivider);
         returnMenuButton.size = 40;
         returnMenuButton.color = BLACK;
 
         //Quit Button
-        quitGameButton.width = static_cast<float>(screenWidth / 2.03);
-        quitGameButton.height = static_cast<float>(screenHeight / 1.37);
+
+        float quitButtonPosXDivider = 2.03f;
+        float quitButtonPosYDivider = 1.37f;
+
+        quitGameButton.width = static_cast<float>(screenWidth / quitButtonPosXDivider);
+        quitGameButton.height = static_cast<float>(screenHeight / quitButtonPosYDivider);
         quitGameButton.size = 40;
         quitGameButton.color = BLACK;
     }
@@ -269,32 +298,43 @@ namespace game
     void InitPauseMenu()
     {
         //Pause Menu
+
+        float pauseMenuPosDivider = 4.5f;
+
         pauseMenu.width = 600;
         pauseMenu.height = 500;
-        pauseMenu.pos.x = static_cast<float>(screenWidth / 4.5);
-        pauseMenu.pos.y = static_cast<float>(screenHeight / 4.5);
+        pauseMenu.pos.x = static_cast<float>(screenWidth / pauseMenuPosDivider);
+        pauseMenu.pos.y = static_cast<float>(screenHeight / pauseMenuPosDivider);
         pauseMenu.isActive = false;
         pauseMenu.texture = LoadTexture("resources/Sprites/RestartGameMenu.png");
 
         //Pause Button Off
-        pauseButtonOff.pos.x = static_cast<float>(screenWidth / 1.2);
-        pauseButtonOff.pos.y = static_cast<float>(screenHeight / 20);
+
+        float pauseButtonPosXDivider = 1.2f;
+        float pauseButtonPosYDivider = 20;
+
+        pauseButtonOff.pos.x = static_cast<float>(screenWidth / pauseButtonPosXDivider);
+        pauseButtonOff.pos.y = static_cast<float>(screenHeight / pauseButtonPosYDivider);
         pauseButtonOff.width = 64;
         pauseButtonOff.height = 64;
         pauseButtonOff.color = WHITE;
         pauseButtonOff.texture = LoadTexture("resources/Sprites/PauseButtonOff.png");
 
         //Pause Button On
-        pauseButtonOn.pos.x = static_cast<float>(screenWidth / 1.2);
-        pauseButtonOn.pos.y = static_cast<float>(screenHeight / 20);
+        pauseButtonOn.pos.x = static_cast<float>(screenWidth / pauseButtonPosXDivider);
+        pauseButtonOn.pos.y = static_cast<float>(screenHeight / pauseButtonPosYDivider);
         pauseButtonOn.width = 64;
         pauseButtonOn.height = 64;
         pauseButtonOn.color = WHITE;
         pauseButtonOn.texture = LoadTexture("resources/Sprites/PauseButtonOn.png");
 
         //Resume Button
-        resumeButton.width = static_cast<float>(screenWidth / 2.15);
-        resumeButton.height = static_cast<float>(screenHeight / 2.1);
+
+        float reesumeButtonPosXDivider = 2.15f;
+        float reesumeButtonPosYDivider = 2.1f;
+
+        resumeButton.width = static_cast<float>(screenWidth / reesumeButtonPosXDivider);
+        resumeButton.height = static_cast<float>(screenHeight / reesumeButtonPosYDivider);
         resumeButton.size = 40;
         resumeButton.color = BLACK;
     }
@@ -306,7 +346,13 @@ namespace game
             pause = true;
 
             //Restart Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 2.2), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 10) }))
+
+            float restartXPos = 2.5f;
+            float restartYPos = 2.2f;
+            int restartWidthPos = 4;
+            int restartHeightPos = 10;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / restartXPos), static_cast<float>(screenHeight / restartYPos), static_cast<float>(screenWidth / restartWidthPos), static_cast<float>(screenHeight / restartHeightPos) }))
             {
                 if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
                 {
@@ -315,7 +361,13 @@ namespace game
             }
 
             //Return Menu Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.7), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+
+            float returnXPos = 2.5f;
+            float returnYPos = 1.7f;
+            int returnWidthPos = 4;
+            int returnHeightPos = 12;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / returnXPos), static_cast<float>(screenHeight / returnYPos), static_cast<float>(screenWidth / returnWidthPos), static_cast<float>(screenHeight / returnHeightPos) }))
             {
                 if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
                 {
@@ -327,7 +379,13 @@ namespace game
             }
 
             //Quit Game Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.4), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+
+            float quitXPos = 2.5f;
+            float quitYPos = 1.4f;
+            int quitWidthPos = 4;
+            int quitHeightPos = 12;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / quitXPos), static_cast<float>(screenHeight / quitYPos), static_cast<float>(screenWidth / quitWidthPos), static_cast<float>(screenHeight / quitHeightPos) }))
             {
                 if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
                 {
@@ -339,7 +397,13 @@ namespace game
         if (pauseMenu.isActive)
         {
             //Resume Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 2.2), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 10) }))
+
+            float resumeXPos = 2.5f;
+            float resumeYPos = 2.2f;
+            int resumeWidthPos = 4;
+            int resumeHeightPos = 10;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / resumeXPos), static_cast<float>(screenHeight / resumeYPos), static_cast<float>(screenWidth / resumeWidthPos), static_cast<float>(screenHeight / resumeHeightPos) }))
             {
                 if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
                 {
@@ -349,7 +413,13 @@ namespace game
             }
 
             //Return Menu Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.7), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+
+            float returnXPos = 2.5f;
+            float returnYPos = 1.7f;
+            int returnWidthPos = 4;
+            int returnHeightPos = 12;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / returnXPos), static_cast<float>(screenHeight / returnYPos), static_cast<float>(screenWidth / returnWidthPos), static_cast<float>(screenHeight / returnHeightPos) }))
             {
                 if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
                 {
@@ -362,7 +432,13 @@ namespace game
             }
 
             //Quit Game Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 1.4), static_cast<float>(screenWidth / 4), static_cast<float>(screenHeight / 12) }))
+
+            float quitXPos = 2.5f;
+            float quitYPos = 1.4f;
+            int quitWidthPos = 4;
+            int quitHeightPos = 12;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / quitXPos), static_cast<float>(screenHeight / quitYPos), static_cast<float>(screenWidth / quitWidthPos), static_cast<float>(screenHeight / quitHeightPos) }))
             {
                 if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
                 {
@@ -506,20 +582,23 @@ namespace game
 
         PlayerMovement();
 
+        int playerBulletInitialPosition = 13;
+
         for (int i = 0; i < MAX_BULLETS; i++)
         {
-            PlayerBulletMovement(playerBullet[i], player, 13);
+            PlayerBulletMovement(playerBullet[i], player, playerBulletInitialPosition);
         }
 
         if (coop)
         {
             for (int i = 0; i < MAX_BULLETS; i++)
             {
-                PlayerBulletMovement(player2Bullet[i], secondPlayer, 13);
+                PlayerBulletMovement(player2Bullet[i], secondPlayer, playerBulletInitialPosition);
             }
         }
 
         BackgroundMovement();
+
         FlyEnemyMovement();
     }
 
@@ -568,7 +647,12 @@ namespace game
             DrawPlayer(secondPlayer);
         }
 
-        DrawTextEx(gameFont, TextFormat("score %0i", player.points), { static_cast<float>(GetScreenWidth() / 2.5) , static_cast<float>(GetScreenHeight() / 1.1) }, 50, 0, WHITE);
+        float scoreXPos = 2.5f;
+        float scoreYPos = 1.1f;
+        int scoreFontSize = 50;
+        int scoreSpacing = 0;
+
+        DrawTextEx(gameFont, TextFormat("score %0i", player.points), { static_cast<float>(GetScreenWidth() / scoreXPos) , static_cast<float>(GetScreenHeight() / scoreYPos) }, scoreFontSize, scoreSpacing, WHITE);
 
         if (!pauseMenu.isActive)
         {
@@ -634,14 +718,14 @@ namespace game
 
     bool CheckCollisionRecRec(Vector2 r1, float r1w, float r1h, Vector2 r2, float r2w, float r2h)
     {
-        if (r1.x + r1w >= r2.x &&
-            r1.x <= r2.x + r2w &&
-            r1.y + r1h >= r2.y &&
-            r1.y <= r2.y + r2h)
+        if (r1.x + r1w >= r2.x && r1.x <= r2.x + r2w && r1.y + r1h >= r2.y && r1.y <= r2.y + r2h)
         {
             return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     void PlayerMovement()
@@ -770,6 +854,8 @@ namespace game
 
     void BulletCollision(Bullet& playerbullet)
     {
+        int flyEnemyPointsValue = 50;
+
         for(int j = 0; j < maxflyEnemy; j++)
         {
             if (CheckCollisionRecRec(playerbullet.pos, playerbullet.width, playerbullet.height, flyEnemy[j].pos, flyEnemy[j].width, flyEnemy[j].height))
@@ -782,7 +868,7 @@ namespace game
             if (flyEnemy[j].life <= 0)
             {
                 flyEnemy[j].isActive = false;
-                player.points = player.points + 50;
+                player.points = player.points + flyEnemyPointsValue;
                 FlyEnemyRespawn();
             }
         }
@@ -842,14 +928,16 @@ namespace game
 
     void FlyEnemyCollisionLimit()
     {
+        float flyEnemyCollisionLimitPosDivider = 2.5f;
+
         for (int i = 0; i < maxflyEnemy; i++)
         {
             if (flyEnemy[i].isMoving)
             {
                 if (flyEnemy[i].pos.x >= screenWidth + flyEnemy[i].width)
                 {
-                    flyEnemy[i].pos.x = static_cast<float>(screenWidth / -2.5);
-                    flyEnemy[i].pos.y = static_cast<float>(screenHeight / -2.5);
+                    flyEnemy[i].pos.x = static_cast<float>(screenWidth / - flyEnemyCollisionLimitPosDivider);
+                    flyEnemy[i].pos.y = static_cast<float>(screenHeight / - flyEnemyCollisionLimitPosDivider);
                 }
             }
         }
@@ -857,12 +945,14 @@ namespace game
 
     void FlyEnemyRespawn()
     {
+        float flyEnemyRespawnPosDivider = 1.13f;
+
         for (int i = 0; i < maxflyEnemy; i++)
         {
             if (flyEnemy[i].isActive == false)
             {
-                flyEnemy[i].pos.x = static_cast<float>(screenWidth / -1.13);
-                flyEnemy[i].pos.y = static_cast<float>(screenHeight / -1.13);
+                flyEnemy[i].pos.x = static_cast<float>(screenWidth / - flyEnemyRespawnPosDivider);
+                flyEnemy[i].pos.y = static_cast<float>(screenHeight / - flyEnemyRespawnPosDivider);
 
                 flyEnemy[i].life = 2;
                 flyEnemy[i].isActive = true;
@@ -872,7 +962,10 @@ namespace game
 
     void PlayerCollision(Player& play)
     {
-        if (CheckCollisionRecRec(play.pos, play.width - 20, play.height - 5, obstacle.pos, obstacle.width, obstacle.height))
+        int playerWidthSubstraction = 20;
+        int playerHeightSubstraction = 5;
+
+        if (CheckCollisionRecRec(play.pos, play.width - playerWidthSubstraction, play.height - playerHeightSubstraction, obstacle.pos, obstacle.width, obstacle.height))
         {
             play.isCollision = true;
             LoseLife(play);
@@ -894,6 +987,8 @@ namespace game
 
     void ObstacleTeleport()
     {
+        int pointsValue = 25;
+
         if (obstacle.pos.x > screenWidth - obstacle.width)
         {
             obstacle.pos.x = static_cast<float>(screenWidth / screenWidth);
@@ -901,7 +996,7 @@ namespace game
 
         if (obstacle.pos.x < screenWidth / screenWidth - obstacle.width)
         {
-            player.points = player.points + 25;
+            player.points = player.points + pointsValue;
             obstacle.pos.x = screenWidth - obstacle.width;
         }
     }
@@ -935,21 +1030,31 @@ namespace game
     void DrawPauseMenu()
     {
         DrawRectangle(static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), static_cast<int>(restartMenu.width), static_cast<int>(restartMenu.height), BLANK);
+
         DrawTexture(restartMenu.texture, static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), WHITE);
 
         DrawTextEx(gameFont, "PAUSE", { static_cast<float>(screenWidth / 2.5), static_cast<float>(screenHeight / 3.1) }, 100, 0, WHITE);
 
         //Restart Button
-        DrawRectangle(static_cast<int>(screenWidth / 2.2), static_cast<int>(screenHeight / 2.2), static_cast<int>(screenWidth / 6.5), static_cast<int>(screenHeight / 10), BLANK);
-        DrawTextEx(gameFont, "RESUME", { static_cast<float>(resumeButton.width), static_cast<float>(resumeButton.height) }, static_cast<float>(resumeButton.size), 0, resumeButton.color);
+
+        int restartSpacing = 0;
+
+        //DrawRectangle(static_cast<int>(screenWidth / 2.2), static_cast<int>(screenHeight / 2.2), static_cast<int>(screenWidth / 6.5), static_cast<int>(screenHeight / 10), BLANK);
+        DrawTextEx(gameFont, "RESUME", { static_cast<float>(resumeButton.width), static_cast<float>(resumeButton.height) }, static_cast<float>(resumeButton.size), restartSpacing, resumeButton.color);
 
         //Return Menu Button
-        DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.7), static_cast<int>(screenWidth / 9.5), static_cast<int>(screenHeight / 12), BLANK);
-        DrawTextEx(gameFont, "MENU", { static_cast<float>(returnMenuButton.width), static_cast<float>(returnMenuButton.height) }, static_cast<float>(returnMenuButton.size), 0, returnMenuButton.color);
+        
+        int returnSpacing = 0;
+
+        //DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.7), static_cast<int>(screenWidth / 9.5), static_cast<int>(screenHeight / 12), BLANK);
+        DrawTextEx(gameFont, "MENU", { static_cast<float>(returnMenuButton.width), static_cast<float>(returnMenuButton.height) }, static_cast<float>(returnMenuButton.size), returnSpacing, returnMenuButton.color);
 
         //Quit Game Button
-        DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.4), static_cast<int>(screenWidth / 10), static_cast<int>(screenHeight / 12), BLANK);
-        DrawTextEx(gameFont, "QUIT", { static_cast<float>(quitGameButton.width), static_cast<float>(quitGameButton.height) }, static_cast<float>(quitGameButton.size), 0, quitGameButton.color);
+        
+        int quitSpacing = 0;
+
+        //DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.4), static_cast<int>(screenWidth / 10), static_cast<int>(screenHeight / 12), BLANK);
+        DrawTextEx(gameFont, "QUIT", { static_cast<float>(quitGameButton.width), static_cast<float>(quitGameButton.height) }, static_cast<float>(quitGameButton.size), quitSpacing, quitGameButton.color);
     }
 
     void PauseMenuCollisions()
@@ -957,7 +1062,12 @@ namespace game
         if (pauseMenu.isActive)
         {
             //Restart Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.2), static_cast<float>(screenHeight / 2.2), static_cast<float>(screenWidth / 6.5), static_cast<float>(screenHeight / 10) }))
+
+            float restartPosDivider = 2.2f;
+            float restartWidthDivider = 6.5f;
+            float restartHeightDivider = 10;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / restartPosDivider), static_cast<float>(screenHeight / restartPosDivider), static_cast<float>(screenWidth / restartWidthDivider), static_cast<float>(screenHeight / restartHeightDivider) }))
             {
                 resumeButton.color = BLUE;
             }
@@ -968,7 +1078,13 @@ namespace game
             }
 
             //Return Menu Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.07), static_cast<float>(screenHeight / 1.7), static_cast<float>(screenWidth / 9.5), static_cast<float>(screenHeight / 12) }))
+
+            float returnPosXDivider = 2.07f;
+            float returnPosYDivider = 1.7f;
+            float returnWidthDivider = 9.5f;
+            float returnHeightDivider = 12;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / returnPosXDivider), static_cast<float>(screenHeight / returnPosYDivider), static_cast<float>(screenWidth / returnWidthDivider), static_cast<float>(screenHeight / returnHeightDivider) }))
             {
                 returnMenuButton.color = BLUE;
             }
@@ -979,7 +1095,13 @@ namespace game
             }
 
             //Quit Game Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.07), static_cast<float>(screenHeight / 1.4), static_cast<float>(screenWidth / 10), static_cast<float>(screenHeight / 12) }))
+            
+            float quitPosXDivider = 2.07f;
+            float quitPosYDivider = 1.4f;
+            float quitWidthDivider = 10;
+            float quitHeightDivider = 12;
+            
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / quitPosXDivider), static_cast<float>(screenHeight / quitPosYDivider), static_cast<float>(screenWidth / quitWidthDivider), static_cast<float>(screenHeight / quitHeightDivider) }))
             {
                 quitGameButton.color = BLUE;
             }
@@ -994,32 +1116,52 @@ namespace game
     void DrawRestartGameMenu()
     {
         DrawRectangle(static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), static_cast<int>(restartMenu.width), static_cast<int>(restartMenu.height), BLANK);
+        
         restartMenu.isActive = true;
 
         DrawTexture(restartMenu.texture, static_cast<int>(restartMenu.pos.x), static_cast<int>(restartMenu.pos.y), WHITE);
 
+        float loseXDivider = 3.0f;
+        float loseYDivider = 3.1f;
+        int loseFontSize = 100;
+        int loseSpacing = 0;
+
         if (!IsAlive(player) || !IsAlive(secondPlayer))
         {
-            DrawTextEx(gameFont, "YOU LOSE", { static_cast<float>(screenWidth / 3), static_cast<float>(screenHeight / 3.1) }, 100, 0, WHITE);
+            DrawTextEx(gameFont, "YOU LOSE", { static_cast<float>(screenWidth / loseXDivider), static_cast<float>(screenHeight / loseYDivider) }, loseFontSize, loseSpacing, WHITE);
         }
+
+        float winXDivider = 3.0f;
+        float winYDivider = 3.1f;
+        int winFontSize = 100;
+        int winSpacing = 0;
 
         if (PlayerWin(player) || PlayerWin(secondPlayer))
         {
-            DrawTextEx(gameFont, "YOU WIN", { static_cast<float>(screenWidth / 3), static_cast<float>(screenHeight / 3.1) }, 100, 0, WHITE);
+            DrawTextEx(gameFont, "YOU WIN", { static_cast<float>(screenWidth / winXDivider), static_cast<float>(screenHeight / winYDivider) }, winFontSize, winSpacing, WHITE);
         }
 
         //Restart Button
-        DrawRectangle(static_cast<int>(screenWidth / 2.2), static_cast<int>(screenHeight / 2.2), static_cast<int>(screenWidth / 6.2), static_cast<int>(screenHeight / 10), BLANK);
-        DrawTextEx(gameFont, "RESTART", { static_cast<float>(restartButton.width), static_cast<float>(restartButton.height) }, static_cast<float>(restartButton.size), 0, restartButton.color);
+        
+        int restartSpacing = 0;
+
+        //DrawRectangle(static_cast<int>(screenWidth / 2.2), static_cast<int>(screenHeight / 2.2), static_cast<int>(screenWidth / 6.2), static_cast<int>(screenHeight / 10), BLANK);
+        DrawTextEx(gameFont, "RESTART", { static_cast<float>(restartButton.width), static_cast<float>(restartButton.height) }, static_cast<float>(restartButton.size), restartSpacing, restartButton.color);
 
 
         //Return Menu Button
-        DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.7), static_cast<int>(screenWidth / 9.5), static_cast<int>(screenHeight / 12), BLANK);
-        DrawTextEx(gameFont, "MENU", { static_cast<float>(returnMenuButton.width), static_cast<float>(returnMenuButton.height) }, static_cast<float>(returnMenuButton.size), 0, returnMenuButton.color);
+
+        int returnSpacing = 0;
+        
+        //DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.7), static_cast<int>(screenWidth / 9.5), static_cast<int>(screenHeight / 12), BLANK);
+        DrawTextEx(gameFont, "MENU", { static_cast<float>(returnMenuButton.width), static_cast<float>(returnMenuButton.height) }, static_cast<float>(returnMenuButton.size), returnSpacing, returnMenuButton.color);
 
         //Quit Game Button
-        DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.4), static_cast<int>(screenWidth / 10), static_cast<int>(screenHeight / 12), BLANK);
-        DrawTextEx(gameFont, "QUIT", { static_cast<float>(quitGameButton.width), static_cast<float>(quitGameButton.height) }, static_cast<float>(quitGameButton.size), 0, quitGameButton.color);
+        
+        int quitSpacing = 0;
+
+        //DrawRectangle(static_cast<int>(screenWidth / 2.07), static_cast<int>(screenHeight / 1.4), static_cast<int>(screenWidth / 10), static_cast<int>(screenHeight / 12), BLANK);
+        DrawTextEx(gameFont, "QUIT", { static_cast<float>(quitGameButton.width), static_cast<float>(quitGameButton.height) }, static_cast<float>(quitGameButton.size), quitSpacing, quitGameButton.color);
     }
 
     void RestarGameMenuCollisions()
@@ -1027,7 +1169,12 @@ namespace game
         if (restartMenu.isActive)
         {
             //Restart Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.2), static_cast<float>(screenHeight / 2.2), static_cast<float>(screenWidth / 6.2), static_cast<float>(screenHeight / 10) }))
+            
+            float restartPosDivider = 2.2f;
+            float restartWidthDivider = 6.2f;
+            int restartHeightDivider = 10;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / restartPosDivider), static_cast<float>(screenHeight / 2.2), static_cast<float>(screenWidth / restartWidthDivider), static_cast<float>(screenHeight / restartHeightDivider) }))
             {
                 restartButton.color = BLUE;
             }
@@ -1038,7 +1185,13 @@ namespace game
             }
 
             //Return Menu Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.07), static_cast<float>(screenHeight / 1.7), static_cast<float>(screenWidth / 9.5), static_cast<float>(screenHeight / 12) }))
+
+            float returnPosXDivider = 2.07f;
+            float returnPosYDivider = 1.7f;
+            float returnWidthDivider = 9.5f;
+            int returnHeightDivider = 12;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / returnPosXDivider), static_cast<float>(screenHeight / returnPosYDivider), static_cast<float>(screenWidth / returnWidthDivider), static_cast<float>(screenHeight / returnHeightDivider) }))
             {
                 returnMenuButton.color = BLUE;
             }
@@ -1049,7 +1202,13 @@ namespace game
             }
 
             //Quit Game Button
-            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / 2.07), static_cast<float>(screenHeight / 1.4), static_cast<float>(screenWidth / 10), static_cast<float>(screenHeight / 12) }))
+
+            float quitPosXDivider = 2.07f;
+            float quitPosYDivider = 1.4f;
+            int quitWidthDivider = 10;
+            int quitHeightDivider = 12;
+
+            if (CheckCollisionPointRec(mouse.position, Rectangle{ static_cast<float>(screenWidth / quitPosXDivider), static_cast<float>(screenHeight / quitPosYDivider), static_cast<float>(screenWidth / quitWidthDivider), static_cast<float>(screenHeight / quitHeightDivider) }))
             {
                 quitGameButton.color = BLUE;
             }
@@ -1064,8 +1223,11 @@ namespace game
     void RestartGame()
     {
         //Player
-        player.pos.x = static_cast<float>(screenWidth / 6);
-        player.pos.y = static_cast<float>(screenHeight / 1.165);
+        int posXPlayerDivider = 6;
+        int posYPlayerDivider = 1.165;
+
+        player.pos.x = static_cast<float>(screenWidth / posXPlayerDivider);
+        player.pos.y = static_cast<float>(screenHeight / posYPlayerDivider);
         player.width = 80;
         player.height = 40;
         player.speed = 420;
@@ -1076,8 +1238,8 @@ namespace game
         player.win = false;
 
         //Second Player
-        secondPlayer.pos.x = static_cast<float>(screenWidth / 6);
-        secondPlayer.pos.y = static_cast<float>(screenHeight / 1.165);
+        secondPlayer.pos.x = static_cast<float>(screenWidth / posXPlayerDivider);
+        secondPlayer.pos.y = static_cast<float>(screenHeight / posYPlayerDivider);
         secondPlayer.width = 80;
         secondPlayer.height = 40;
         secondPlayer.speed = 420;
@@ -1107,15 +1269,20 @@ namespace game
         }
 
         //Obstacle
-        obstacle.pos.x = static_cast<float>(screenWidth - 30);
-        obstacle.pos.y = static_cast<float>(screenHeight / 1.2);
+        int posXObstacleSubstraction = 30;
+        float posYObstacleDivider = 1.2f;
+
+        obstacle.pos.x = static_cast<float>(screenWidth - posXObstacleSubstraction);
+        obstacle.pos.y = static_cast<float>(screenHeight / posYObstacleDivider);
         obstacle.width = 30;
         obstacle.height = 60;
         obstacle.speed = 400;
 
         //Ground
+        float posYGroundDivider = 1.1f;
+
         ground.pos.x = static_cast<float>(screenWidth / screenWidth);
-        ground.pos.y = static_cast<float>(screenHeight / 1.1);
+        ground.pos.y = static_cast<float>(screenHeight / posYGroundDivider);
         ground.width = static_cast<float>(screenWidth);
         ground.height = 70;
 
@@ -1127,47 +1294,56 @@ namespace game
         mouse.mouseRec = GetRecMouse(mouse);
 
         //Background
-           //Sky
+        //Sky
         sky.pos.x = static_cast<float>(screenWidth / screenWidth);
 
         sky2.pos.x = static_cast<float>(screenWidth / screenWidth + sky.width);
 
-            //City
+        //City
+        int posYCitySubtraction = 60;
+
         city.pos.x = static_cast<float>(screenWidth / screenWidth);
-        city.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
+        city.pos.y = static_cast<float>((screenHeight / screenHeight) - posYCitySubtraction);
         city.speed = 200;
 
         city2.pos.x = static_cast<float>(screenWidth / screenWidth + city.width);
-        city2.pos.y = static_cast<float>((screenHeight / screenHeight) - 60);
+        city2.pos.y = static_cast<float>((screenHeight / screenHeight) - posYCitySubtraction);
         city2.speed = 200;
 
-            //Hill
+        //Hill
+        float posYHillSubstraction = 1.28f;
+
         hill.pos.x = static_cast<float>(screenWidth / screenWidth);
-        hill.pos.y = static_cast<float>((screenHeight / 1.28));
+        hill.pos.y = static_cast<float>((screenHeight / posYHillSubstraction));
         hill.speed = 400;
 
         hill2.pos.x = static_cast<float>(screenWidth / screenWidth + hill.width);
-        hill2.pos.y = static_cast<float>((screenHeight / 1.28));
+        hill2.pos.y = static_cast<float>((screenHeight / posYHillSubstraction));
         hill2.speed = 400;
 
         //FlyEnemy 
+        float posFlyEnemyDivider0 = 2.5;
+        float posFlyEnemyDivider1 = 1.9;
+        float posFlyEnemyDivider2 = 1.5;
+        float posFlyEnemyDivider3 = 1.22;
+        float posFlyEnemyDivider4 = 1.05;
 
         for (int i = 0; i < maxflyEnemy; i++)
         {
-            flyEnemy[0].pos.x = static_cast<float>(screenWidth / -2.5);
-            flyEnemy[0].pos.y = static_cast<float>(screenHeight / -2.5);
+            flyEnemy[0].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider0);
+            flyEnemy[0].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider0);
 
-            flyEnemy[1].pos.x = static_cast<float>(screenWidth / -1.9);
-            flyEnemy[1].pos.y = static_cast<float>(screenHeight / -1.9);
+            flyEnemy[1].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider1);
+            flyEnemy[1].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider1);
 
-            flyEnemy[2].pos.x = static_cast<float>(screenWidth / -1.5);
-            flyEnemy[2].pos.y = static_cast<float>(screenHeight / -1.5);
+            flyEnemy[2].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider2);
+            flyEnemy[2].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider2);
 
-            flyEnemy[3].pos.x = static_cast<float>(screenWidth / -1.22);
-            flyEnemy[3].pos.y = static_cast<float>(screenHeight / -1.22);
+            flyEnemy[3].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider3);
+            flyEnemy[3].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider3);
 
-            flyEnemy[4].pos.x = static_cast<float>(screenWidth / -1.05);
-            flyEnemy[4].pos.y = static_cast<float>(screenHeight / -1.05);
+            flyEnemy[4].pos.x = static_cast<float>(screenWidth / - posFlyEnemyDivider4);
+            flyEnemy[4].pos.y = static_cast<float>(screenHeight / - posFlyEnemyDivider4);
         }
 
         //RestartMenu
@@ -1190,15 +1366,15 @@ namespace game
         UnloadTexture(hill.tex);
         UnloadTexture(hill2.tex);
 
+        UnloadTexture(player.playerTexture);
+        
+        UnloadTextureBullet(playerBullet[0]);
+        
+        UnloadTextureFlyEnemy(flyEnemy[0]);
         UnloadTexture(restartMenu.texture);
         UnloadTexture(pauseMenu.texture);
         UnloadTexture(pauseButtonOff.texture);
         UnloadTexture(pauseButtonOn.texture);
-
-        UnloadTexture(player.playerTexture);
-        
-        UnloadTextureBullet(playerBullet[0]);
-        UnloadTextureFlyEnemy(flyEnemy[0]);
 
         UnloadMenu();
     }
