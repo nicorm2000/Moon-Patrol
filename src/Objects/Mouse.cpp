@@ -18,15 +18,19 @@ namespace game
 
 	Rectangle GetRecMouse(Mouse& mouse)
 	{
-		return Rectangle{ mouse.position.x - mouse.width / 2, mouse.position.y - mouse.height / 2, mouse.width, mouse.height };
+		float mousePosDivider = 2.0f;
+
+		return Rectangle{ mouse.position.x - mouse.width / mousePosDivider, mouse.position.y - mouse.height / mousePosDivider, mouse.width, mouse.height };
 	}
 
 	Vector2 CreateRecOriginMouse(Rectangle& mouseRec)
 	{
+		float mousePosDivider = 2.0f;
+
 		Vector2 originRec;
 
-		originRec.x = mouseRec.width / 2 - mouseRec.width / 2;
-		originRec.y = mouseRec.height / 2 - mouseRec.height / 2;
+		originRec.x = mouseRec.width / mousePosDivider - mouseRec.width / mousePosDivider;
+		originRec.y = mouseRec.height / mousePosDivider - mouseRec.height / mousePosDivider;
 
 		return originRec;
 	}

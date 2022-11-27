@@ -7,10 +7,13 @@ namespace game
 {
 	Obstacle CreateObstacle(int screenWidth, int screenHeight)
 	{
+		float obstaclePosXSubstraction = 100;
+		float obstaclePosYDivider = 1.2f;
+
 		Obstacle obstacle;
 
-		obstacle.pos.x = static_cast<float>(screenWidth - 100);
-		obstacle.pos.y = static_cast<float>(screenHeight / 1.2f);
+		obstacle.pos.x = static_cast<float>(screenWidth - obstaclePosXSubstraction);
+		obstacle.pos.y = static_cast<float>(screenHeight / obstaclePosYDivider);
 
 		obstacle.width = 60;
 		obstacle.height = 120;

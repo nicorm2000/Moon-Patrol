@@ -6,10 +6,13 @@ namespace game
 {
 	Player CreatePlayer(int screenWidth, int screenHeight)
 	{
+		float playerPosXDivider = 6.0f;
+		float playerPosYDivider = 1.165f;
+
 		Player player;
 
-		player.pos.x = static_cast<float>(screenWidth / 6);
-		player.pos.y = static_cast<float>(screenHeight / 1.165);
+		player.pos.x = static_cast<float>(screenWidth / playerPosXDivider);
+		player.pos.y = static_cast<float>(screenHeight / playerPosYDivider);
 
 		player.width = 80;
 		player.height = 40;
@@ -55,15 +58,19 @@ namespace game
 
 	void LoseLife(Player& play)
 	{
+		int amountOfLifesLost = 1;
+
 		if (play.isCollision == true)
 		{
-			play.lifes -= 1;
+			play.lifes -= amountOfLifesLost;
 		}
 	}
 
 	bool IsAlive(Player& play)
 	{
-		if (play.lifes <= 0)
+		int minimumAmountOfLifes = 0;
+
+		if (play.lifes <= minimumAmountOfLifes)
 		{
 			return play.isAlive == false;
 		}
@@ -76,7 +83,9 @@ namespace game
 
 	bool PlayerWin(Player& play)
 	{
-		if (play.points < 15000000)
+		int maximumAmountOfPoints = 15000000;
+
+		if (play.points < maximumAmountOfPoints)
 		{
 			return play.win == true;
 		}
