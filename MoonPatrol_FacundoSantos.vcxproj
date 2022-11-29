@@ -137,6 +137,16 @@
       <AdditionalLibraryDirectories>$(SolutionDir)lib\raylib-4.0.0_win32_msvc16\lib;$(SolutionDir)src;$(SolutionDir)resources;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>winmm.lib;raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>IF NOT EXIST "$(TargetDir)resources" (
+CD $(TargetDir)
+MKDIR resources
+
+CD resources
+
+XCOPY "$(SolutionDir)resources"$(TargetDir)resources"
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -174,6 +184,16 @@
       <AdditionalDependencies>winmm.lib;raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>IF NOT EXIST "$(TargetDir)resources" (
+CD $(TargetDir)
+MKDIR resources
+
+CD resources
+
+XCOPY "$(SolutionDir)resources"$(TargetDir)resources"
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
