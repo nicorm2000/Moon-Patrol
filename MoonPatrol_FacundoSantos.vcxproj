@@ -138,14 +138,9 @@
       <AdditionalDependencies>winmm.lib;raylib.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(TargetDir)resources" (
-CD $(TargetDir)
-MKDIR resources
-
-CD resources
-
-XCOPY "$(SolutionDir)resources"$(TargetDir)resources"
-)</Command>
+      <Command>IF exist "$(SolutionDir)bin\$(Platform)\$(Configuration)\resources" rd "$(SolutionDir)bin\$(Platform)\$(Configuration)\resources"
+MKDIR  "$(SolutionDir)bin\$(Platform)\$(Configuration)\resources"
+XCOPY "$(SolutionDir)resources" "$(SolutionDir)bin\$(Platform)\$(Configuration)\resources"/e /h</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -185,14 +180,9 @@ XCOPY "$(SolutionDir)resources"$(TargetDir)resources"
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PostBuildEvent>
-      <Command>IF NOT EXIST "$(TargetDir)resources" (
-CD $(TargetDir)
-MKDIR resources
-
-CD resources
-
-XCOPY "$(SolutionDir)resources"$(TargetDir)resources"
-)</Command>
+      <Command>IF exist "$(SolutionDir)bin\$(Platform)\$(Configuration)\resources" rd "$(SolutionDir)bin\$(Platform)\$(Configuration)\resources"
+MKDIR  "$(SolutionDir)bin\$(Platform)\$(Configuration)\resources"
+XCOPY "$(SolutionDir)resources" "$(SolutionDir)bin\$(Platform)\$(Configuration)\resources"/e /h</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
