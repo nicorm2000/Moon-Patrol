@@ -51,6 +51,15 @@
     <ClCompile Include="src\Objects\FlyEnemy.cpp">
       <Filter>Src\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Credits.cpp">
+      <Filter>Src\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="HowToPlay.cpp">
+      <Filter>Src\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Controls.cpp">
+      <Filter>Src\Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window\PlayGame.h">
@@ -68,7 +77,7 @@
     <ClInclude Include="src\Objects\Mouse.h">
       <Filter>Src\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window\Menu.h">
+    <ClInclude Include="src\Window\MainMenu.h">
       <Filter>Src\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Background.h">
@@ -80,6 +89,10 @@
     <ClInclude Include="src\Objects\FlyEnemy.h">
       <Filter>Src\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Credits.h">
+      <Filter>Src\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="HowToPlay.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="resources\Font\Acero y Sangre.otf">
