@@ -19,9 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Controls.cpp" />
-    <ClCompile Include="Credits.cpp" />
-    <ClCompile Include="HowToPlay.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Objects\Background.cpp" />
     <ClCompile Include="src\Objects\Bullet.cpp" />
@@ -30,13 +27,13 @@
     <ClCompile Include="src\Objects\Mouse.cpp" />
     <ClCompile Include="src\Objects\Obstacle.cpp" />
     <ClCompile Include="src\Objects\Player.cpp" />
+    <ClCompile Include="src\Window\Controls.cpp" />
+    <ClCompile Include="src\Window\Credits.cpp" />
+    <ClCompile Include="src\Window\HowToPlay.cpp" />
     <ClCompile Include="src\Window\MainMenu.cpp" />
     <ClCompile Include="src\Window\PlayGame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Controls.h" />
-    <ClInclude Include="Credits.h" />
-    <ClInclude Include="HowToPlay.h" />
     <ClInclude Include="src\Objects\Background.h" />
     <ClInclude Include="src\Objects\Bullet.h" />
     <ClInclude Include="src\Objects\Floor.h" />
@@ -44,6 +41,9 @@
     <ClInclude Include="src\Objects\Mouse.h" />
     <ClInclude Include="src\Objects\Obstacle.h" />
     <ClInclude Include="src\Objects\Player.h" />
+    <ClInclude Include="src\Window\Controls.h" />
+    <ClInclude Include="src\Window\Credits.h" />
+    <ClInclude Include="src\Window\HowToPlay.h" />
     <ClInclude Include="src\Window\MainMenu.h" />
     <ClInclude Include="src\Window\PlayGame.h" />
   </ItemGroup>

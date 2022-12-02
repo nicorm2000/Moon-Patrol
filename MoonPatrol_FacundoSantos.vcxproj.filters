@@ -51,13 +51,13 @@
     <ClCompile Include="src\Objects\FlyEnemy.cpp">
       <Filter>Src\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Credits.cpp">
+    <ClCompile Include="src\Window\HowToPlay.cpp">
       <Filter>Src\Window</Filter>
     </ClCompile>
-    <ClCompile Include="HowToPlay.cpp">
+    <ClCompile Include="src\Window\Credits.cpp">
       <Filter>Src\Window</Filter>
     </ClCompile>
-    <ClCompile Include="Controls.cpp">
+    <ClCompile Include="src\Window\Controls.cpp">
       <Filter>Src\Window</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,13 +89,13 @@
     <ClInclude Include="src\Objects\FlyEnemy.h">
       <Filter>Src\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Credits.h">
+    <ClInclude Include="src\Window\HowToPlay.h">
       <Filter>Src\Window</Filter>
     </ClInclude>
-    <ClInclude Include="Controls.h">
+    <ClInclude Include="src\Window\Credits.h">
       <Filter>Src\Window</Filter>
     </ClInclude>
-    <ClInclude Include="HowToPlay.h">
+    <ClInclude Include="src\Window\Controls.h">
       <Filter>Src\Window</Filter>
     </ClInclude>
   </ItemGroup>
