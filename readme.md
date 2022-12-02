@@ -1,4 +1,4 @@
-# Moon Patrol V1.0
+# Moon Patrol V1.1
 Simple Moon Patrol game made with raylib 4.0 for windows 32, in c++.
 
 Game Devs itch.io:
