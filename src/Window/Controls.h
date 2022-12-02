@@ -5,5 +5,5 @@
 
 namespace game
 {
-
+	void DrawControls1(Font gameFont);
 }

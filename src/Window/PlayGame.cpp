@@ -536,6 +536,7 @@ namespace game
                             BeginDrawing();
                             ClearBackground(BLACK);
                             DrawControls(gameFont);
+                            DrawControls1(gameFont);
                             DrawMouse(mouse);
                             EndDrawing();
                             break;
@@ -544,6 +545,7 @@ namespace game
                             BeginDrawing();
                             ClearBackground(BLACK);
                             DrawRules(gameFont);
+                            DrawRules1(gameFont);
                             DrawMouse(mouse);
                             EndDrawing();
                             break;
@@ -552,6 +554,7 @@ namespace game
                             BeginDrawing();
                             ClearBackground(BLACK);
                             DrawCredits(gameFont);
+                            DrawCredits1(gameFont);
                             DrawMouse(mouse);
                             EndDrawing();
                             break;

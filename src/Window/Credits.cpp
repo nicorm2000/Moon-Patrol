@@ -27,4 +27,22 @@ namespace game
 
 		credits1.color = BEIGE;
 	}
+
+	void DrawCredits1(Font gameFont)
+	{
+		gameFont;//ELIMINAR esto y sacar las dos barras ->//, los demas de 4 dejarlo en dos barras
+
+		//ClearBackground(BLACK);
+
+		//int menuPos = 0;
+
+		//DrawTexture(credits1.texture, menuPos, menuPos, WHITE);
+
+		////ReturnMenu Button
+
+		//float wordsSpacing = 10.0f;
+
+		////DrawRectangle(static_cast<int>(GetScreenWidth() / 2.5), static_cast<int>(GetScreenHeight() / 1.1), static_cast<int>(returnMenu.width), static_cast<int>(returnMenu.height), BLANK);
+		//DrawTextEx(gameFont, "MENU", returnMenu.pos, static_cast<float>(returnMenu.size), wordsSpacing, returnMenu.color);
+	}
 }
