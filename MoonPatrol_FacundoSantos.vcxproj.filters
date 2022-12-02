@@ -39,7 +39,7 @@
     <ClCompile Include="src\Objects\Mouse.cpp">
       <Filter>Src\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window\Menu.cpp">
+    <ClCompile Include="src\Window\MainMenu.cpp">
       <Filter>Src\Window</Filter>
     </ClCompile>
     <ClCompile Include="src\Objects\Background.cpp">
@@ -92,7 +92,12 @@
     <ClInclude Include="Credits.h">
       <Filter>Src\Window</Filter>
     </ClInclude>
-    <ClInclude Include="HowToPlay.h" />
+    <ClInclude Include="Controls.h">
+      <Filter>Src\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="HowToPlay.h">
+      <Filter>Src\Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="resources\Font\Acero y Sangre.otf">

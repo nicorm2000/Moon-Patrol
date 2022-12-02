@@ -30,10 +30,11 @@
     <ClCompile Include="src\Objects\Mouse.cpp" />
     <ClCompile Include="src\Objects\Obstacle.cpp" />
     <ClCompile Include="src\Objects\Player.cpp" />
-    <ClCompile Include="src\Window\Menu.cpp" />
+    <ClCompile Include="src\Window\MainMenu.cpp" />
     <ClCompile Include="src\Window\PlayGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Controls.h" />
     <ClInclude Include="Credits.h" />
     <ClInclude Include="HowToPlay.h" />
     <ClInclude Include="src\Objects\Background.h" />
