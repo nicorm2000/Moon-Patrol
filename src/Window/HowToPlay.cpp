@@ -10,6 +10,21 @@ namespace game
 
 	void InitHowToPlay()
 	{
+		//Rules Button
 
+		float rules1PosXDivider = 20.0f;
+		float rules1PosYDivider = 1.93f;
+		float rules1WidthDivider = 6.0f;
+		float rules1HeightDivider = 16.0f;
+
+		rules1.pos.x = static_cast<float>(GetScreenWidth() / rules1PosXDivider);
+		rules1.pos.y = static_cast<float>(GetScreenHeight() / rules1PosYDivider);
+		rules1.width = static_cast<float>(GetScreenWidth() / rules1WidthDivider);
+		rules1.height = static_cast<float>(GetScreenHeight() / rules1HeightDivider);
+		rules1.size = 40;
+		rules1.isActive = false;
+		rules1.texture = LoadTexture("resources/Sprites/rules1Bg.png");
+
+		rules1.color = BEIGE;
 	}
 }

@@ -1,4 +1,7 @@
 #include "Window/MainMenu.h"
+#include "Window/Controls.h"
+#include "Window/HowToPlay.h"
+#include "Window/Credits.h"
 #include "Objects/Mouse.h"
 #include "Objects/Player.h"
 
