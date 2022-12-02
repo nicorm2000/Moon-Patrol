@@ -1,30 +1,32 @@
 #pragma once
 #include "raylib.h"
-
-struct FlyEnemy
+namespace game
 {
-	Vector2 pos;
-	
-	float width;
-	float height;
+	struct FlyEnemy
+	{
+		Vector2 pos;
 
-	float speed;
+		float width;
+		float height;
 
-	int life;
+		float speed;
 
-	bool moveDown;
-	bool isMoving;
-	bool isActive;
+		int life;
 
-	Color color;
+		bool moveDown;
+		bool isMoving;
+		bool isActive;
 
-	static Texture flyingEnemyTexture;
-};
+		Color color;
 
-FlyEnemy CreateFlyEnemy();
+		static Texture flyingEnemyTexture;
+	};
 
-void DrawFlyEnemy(FlyEnemy& flyEnemy);
+	FlyEnemy CreateFlyEnemy();
 
-void LoadTextureFlyEnemy(FlyEnemy& flyEnemy);
+	void DrawFlyEnemy(FlyEnemy& flyEnemy);
 
-void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy);
+	void LoadTextureFlyEnemy(FlyEnemy& flyEnemy);
+
+	void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy);
+}

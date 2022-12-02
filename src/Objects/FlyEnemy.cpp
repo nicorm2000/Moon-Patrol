@@ -1,43 +1,46 @@
 #include "Objects/FlyEnemy.h"
 #include "raylib.h"
 
-Texture FlyEnemy::flyingEnemyTexture;
-
-FlyEnemy CreateFlyEnemy()
+namespace game
 {
-	FlyEnemy flyEnemy;
+	Texture FlyEnemy::flyingEnemyTexture;
 
-	flyEnemy.pos.x = 0;
-	flyEnemy.pos.y = 0;
+	FlyEnemy CreateFlyEnemy()
+	{
+		FlyEnemy flyEnemy;
 
-	flyEnemy.width = 120;
-	flyEnemy.height = 60;
+		flyEnemy.pos.x = 0;
+		flyEnemy.pos.y = 0;
 
-	flyEnemy.speed = 40;
+		flyEnemy.width = 120;
+		flyEnemy.height = 60;
 
-	flyEnemy.life = 2;
+		flyEnemy.speed = 40;
 
-	flyEnemy.moveDown = false;
-	flyEnemy.isActive = true;
-	flyEnemy.isMoving = true;
+		flyEnemy.life = 2;
 
-	flyEnemy.color = WHITE;
+		flyEnemy.moveDown = false;
+		flyEnemy.isActive = true;
+		flyEnemy.isMoving = true;
 
-	return flyEnemy;
-}
+		flyEnemy.color = WHITE;
 
-void DrawFlyEnemy(FlyEnemy& flyEnemy)
-{
-	//DrawRectangle(static_cast<int>(flyEnemy.pos.x), static_cast<int>(flyEnemy.pos.y), static_cast<int>(flyEnemy.width), static_cast<int>(flyEnemy.height), flyEnemy.color);
-	DrawTexture(flyEnemy.flyingEnemyTexture, static_cast<int>(flyEnemy.pos.x), static_cast<int>(flyEnemy.pos.y), flyEnemy.color);
-}
+		return flyEnemy;
+	}
 
-void LoadTextureFlyEnemy(FlyEnemy& flyEnemy)
-{
-	flyEnemy.flyingEnemyTexture = LoadTexture("resources/Sprites/FlyingEnemy.png");
-}
+	void DrawFlyEnemy(FlyEnemy& flyEnemy)
+	{
+		//DrawRectangle(static_cast<int>(flyEnemy.pos.x), static_cast<int>(flyEnemy.pos.y), static_cast<int>(flyEnemy.width), static_cast<int>(flyEnemy.height), flyEnemy.color);
+		DrawTexture(flyEnemy.flyingEnemyTexture, static_cast<int>(flyEnemy.pos.x), static_cast<int>(flyEnemy.pos.y), flyEnemy.color);
+	}
 
-void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy)
-{
-	UnloadTexture(flyEnemy.flyingEnemyTexture);
+	void LoadTextureFlyEnemy(FlyEnemy& flyEnemy)
+	{
+		flyEnemy.flyingEnemyTexture = LoadTexture("resources/Sprites/FlyingEnemy.png");
+	}
+
+	void UnloadTextureFlyEnemy(FlyEnemy& flyEnemy)
+	{
+		UnloadTexture(flyEnemy.flyingEnemyTexture);
+	}
 }
